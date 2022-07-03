@@ -88,13 +88,13 @@
                     </li>
                 @endcan
                 @if(\Auth::user()->type=='super admin')
-                    @can('manage user')
+                    {{-- @can('manage user')
                         <li class="nav-item">
                             <a href="{{ route('users.index') }}" class="nav-link {{ (Request::route()->getName() == 'users.index' || Request::route()->getName() == 'users.create' || Request::route()->getName() == 'users.edit') ? ' active' : '' }}">
                                 <i class="fas fa-columns"></i>{{__('User') }}
                             </a>
                         </li>
-                    @endcan
+                    @endcan --}}
                 @else
                     {{-- @if( Gate::check('manage user') || Gate::check('manage role'))
                         <li class="nav-item">
