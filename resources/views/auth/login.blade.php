@@ -52,7 +52,7 @@
             </div>
 
             <h5 class="copyright-text">
-                {{(App\Models\Utility::getValByName('footer_text')) ? App\Models\Utility::getValByName('footer_text') :  __('Copyright AccountGo') }} {{ date('Y') }}
+                {{(App\Models\Utility::getValByName('footer_text')) ? App\Models\Utility::getValByName('footer_text') :  __('Copyright ALHIDAYAH') }} {{ date('Y') }}
             </h5>
             <div class="all-select">
                 <a href="#" class="monthly-btn">
