@@ -96,7 +96,7 @@
                         </li>
                     @endcan
                 @else
-                    @if( Gate::check('manage user') || Gate::check('manage role'))
+                    {{-- @if( Gate::check('manage user') || Gate::check('manage role'))
                         <li class="nav-item">
                             <a class="nav-link {{ (Request::segment(1) == 'users' || Request::segment(1) == 'roles' || Request::segment(1) == 'permissions' )?' active':'collapsed'}}" href="#navbar-staff" data-toggle="collapse" role="button" aria-expanded="{{ (Request::segment(1) == 'users' || Request::segment(1) == 'roles' || Request::segment(1) == 'permissions' )?'true':'false'}}" aria-controls="navbar-staff">
                                 <i class="fas fa-users"></i>{{__('Staff')}}
@@ -117,7 +117,7 @@
                                 </ul>
                             </div>
                         </li>
-                    @endif
+                    @endif --}}
                 @endif
                 @if(Gate::check('manage product & service'))
                     <li class="nav-item">

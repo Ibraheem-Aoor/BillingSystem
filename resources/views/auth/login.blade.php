@@ -18,7 +18,7 @@
             </a>
             <div class="login-form">
                 <ul class="login-menu">
-                    <li class="blue-login"><a href="{{route('login')}}">{{__('User Login')}}</a></li>
+                    {{-- <li class="blue-login"><a href="{{route('login')}}">{{__('User Login')}}</a></li> --}}
                     {{-- <li class="gray-login"><a href="{{route('customer.login')}}">{{__('Customer Login')}}</a></li> --}}
                     {{-- <li class="gray-login"><a href="{{route('vender.login')}}">{{__('Vendor Login')}}</a></li> --}}
                 </ul>
@@ -45,9 +45,9 @@
                 @endif
 
                 <button type="submit" class="btn-login">{{__('Login')}}</button>
-                <div class="or-text">{{__('OR')}}</div>
+                {{-- <div class="or-text">{{__('OR')}}</div>
                 <small class="text-muted">{{__("Don't have an account?")}}</small>
-                <a href="{{ route('register') }}" class="text-xs text-primary">{{__('Register')}}</a>
+                <a href="{{ route('register') }}" class="text-xs text-primary">{{__('Register')}}</a> --}}
                 {{Form::close()}}
             </div>
 
