@@ -224,7 +224,9 @@ class SystemController extends Controller
 
         if(\Auth::user()->can('manage company settings'))
         {
-            $user = \Auth::user();
+            $user = User::findOrFail(Auth::id());
+            $user->trn = $request->trn ?? null;
+            $user->save();
             $request->validate(
                 [
                     'site_currency' => 'required',
@@ -269,10 +271,7 @@ class SystemController extends Controller
 
         if(\Auth::user()->can('manage business settings'))
         {
-
-            $user = User::findOrFail(Auth::id());
-            $user->trn = $request->trn ?? null;
-            $user->save();
+            $user = Auth::user();
             if($request->company_logo)
             {
 
