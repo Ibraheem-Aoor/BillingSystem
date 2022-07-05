@@ -270,6 +270,8 @@ class SystemController extends Controller
         {
 
             $user = \Auth::user();
+            $user->trn = $request->trn ?? null;
+            $user->save();
             if($request->company_logo)
             {
 

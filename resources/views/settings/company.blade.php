@@ -155,6 +155,15 @@
                                                         </span>
                                             @enderror
                                         </div>
+                                        <div class="form-group col-md-6">
+                                            {{Form::label('trn',__('TRN *'),array('class'=>'form-control-label')) }}
+                                            {{Form::text('trn',null,array('class'=>'form-control'))}}
+                                            @error('trn')
+                                            <span class="invalid-trn" role="alert">
+                                                            <strong class="text-danger">{{ $message }}</strong>
+                                                        </span>
+                                            @enderror
+                                        </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="form-control-label" for="example3cols3Input">{{__('Currency Symbol Position')}}</label>

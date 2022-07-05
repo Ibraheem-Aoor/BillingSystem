@@ -551,6 +551,11 @@
                                                     {{ $settings['company_name'] }}
                                                 @endif
                                             </p>
+                                            <p data-v-b8f60a0c="">
+                                                @if (Auth::user->trn)
+                                                    {{ Auth::user()->trn }}
+                                                @endif
+                                            </p>
                                             <pre data-v-b8f60a0c="">
 @if ($settings['company_address'])
 {{ $settings['company_address'] }}
@@ -601,7 +606,8 @@
                                                     </tr>
                                                     <tr data-v-b8f60a0c="">
                                                         <td data-v-b8f60a0c="" class="tu fwb"
-                                                            style="color: {{ $color }};">{{ __('Due Date') }}:
+                                                            style="color: {{ $color }};">
+                                                            {{ __('Due Date') }}:
                                                         </td>
                                                         <td data-v-b8f60a0c="" class="text-right">
                                                             {{ \App\Models\Utility::dateFormat($settings, $invoice->due_date) }}

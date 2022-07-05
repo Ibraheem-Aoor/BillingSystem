@@ -516,6 +516,7 @@
                                 <div data-v-e95a8a8c="" class="row">
                                     <div data-v-e95a8a8c="" class="col-66"><strong data-v-e95a8a8c="" class="tu mb5" style="color: {{$color}};">{{__('From')}}:</strong>
                                         <p data-v-e95a8a8c="">@if($settings['company_name']){{$settings['company_name']}}@endif</p>
+                                        <p data-v-e95a8a8c="">@if(Auth::user()->trn){{Auth::user()->trn}}@endif</p>
                                         <pre data-v-e95a8a8c="">@if($settings['company_address']){{$settings['company_address']}}@endif</pre>
                                         <p data-v-e95a8a8c="">@if($settings['company_city']) {{$settings['company_city']}}, @endif @if($settings['company_state']){{$settings['company_state']}}@endif @if($settings['company_zipcode']) - {{$settings['company_zipcode']}}@endif</p>
                                         <p data-v-e95a8a8c="">@if($settings['company_country']) {{$settings['company_country']}}@endif</p><br>
