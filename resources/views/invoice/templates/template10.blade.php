@@ -552,7 +552,7 @@
                                                 @endif
                                             </p>
                                             <p data-v-b8f60a0c="">
-                                                @if (Auth::user->trn)
+                                                @if (Auth::user()->trn)
                                                     {{ Auth::user()->trn }}
                                                 @endif
                                             </p>
