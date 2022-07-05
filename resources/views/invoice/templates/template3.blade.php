@@ -508,7 +508,7 @@
                             <div data-v-e95a8a8c="" class="d-inner">
                                 <div data-v-e95a8a8c="" class="row">
                                     <div data-v-e95a8a8c="" class="col-2">
-                                        <h1 data-v-e95a8a8c="" class="fancy-title tu mb5" style="color: {{$color}};">{{__('INVOICE')}}</h1></div>
+                                        <h1 data-v-e95a8a8c="" class="fancy-title tu mb5" style="color: {{$color}};">{{__('TAX INVOICE')}}</h1></div>
                                     <div data-v-e95a8a8c="" class="col-2 text-right">
                                         <img data-v-e95a8a8c="" src="{{$img}}" style="max-width: 250px" class="d-logo"></div>
                                 </div>
@@ -523,7 +523,7 @@
                                         @if(!empty($settings['tax_type']) && !empty($settings['vat_number'])){{$settings['tax_type'].' '. __('Number')}} : {{$settings['vat_number']}} <br>@endif
                                     </div>
                                     <div data-v-e95a8a8c="" class="col-33">
-                                        <table data-v-e95a8a8c="" class="summary-table">
+                                        <table data-v-e95a8a8c="" class="summary-table table-stripped">
                                             <tbody data-v-e95a8a8c="" style="position: relative">
                                             <tr>
                                                 <td>{{__('Number')}}:</td>
@@ -555,12 +555,13 @@
                                     </div>
                                 </div><br>
                                 <div data-v-e95a8a8c="" class="break-25"></div>
-                                <div class="row">
-                                    <div class="bill_to">
+                                <div class="row" style="margin-top:-60px;">
+                                    <div class="bill_to" >
                                         <strong data-v-f2a183a6="">{{__('Bill To')}}:</strong>
                                         <p>
                                             {{!empty($customer->billing_name)?$customer->billing_name:''}}<br>
                                             {{!empty($customer->billing_phone)?$customer->billing_phone:''}}<br>
+                                            {{!empty($customer->trn)?$customer->trn:''}}<br>
                                             {{!empty($customer->billing_address)?$customer->billing_address:''}}<br>
                                             {{!empty($customer->billing_zip)?$customer->billing_zip:''}}<br>
                                             {{!empty($customer->billing_city)?$customer->billing_city:'' .', '}} {{!empty($customer->billing_state)?$customer->billing_state:'',', '}} {{!empty($customer->billing_country)?$customer->billing_country:''}}

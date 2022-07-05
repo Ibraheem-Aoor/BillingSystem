@@ -527,7 +527,7 @@
                                     </div>
 
                                     <div data-v-f2a183a6="" class="d-header-50 d-right">
-                                        <div data-v-f2a183a6="" class="d-title">{{__('INVOICE')}}</div>
+                                        <div data-v-f2a183a6="" class="d-title">{{__('TAX INVOICE')}}</div>
                                         <table data-v-f2a183a6="" class="summary-table">
                                             <tbody data-v-f2a183a6="" style="position: relative">
                                                 <tr>
@@ -562,13 +562,14 @@
                             </div>
 
                             <div data-v-f2a183a6="" class="d-body">
-                                <div data-v-f2a183a6="" class="d-bill-to">
-                                    <div class="row">
+                                <div data-v-f2a183a6="" class="d-bill-to" >
+                                    <div class="row" style="margin-top:-60px;">
                                         <div class="bill_to">
                                             <strong data-v-f2a183a6="">{{__('Bill To')}}:</strong>
                                             <p>
                                                 {{!empty($customer->billing_name)?$customer->billing_name:''}}<br>
                                                 {{!empty($customer->billing_phone)?$customer->billing_phone:''}}<br>
+                                                {{!empty($customer->trn)?$customer->trn:''}}<br>
                                                 {{!empty($customer->billing_address)?$customer->billing_address:''}}<br>
                                                 {{!empty($customer->billing_zip)?$customer->billing_zip:''}}<br>
                                                 {{!empty($customer->billing_city)?$customer->billing_city:'' .', '}} {{!empty($customer->billing_state)?$customer->billing_state:'',', '}} {{!empty($customer->billing_country)?$customer->billing_country:''}}

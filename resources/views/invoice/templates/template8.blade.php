@@ -515,15 +515,16 @@
                                         @if(!empty($settings['registration_number'])){{__('Registration Number')}} : {{$settings['registration_number']}} @endif<br>
                                         @if(!empty($settings['tax_type']) && !empty($settings['vat_number'])){{$settings['tax_type'].' '. __('Number')}} : {{$settings['vat_number']}} <br>@endif
                                     </div>
-                                    <div data-v-136bf9b5="" class="col-33"><h1 data-v-136bf9b5="" class="fancy-title mb5" style="color: {{$color}};">{{__('INVOICE')}}</h1></div>
+                                    <div data-v-136bf9b5="" class="col-33"><h1 data-v-136bf9b5="" class="fancy-title mb5" style="color: {{$color}};">{{__('TAX INVOICE')}}</h1></div>
                                 </div>
                                 <div data-v-136bf9b5="" class="break-50"></div>
-                                <div class="row">
+                                <div class="row" style="margin-top:-60px;">
                                     <div class="bill_to">
                                         <strong data-v-f2a183a6="">{{__('Bill To')}}:</strong>
                                         <p>
                                             {{!empty($customer->billing_name)?$customer->billing_name:''}}<br>
                                             {{!empty($customer->billing_phone)?$customer->billing_phone:''}}<br>
+                                            {{!empty($customer->trn)?$customer->trn:''}}<br>
                                             {{!empty($customer->billing_address)?$customer->billing_address:''}}<br>
                                             {{!empty($customer->billing_zip)?$customer->billing_zip:''}}<br>
                                             {{!empty($customer->billing_city)?$customer->billing_city:'' .', '}} {{!empty($customer->billing_state)?$customer->billing_state:'',', '}} {{!empty($customer->billing_country)?$customer->billing_country:''}}
@@ -545,7 +546,7 @@
                                 <div data-v-136bf9b5="" class="break-50"></div>
                                 <div data-v-136bf9b5="" class="row">
                                     <div data-v-136bf9b5="" class="col-33">
-                                        <table data-v-136bf9b5="" class="summary-table">
+                                        <table data-v-136bf9b5="" class="summary-table table-stripped">
                                             <tbody data-v-136bf9b5="" style="position: relative">
                                             <tr data-v-136bf9b5="">
                                                 <td data-v-136bf9b5="" class="fwb">{{__('Number')}}:</td>

@@ -523,8 +523,8 @@
                                 </div>
 
                                 <div data-v-37eeda86="" class="col-33">
-                                    <strong data-v-37eeda86="" class="tu mb5" style="color: {{$color}};">{{__('INVOICE')}}</strong>
-                                    <table data-v-37eeda86="" class="summary-table">
+                                    <strong data-v-37eeda86="" class="tu mb5" style="color: {{$color}};">{{__('TAX INVOICE')}}</strong>
+                                    <table data-v-37eeda86="" class="summary-table table-stripped">
                                         <tbody data-v-37eeda86="" style="position: relative">
                                         <tr>
                                             <td>{{__('Number')}}:</td>
@@ -554,15 +554,16 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div data-v-37eeda86="" class="break-50 col-66"></div>
+                                <div data-v-37eeda86="" class="break-50 col-66" ></div>
                                 <div data-v-37eeda86="" class="">
                                     <div data-v-37eeda86="" class="">
-                                        <div class="row">
+                                        <div class="row" style="margin-top:-60px;">
                                             <div class="bill_to">
                                                 <strong data-v-f2a183a6="">{{__('Bill To')}}:</strong>
                                                 <p>
                                                     {{!empty($customer->billing_name)?$customer->billing_name:''}}<br>
                                                     {{!empty($customer->billing_phone)?$customer->billing_phone:''}}<br>
+                                                    {{!empty($customer->trn)?$customer->trn:''}}<br>
                                                     {{!empty($customer->billing_address)?$customer->billing_address:''}}<br>
                                                     {{!empty($customer->billing_zip)?$customer->billing_zip:''}}<br>
                                                     {{!empty($customer->billing_city)?$customer->billing_city:'' .', '}} {{!empty($customer->billing_state)?$customer->billing_state:'',', '}} {{!empty($customer->billing_country)?$customer->billing_country:''}}

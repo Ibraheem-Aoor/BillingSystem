@@ -508,7 +508,7 @@
                         <div data-v-e23d9750="" class="d" style="width:800px;margin-left: auto;margin-right: auto;" id="boxes">
                             <div data-v-e23d9750="" class="d-inner">
                                 <div data-v-e23d9750="" class="row">
-                                    <div data-v-e23d9750="" class="col-66"><h1 data-v-e23d9750="" class="fancy-title tu mb5" style="background: {{$color}};color:{{$font_color}}">{{__('INVOICE')}}</h1></div>
+                                    <div data-v-e23d9750="" class="col-66"><h1 data-v-e23d9750="" class="fancy-title tu mb5" style="background: {{$color}};color:{{$font_color}}">{{__('TAX INVOICE')}}</h1></div>
                                     <div data-v-e23d9750="" class="col-33">
                                         <img src="{{$img}}" style="max-width: 250px"/>
                                         <div data-v-e23d9750="" class="break-25"></div>
@@ -522,7 +522,7 @@
                                 </div>
                                 <div data-v-e23d9750="" class="row">
                                     <div data-v-e23d9750="" class="col-33">
-                                        <table data-v-e23d9750="" class="summary-table">
+                                        <table data-v-e23d9750="" class="summary-table table-stripped">
                                             <tbody data-v-e23d9750="" style="position: relative">
                                             <tr data-v-e23d9750="">
                                                 <td data-v-e23d9750="" class="tu fwb">{{__('Number')}}:</td>
@@ -554,12 +554,13 @@
                                     </div>
                                 </div>
                                 <div data-v-e23d9750="" class="break-25" ></div>
-                                <div class="row">
+                                <div class="row" style="margin-top:-60px;">
                                     <div class="bill_to">
                                         <strong data-v-f2a183a6="">{{__('Bill To')}}:</strong>
                                         <p>
                                             {{!empty($customer->billing_name)?$customer->billing_name:''}}<br>
                                             {{!empty($customer->billing_phone)?$customer->billing_phone:''}}<br>
+                                            {{!empty($customer->trn)?$customer->trn:''}}<br>
                                             {{!empty($customer->billing_address)?$customer->billing_address:''}}<br>
                                             {{!empty($customer->billing_zip)?$customer->billing_zip:''}}<br>
                                             {{!empty($customer->billing_city)?$customer->billing_city:'' .', '}} {{!empty($customer->billing_state)?$customer->billing_state:'',', '}} {{!empty($customer->billing_country)?$customer->billing_country:''}}

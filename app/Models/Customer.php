@@ -12,6 +12,7 @@ class Customer extends Authenticatable
     use Notifiable;
 
     protected $guard_name = 'web';
+    public $timestamps = false;
 
     protected $fillable = [
         'customer_id',

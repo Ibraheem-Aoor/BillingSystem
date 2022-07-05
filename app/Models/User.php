@@ -18,8 +18,8 @@ class User extends Authenticatable
 {
     use HasRoles;
     use Notifiable;
-
-   protected $appends = ['profile'];
+    public $timestamps = false;
+    protected $appends = ['profile'];
 
     protected $fillable = [
         'name',

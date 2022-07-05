@@ -508,7 +508,7 @@
                         <div data-v-4b3dcb8a="" class="d" style="width:800px;margin-left: auto;margin-right: auto;" id="boxes">
                             <div data-v-4b3dcb8a="" class="d-inner" style="border-top: 15px solid {{$color}};">
                                 <div data-v-4b3dcb8a="" class="row">
-                                    <div data-v-4b3dcb8a="" class="col-2"><h1 data-v-4b3dcb8a="" class="fancy-title mb5">{{__('INVOICE')}}</h1></div>
+                                    <div data-v-4b3dcb8a="" class="col-2"><h1 data-v-4b3dcb8a="" class="fancy-title mb5">{{__('TAX INVOICE')}}</h1></div>
                                     <div data-v-4b3dcb8a="" class="col-2 text-right">
                                         <img data-v-4b3dcb8a="" src="{{$img}}" class="d-logo" style="max-width: 250px"></div>
                                 </div>
@@ -524,12 +524,13 @@
                                         @if(!empty($settings['tax_type']) && !empty($settings['vat_number'])){{$settings['tax_type'].' '. __('Number')}} : {{$settings['vat_number']}} <br>@endif
                                     </div>
                                     <div data-v-4b3dcb8a="" class="col-3">
-                                        <div class="row">
+                                        <div class="row" style="margin-top:-60px;">
                                             <div class="bill_to">
                                                 <strong data-v-f2a183a6="">{{__('Bill To')}}:</strong>
                                                 <p>
                                                     {{!empty($customer->billing_name)?$customer->billing_name:''}}<br>
                                                     {{!empty($customer->billing_phone)?$customer->billing_phone:''}}<br>
+                                                    {{!empty($customer->trn)?$customer->trn:''}}<br>
                                                     {{!empty($customer->billing_address)?$customer->billing_address:''}}<br>
                                                     {{!empty($customer->billing_zip)?$customer->billing_zip:''}}<br>
                                                     {{!empty($customer->billing_city)?$customer->billing_city:'' .', '}} {{!empty($customer->billing_state)?$customer->billing_state:'',', '}} {{!empty($customer->billing_country)?$customer->billing_country:''}}
@@ -555,7 +556,7 @@
                                 <div data-v-4b3dcb8a="" class="break-25"></div>
                                 <div data-v-4b3dcb8a="" class="row">
                                     <div data-v-4b3dcb8a="" class="col-33">
-                                        <table data-v-4b3dcb8a="" class="summary-table">
+                                        <table data-v-4b3dcb8a="" class="summary-table table-stripped">
                                             <tbody data-v-4b3dcb8a="" style="position: relative">
                                             <tr data-v-4b3dcb8a="">
                                                 <td data-v-4b3dcb8a="" class="fwb">{{__('Number')}}:</td>

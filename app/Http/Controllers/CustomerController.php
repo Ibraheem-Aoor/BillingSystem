@@ -58,15 +58,13 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         if (\Auth::user()->can('create customer')) {
-
             $rules = [
                 'name' => 'required',
                 'contact' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/',
-                'email' => 'required|email|unique:customers',
-                'password' => 'required',
+                'email' => 'nullable|email|unique:customers',
+                'trn' => 'nullable',
 
             ];
-
 
             $validator = \Validator::make($request->all(), $rules);
 
@@ -76,20 +74,24 @@ class CustomerController extends Controller
                 return redirect()->route('customer.index')->with('error', $messages->first());
             }
 
+
             $objCustomer    = \Auth::user();
             $creator        = User::find($objCustomer->creatorId());
             $total_customer = $objCustomer->countCustomers();
             $plan           = Plan::find($creator->plan);
+
 
             $default_language = DB::table('settings')->select('value')->where('name', 'default_language')->first();
             if ($total_customer < $plan->max_customers || $plan->max_customers == -1) {
                 $customer                  = new Customer();
                 $customer->customer_id     = $this->customerNumber();
                 $customer->name            = $request->name;
-                $customer->contact         = $request->contact;
-                $customer->email           = $request->email;
-                $customer->password        = Hash::make($request->password);
+                $customer->email           = $request->email ?? null;
                 $customer->created_by      = \Auth::user()->creatorId();
+                $customer->trn = $request->trn;
+
+                $customer->contact         = $request->contact;
+                // $customer->password        = Hash::make($request->password);
                 $customer->billing_name    = $request->billing_name;
                 $customer->billing_country = $request->billing_country;
                 $customer->billing_state   = $request->billing_state;
@@ -97,6 +99,7 @@ class CustomerController extends Controller
                 $customer->billing_phone   = $request->billing_phone;
                 $customer->billing_zip     = $request->billing_zip;
                 $customer->billing_address = $request->billing_address;
+
 
                 $customer->shipping_name    = $request->shipping_name;
                 $customer->shipping_country = $request->shipping_country;
@@ -115,16 +118,16 @@ class CustomerController extends Controller
             }
 
 
-            $role_r = Role::where('name', '=', 'customer')->firstOrFail();
-            $customer->assignRole($role_r);
+            // $role_r = Role::where('name', '=', 'customer')->firstOrFail();
+            // $customer->assignRole($role_r);
 
-            $customer->password = $request->password;
-            $customer->type     = 'Customer';
-            try {
-                Mail::to($customer->email)->send(new UserCreate($customer));
-            } catch (\Exception $e) {
-                $smtp_error = __('E-Mail has been not sent due to SMTP configuration');
-            }
+            // $customer->password = $request->password;
+            // $customer->type     = 'Customer';
+            // try {
+            //     Mail::to($customer->email)->send(new UserCreate($customer));
+            // } catch (\Exception $e) {
+            //     $smtp_error = __('E-Mail has been not sent due to SMTP configuration');
+            // }
 
 
             //Twilio Notification

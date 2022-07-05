@@ -516,8 +516,8 @@
                                         @if(!empty($settings['tax_type']) && !empty($settings['vat_number'])){{$settings['tax_type'].' '. __('Number')}} : {{$settings['vat_number']}} <br>@endif
                                     </div>
                                     <div data-v-1ad6e3b9="" class="col-33">&nbsp;</div>
-                                    <div data-v-1ad6e3b9="" class="col-33"><h1 data-v-1ad6e3b9="" class="fancy-title mb5">{{__('INVOICE')}}</h1> <br data-v-1ad6e3b9=""><br data-v-1ad6e3b9="">
-                                        <table data-v-1ad6e3b9="" class="summary-table">
+                                    <div data-v-1ad6e3b9="" class="col-33"><h1 data-v-1ad6e3b9="" class="fancy-title mb5">{{__('TAX INVOICE')}}</h1> <br data-v-1ad6e3b9=""><br data-v-1ad6e3b9="">
+                                        <table data-v-1ad6e3b9="" class="summary-table table-stripped">
                                             <tbody data-v-1ad6e3b9="" style="position: relative">
                                             <tr data-v-1ad6e3b9="">
                                                 <td data-v-1ad6e3b9="" class="fwb">{{__('Number')}}:</td>
@@ -548,12 +548,13 @@
                                     </div>
                                 </div>
                                 <div data-v-1ad6e3b9="" class="d-inner-2">
-                                    <div class="row">
+                                    <div class="row" style="margin-top:-60px;">
                                         <div class="bill_to">
                                             <strong data-v-f2a183a6="">{{__('Bill To')}}:</strong>
                                             <p>
                                                 {{!empty($customer->billing_name)?$customer->billing_name:''}}<br>
                                                 {{!empty($customer->billing_phone)?$customer->billing_phone:''}}<br>
+                                                {{!empty($customer->trn)?$customer->trn:''}}<br>
                                                 {{!empty($customer->billing_address)?$customer->billing_address:''}}<br>
                                                 {{!empty($customer->billing_zip)?$customer->billing_zip:''}}<br>
                                                 {{!empty($customer->billing_city)?$customer->billing_city:'' .', '}} {{!empty($customer->billing_state)?$customer->billing_state:'',', '}} {{!empty($customer->billing_country)?$customer->billing_country:''}}

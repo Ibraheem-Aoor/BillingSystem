@@ -17,10 +17,13 @@ class CreateUsersTable extends Migration
             'users', function (Blueprint $table){
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email')
+            ->nullable()
+            ->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->string('type', 20);
+            $table->string('trn')->nullable();
             $table->string('avatar', 100)->nullable();
             $table->string('lang', 100);
             $table->integer('created_by')->default(0);

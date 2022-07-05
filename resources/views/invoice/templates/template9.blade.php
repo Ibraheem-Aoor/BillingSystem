@@ -506,7 +506,7 @@
                         <div data-v-7d9d14b5="" class="d" style="width:800px;margin-left: auto;margin-right: auto;" id="boxes">
                             <div data-v-7d9d14b5="" class="d-inner" style="border-right: 50px solid {{$color}};">
                                 <div data-v-7d9d14b5="" class="row">
-                                    <div data-v-7d9d14b5="" class="col-2"><h1 data-v-7d9d14b5="" class="fancy-title tu mb5" style="color: {{$color}};">{{__('INVOICE')}}</h1>
+                                    <div data-v-7d9d14b5="" class="col-2"><h1 data-v-7d9d14b5="" class="fancy-title tu mb5" style="color: {{$color}};">{{__('TAX INVOICE')}}</h1>
                                         <h3 data-v-7d9d14b5="">{{\App\Models\Utility::invoiceNumberFormat($settings,$invoice->invoice_id)}}</h3>
                                         <p data-v-7d9d14b5="">{{\App\Models\Utility::dateFormat($settings,$invoice->issue_date)}}</p>
                                     </div>
@@ -524,7 +524,7 @@
                                     </div>
 
                                     <div data-v-7d9d14b5="" class="col-33">
-                                        <table data-v-7d9d14b5="" class="summary-table">
+                                        <table data-v-7d9d14b5="" class="summary-table table-stripped">
                                             <tbody data-v-7d9d14b5="" style="position: relative">
                                             <tr data-v-7d9d14b5="">
                                                 <td data-v-7d9d14b5="" class="fwb">{{__('Due Date')}}:</td>
@@ -547,12 +547,13 @@
                                     </div>
                                 </div>
                                 <div data-v-7d9d14b5="" class="break-50"></div>
-                                <div class="row">
+                                <div class="row" style="margin-top:-60px;">
                                     <div class="bill_to">
                                         <strong data-v-f2a183a6="">{{__('Bill To')}}:</strong>
                                         <p>
                                             {{!empty($customer->billing_name)?$customer->billing_name:''}}<br>
                                             {{!empty($customer->billing_phone)?$customer->billing_phone:''}}<br>
+                                            {{!empty($customer->trn)?$customer->trn:''}}<br>
                                             {{!empty($customer->billing_address)?$customer->billing_address:''}}<br>
                                             {{!empty($customer->billing_zip)?$customer->billing_zip:''}}<br>
                                             {{!empty($customer->billing_city)?$customer->billing_city:'' .', '}} {{!empty($customer->billing_state)?$customer->billing_state:'',', '}} {{!empty($customer->billing_country)?$customer->billing_country:''}}

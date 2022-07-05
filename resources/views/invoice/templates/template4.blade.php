@@ -508,7 +508,7 @@
                         <div data-v-363339a0="" class="d" style="width:800px;margin-left: auto;margin-right: auto;" id="boxes">
                             <div data-v-363339a0="" class="d-inner">
                                 <div data-v-363339a0="" class="row">
-                                    <div data-v-363339a0="" class="col-2"><h1 data-v-363339a0="" class="fancy-title tu mb5" style="color: {{$color}};">{{__('INVOICE')}}</h1>
+                                    <div data-v-363339a0="" class="col-2"><h1 data-v-363339a0="" class="fancy-title tu mb5" style="color: {{$color}};">{{__('TAX INVOICE')}}</h1>
                                         <p data-v-363339a0="">@if($settings['company_name']){{$settings['company_name']}}@endif</p>
                                         <pre data-v-363339a0="">@if($settings['company_address']){{$settings['company_address']}}@endif</pre>
                                         <p data-v-363339a0="">@if($settings['company_city']) {{$settings['company_city']}}, @endif @if($settings['company_state']){{$settings['company_state']}}@endif @if($settings['company_zipcode']) - {{$settings['company_zipcode']}}@endif</p>
@@ -524,7 +524,7 @@
                                     <div data-v-363339a0="" class="col-3"></div>
                                     <div data-v-363339a0="" class="col-1 text-right">
                                         <div data-v-363339a0="" class="">
-                                            <table data-v-363339a0="" class="summary-table">
+                                            <table data-v-363339a0="" class="summary-table table-stripped">
                                                 <tbody data-v-363339a0="" style="position: relative">
                                                 <tr data-v-363339a0="">
                                                     <td data-v-363339a0="" class="tu fwb" style="color: {{$color}};">{{__('Number')}}:</td>
@@ -558,12 +558,13 @@
                                     </div>
                                 </div>
                                 <div data-v-363339a0="" class="break-50"  style ="height: 160px;"></div>
-                                <div class="row">
+                                <div class="row" style="margin-top:-60px;">
                                     <div class="bill_to">
                                         <strong data-v-f2a183a6="">{{__('Bill To')}}:</strong>
                                         <p>
                                             {{!empty($customer->billing_name)?$customer->billing_name:''}}<br>
                                             {{!empty($customer->billing_phone)?$customer->billing_phone:''}}<br>
+                                            {{!empty($customer->trn)?$customer->trn:''}}<br>
                                             {{!empty($customer->billing_address)?$customer->billing_address:''}}<br>
                                             {{!empty($customer->billing_zip)?$customer->billing_zip:''}}<br>
                                             {{!empty($customer->billing_city)?$customer->billing_city:'' .', '}} {{!empty($customer->billing_state)?$customer->billing_state:'',', '}} {{!empty($customer->billing_country)?$customer->billing_country:''}}

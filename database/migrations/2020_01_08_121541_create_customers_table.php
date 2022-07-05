@@ -18,8 +18,11 @@ class CreateCustomersTable extends Migration
             $table->bigIncrements('id');
             $table->integer('customer_id');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
+            $table->string('email')
+            ->nullable()
+            ->unique();
+            $table->string('trn')->nullable();
+            $table->string('password')->nullable();
             $table->string('contact')->nullable();
             $table->string('avatar', 100)->default('');
             $table->integer('created_by')->default(0);

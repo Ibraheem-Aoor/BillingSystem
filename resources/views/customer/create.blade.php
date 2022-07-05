@@ -31,10 +31,10 @@
         </div>
         <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="form-group">
-                {{Form::label('password',__('Password'),['class'=>'form-control-label'])}}
+                {{Form::label('trn',__('TRN'),['class'=>'form-control-label'])}}
                 <div class="form-icon-user">
                     <span><i class="fas fa-key"></i></span>
-                    {{Form::password('password',array('class'=>'form-control','required'=>'required','minlength'=>"6"))}}
+                    {{Form::text('trn', null , array('class'=>'form-control'))}}
                 </div>
             </div>
         </div>
