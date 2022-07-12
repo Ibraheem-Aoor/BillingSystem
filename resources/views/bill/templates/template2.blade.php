@@ -492,6 +492,10 @@
         .overflow-x-hidden {
             overflow-x: hidden !important;
         }
+        body
+        {
+            font-size:12px !important;
+        }
     </style>
     @if(env('SITE_RTL')=='on')
         <link rel="stylesheet" href="{{ asset('css/bootstrap-rtl.css') }}">
@@ -524,7 +528,7 @@
 
                                 <div data-v-37eeda86="" class="col-33">
                                     <strong data-v-37eeda86="" class="tu mb5" style="color: {{$color}};">{{__('BILL')}}</strong>
-                                    <table data-v-37eeda86="" class="summary-table">
+                                    <table data-v-37eeda86="" class="summary-table" border="1">
                                         <tbody data-v-37eeda86="" style="position: relative">
                                         <tr data-v-37eeda86="">
                                             <td data-v-37eeda86="" class="tu">{{__('Number')}}:</td>

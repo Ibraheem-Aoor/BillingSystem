@@ -197,7 +197,7 @@
         .d[data-v-e95a8a8c] {
             font-family: monospace;
         }
-       
+
         .fancy-title[data-v-e95a8a8c] {
             margin-top: 0;
             padding-top: 0;
@@ -488,12 +488,17 @@
         .d-table-summary[data-v-b8f60a0c] {
             -webkit-box-flex: 4;
             flex: 4;
+
         }
 
         .overflow-x-hidden {
             overflow-x: hidden !important;
         }
 
+        body
+        {
+            font-size:12px !important;
+        }
     </style>
     @if(env('SITE_RTL')=='on')
         <link rel="stylesheet" href="{{ asset('css/bootstrap-rtl.css') }}">
@@ -527,7 +532,7 @@
 
                                     <div data-v-f2a183a6="" class="d-header-50 d-right">
                                         <div data-v-f2a183a6="" class="d-title">{{__('Bill')}}</div>
-                                        <table data-v-f2a183a6="" class="summary-table">
+                                        <table data-v-f2a183a6="" class="summary-table" border="1">
                                             <tbody data-v-f2a183a6="" style="position: relative">
                                             <tr>
                                                 <td>{{__('Number')}}:</td>
@@ -554,7 +559,7 @@
                                                     </tr>
                                                 @endforeach
                                             @endif
-                                            
+
                                             </tbody>
                                         </table>
                                     </div>

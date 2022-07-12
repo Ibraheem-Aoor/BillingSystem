@@ -492,6 +492,11 @@
         .overflow-x-hidden {
             overflow-x: hidden !important;
         }
+
+        body
+        {
+            font-size:12px !important;
+        }
     </style>
     @if(env('SITE_RTL')=='on')
         <link rel="stylesheet" href="{{ asset('css/bootstrap-rtl.css') }}">
@@ -555,7 +560,7 @@
                                 <div data-v-4b3dcb8a="" class="break-25"></div>
                                 <div data-v-4b3dcb8a="" class="row">
                                     <div data-v-4b3dcb8a="" class="col-33">
-                                        <table data-v-4b3dcb8a="" class="summary-table">
+                                        <table data-v-4b3dcb8a="" class="summary-table" border="1">
                                             <tbody data-v-4b3dcb8a="" style="position: relative">
                                             <tr data-v-4b3dcb8a="">
                                                 <td data-v-4b3dcb8a="" class="fwb">{{__('Number')}}:</td>
@@ -573,13 +578,13 @@
                                                 <td class="">
                                                      <p> {!! DNS2D::getBarcodeHTML(route('pay.billpay',\Illuminate\Support\Facades\Crypt::encrypt($bill->id)), "QRCODE",2,2) !!}</p>
                                                 </td>
-    
+
                                             </tr>
                                             <tr class="ml-8" >
                                                 <td class="">
                                                      <p> {!! DNS2D::getBarcodeHTML(route('pay.billpay',\Illuminate\Support\Facades\Crypt::encrypt($bill->id)), "QRCODE",2,2) !!}</p>
                                                 </td>
-    
+
                                             </tr>
                                              @if(!empty($customFields) && count($bill->customField)>0)
                                                 @foreach($customFields as $field)
