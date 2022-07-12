@@ -868,7 +868,7 @@ class InvoiceController extends Controller
             $settings[$row->name] = $row->value;
         }
 
-        $customer      = $invoice->customer;
+        $customer    = $invoice->customer;
         $items         = [];
         $totalTaxPrice = 0;
         $totalQuantity = 0;
