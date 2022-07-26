@@ -13,7 +13,7 @@
             filename: '{{App\Models\Utility::customerInvoiceNumberFormat($invoice->invoice_id)}}',
             image: {type: 'jpeg', quality: 1},
             html2canvas: {scale: 4, dpi: 72, letterRendering: true},
-            jsPDF: {unit: 'in', format: 'A5'}
+            jsPDF: {unit: 'mm', format: 'A5'}
         };
         html2pdf().set(opt).from(element).save().then(closeScript);
     });
