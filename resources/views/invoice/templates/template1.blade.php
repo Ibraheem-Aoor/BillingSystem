@@ -11,7 +11,7 @@
             top: 0;
             left: 0;
             z-index: -1;
-            width: 100%;
+            width: 50%;
             height: 100%;
             border: none;
             background-color: transparent;
@@ -27,7 +27,7 @@
             top: 0;
             left: 0;
             height: 100%;
-            width: 100%;
+            width: 50%;
             overflow: hidden;
             pointer-events: none;
             z-index: -1
@@ -61,7 +61,7 @@
         }
 
         .d-table-summary-item[data-v-f2a183a6] {
-            width: 100%;
+            width: 50%;
             display: -webkit-box;
             display: flex;
         }
@@ -79,7 +79,7 @@
 
         .d-table-label .form-input[data-v-f2a183a6] {
             margin-left: 10px;
-            width: 80px;
+            width: 40px;
             height: 24px;
         }
 
@@ -120,7 +120,7 @@
         }
 
         .d[data-v-f2a183a6] {
-            font-size: 0.9em !important;
+            /* font-size: 0.9em !important; */
             color: black;
             background: white;
             min-height: 1000px;
@@ -131,7 +131,7 @@
         }
 
         .d-title[data-v-f2a183a6] {
-            font-size: 50px;
+            /* font-size: 50px; */
             line-height: 50px;
             font-weight: bold;
             margin-bottom: 20px;
@@ -149,11 +149,11 @@
         }
 
         .d-header-brand[data-v-f2a183a6] {
-            width: 200px;
+            width: 100px;
         }
 
         .d-logo[data-v-f2a183a6] {
-            max-width: 100%;
+            max-width: 50%;
         }</style>
     <style type="text/css">p[data-v-37eeda86] {
             line-height: 1.2em;
@@ -165,7 +165,7 @@
         }
 
         img[data-v-37eeda86] {
-            max-width: 100%;
+            max-width: 50%;
         }
 
         .d-table-value[data-v-37eeda86] {
@@ -191,7 +191,7 @@
         }
 
         img[data-v-e95a8a8c] {
-            max-width: 100%;
+            max-width: 50%;
         }
 
         .d[data-v-e95a8a8c] {
@@ -226,23 +226,23 @@
         }
 
         img[data-v-363339a0] {
-            max-width: 100%;
+            max-width: 50%;
         }
 
         .fancy-title[data-v-363339a0] {
             margin-top: 0;
-            font-size: 30px;
+            /* font-size: 30px; */
             line-height: 1.2em;
             padding-top: 0;
         }
 
         .f-b[data-v-363339a0] {
-            font-size: 17px;
+            /* font-size: 17px; */
             line-height: 1.2em;
         }
 
         .thank[data-v-363339a0] {
-            font-size: 45px;
+            /* font-size: 45px; */
             line-height: 1.2em;
             text-align: right;
             font-style: italic;
@@ -276,12 +276,12 @@
         }
 
         img[data-v-e23d9750] {
-            max-width: 100%;
+            max-width: 50%;
         }
 
         .fancy-title[data-v-e23d9750] {
             margin-top: 0;
-            font-size: 40px;
+            /* font-size: 40px; */
             line-height: 1.2em;
             font-weight: bold;
             padding: 25px;
@@ -289,12 +289,12 @@
         }
 
         .f-b[data-v-e23d9750] {
-            font-size: 17px;
+            /* font-size: 17px; */
             line-height: 1.2em;
         }
 
         .thank[data-v-e23d9750] {
-            font-size: 45px;
+            /* font-size: 45px; */
             line-height: 1.2em;
             text-align: right;
             font-style: italic;
@@ -328,7 +328,7 @@
         }
 
         img[data-v-4b3dcb8a] {
-            max-width: 100%;
+            max-width: 50%;
         }
 
         .fancy-title[data-v-4b3dcb8a] {
@@ -364,7 +364,7 @@
         }
 
         img[data-v-1ad6e3b9] {
-            max-width: 100%;
+            max-width: 50%;
         }
 
         .fancy-title[data-v-1ad6e3b9] {
@@ -399,7 +399,7 @@
         }
 
         img[data-v-136bf9b5] {
-            max-width: 100%;
+            max-width: 50%;
         }
 
         .fancy-title[data-v-136bf9b5] {
@@ -420,7 +420,7 @@
         }
 
         img[data-v-7d9d14b5] {
-            max-width: 100%;
+            max-width: 50%;
         }
 
         .fancy-title[data-v-7d9d14b5] {
@@ -468,7 +468,7 @@
         }
 
         img[data-v-b8f60a0c] {
-            max-width: 100%;
+            max-width: 50%;
         }
 
         .fancy-title[data-v-b8f60a0c] {
@@ -495,6 +495,15 @@
         }
 
     </style>
+
+    <style>
+        body{
+            font-size: 12px !important;
+        }
+        .d-title[data-v-f2a183a6] {
+            font-size: 15px !important;
+        }
+    </style>
     @if(env('SITE_RTL')=='on')
         <link rel="stylesheet" href="{{ asset('css/bootstrap-rtl.css') }}">
     @endif
@@ -507,12 +516,12 @@
             <div class="invoice-preview-inner">
                 <div class="editor-content">
                     <div class="preview-main client-preview">
-                        <div data-v-f2a183a6="" class="d" id="boxes" style="width:800px;margin-left: auto;margin-right: auto;">
+                        <div data-v-f2a183a6="" class="d" id="boxes" style="width:400px;margin-left: auto;margin-right: auto;">
                             <div data-v-f2a183a6="" class="d-header" style="background: {{$color}};color:{{$font_color}}">
                                 <div data-v-f2a183a6="" class="d-header-inner">
                                     <div data-v-f2a183a6="" class="d-header-50">
                                         <div data-v-f2a183a6="" class="d-header-brand">
-                                            <img src="{{$img}}" style="max-width: 250px"/>
+                                            <img src="{{$img}}" style="max-width: 130px"/>
                                         </div>
                                         <div data-v-f2a183a6="" class="break-25"></div>
                                         <p data-v-f2a183a6="">@if($settings['company_name']){{$settings['company_name']}}@endif</p>

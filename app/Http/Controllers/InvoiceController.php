@@ -848,7 +848,7 @@ class InvoiceController extends Controller
         $company_logo = Utility::getValByName('company_logo');
         $img          = asset($logo . '/' . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo.png'));
 
-        return view('invoice.templates.' . $template, compact('invoice', 'preview', 'color', 'img', 'settings', 'customer', 'font_color', 'customFields'));
+        return view('invoice.templates.template1', compact('invoice', 'preview', 'color', 'img', 'settings', 'customer', 'font_color', 'customFields'));
     }
 
     public function invoice($invoice_id)
