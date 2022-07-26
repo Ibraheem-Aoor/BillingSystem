@@ -948,7 +948,7 @@ class InvoiceController extends Controller
             $color      = '#' . $settings['invoice_color'];
             $font_color = Utility::getFontColor($color);
 
-            return view('invoice.templates.1', compact('invoice', 'color', 'settings', 'customer', 'img', 'font_color', 'customFields'));
+            return view('invoice.templates.template1' , compact('invoice', 'color', 'settings', 'customer', 'img', 'font_color', 'customFields'));
         }
         else
         {
