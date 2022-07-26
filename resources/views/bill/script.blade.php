@@ -1,5 +1,7 @@
+
 <script src="{{ asset('assets/js/jquery.min.js?v=0.02') }} "></script>
 <script type="text/javascript" src="{{ asset('js/html2pdf.bundle.min.js?v=0.02') }}"></script>
+
 <script>
     function closeScript() {
         setTimeout(function () {
