@@ -500,6 +500,12 @@
             font-size:12px !important;
         }
     </style>
+    <style>
+        body
+        {
+            font-size:12px !important;
+        }
+    </style>
     @if(env('SITE_RTL')=='on')
         <link rel="stylesheet" href="{{ asset('css/bootstrap-rtl.css') }}">
     @endif
@@ -517,7 +523,7 @@
                                 <div data-v-f2a183a6="" class="d-header-inner">
                                     <div data-v-f2a183a6="" class="d-header-50">
                                         <div data-v-f2a183a6="" class="d-header-brand">
-                                            <img src="{{$img}}" style="max-width: 250px"/>
+                                            <img src="{{$img}}" style="max-width: 100px"/>
                                         </div>
                                         <div data-v-f2a183a6="" class="break-25"></div>
                                         <p data-v-f2a183a6="">@if($settings['company_name']){{$settings['company_name']}}@endif</p>
