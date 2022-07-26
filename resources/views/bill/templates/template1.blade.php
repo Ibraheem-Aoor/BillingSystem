@@ -11,7 +11,7 @@
             top: 0;
             left: 0;
             z-index: -1;
-            width: 100%;
+            width: 50%;
             height: 100%;
             border: none;
             background-color: transparent;
@@ -79,7 +79,7 @@
 
         .d-table-label .form-input[data-v-f2a183a6] {
             margin-left: 10px;
-            width: 80px;
+            width: 40px;
             height: 24px;
         }
 
@@ -149,11 +149,11 @@
         }
 
         .d-header-brand[data-v-f2a183a6] {
-            width: 200px;
+            width: 100px;
         }
 
         .d-logo[data-v-f2a183a6] {
-            max-width: 100%;
+            max-width: 50%;
         }</style>
     <style type="text/css">p[data-v-37eeda86] {
             line-height: 1.2em;
@@ -165,7 +165,7 @@
         }
 
         img[data-v-37eeda86] {
-            max-width: 100%;
+            max-width: 50%;
         }
 
         .d-table-value[data-v-37eeda86] {
@@ -191,7 +191,7 @@
         }
 
         img[data-v-e95a8a8c] {
-            max-width: 100%;
+            max-width: 50%;
         }
 
         .d[data-v-e95a8a8c] {
@@ -226,7 +226,7 @@
         }
 
         img[data-v-363339a0] {
-            max-width: 100%;
+            max-width: 50%;
         }
 
         .fancy-title[data-v-363339a0] {
@@ -276,7 +276,7 @@
         }
 
         img[data-v-e23d9750] {
-            max-width: 100%;
+            max-width: 50%;
         }
 
         .fancy-title[data-v-e23d9750] {
@@ -328,7 +328,7 @@
         }
 
         img[data-v-4b3dcb8a] {
-            max-width: 100%;
+            max-width: 50%;
         }
 
         .fancy-title[data-v-4b3dcb8a] {
@@ -364,7 +364,7 @@
         }
 
         img[data-v-1ad6e3b9] {
-            max-width: 100%;
+            max-width: 50%;
         }
 
         .fancy-title[data-v-1ad6e3b9] {
@@ -399,7 +399,7 @@
         }
 
         img[data-v-136bf9b5] {
-            max-width: 100%;
+            max-width: 50%;
         }
 
         .fancy-title[data-v-136bf9b5] {
@@ -420,7 +420,7 @@
         }
 
         img[data-v-7d9d14b5] {
-            max-width: 100%;
+            max-width: 50%;
         }
 
         .fancy-title[data-v-7d9d14b5] {
@@ -468,7 +468,7 @@
         }
 
         img[data-v-b8f60a0c] {
-            max-width: 100%;
+            max-width: 50%;
         }
 
         .fancy-title[data-v-b8f60a0c] {
@@ -518,7 +518,7 @@
             <div class="invoice-preview-inner">
                 <div class="editor-content">
                     <div class="preview-main client-preview">
-                        <div data-v-f2a183a6="" class="d" id="boxes" style="width:800px;margin-left: auto;margin-right: auto;">
+                        <div data-v-f2a183a6="" class="d" id="boxes" style="width:400px;margin-left: auto;margin-right: auto;">
                             <div data-v-f2a183a6="" class="d-header" style="background: {{$color}};color:{{$font_color}}">
                                 <div data-v-f2a183a6="" class="d-header-inner">
                                     <div data-v-f2a183a6="" class="d-header-50">
