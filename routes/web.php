@@ -985,6 +985,7 @@ Route::post('{id}/pay-with-paypal', 'PaypalController@clientPayWithPaypal')->nam
 Route::get('invoice/pay/pdf/{id}', 'InvoiceController@pdffrominvoice')->name('invoice.download.pdf');
 
 
+
 // -------------------------------------import export------------------------------
 
 Route::get('export/productservice', 'ProductServiceController@export')->name('productservice.export');
@@ -1003,3 +1004,6 @@ Route::post('import/vender', 'VenderController@import')->name('vender.import');
 Route::get('export/Proposal', 'ProposalController@export')->name('proposal.export');
 Route::get('export/invoice', 'InvoiceController@export')->name('invoice.export');
 Route::get('export/Bill', 'BillController@export')->name('Bill.export');
+
+
+Route::get('empty', 'InvoiceController@downloadEmptyTemplate')->name('invoice.empty.download.pdf');

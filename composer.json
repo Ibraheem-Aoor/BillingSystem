@@ -19,6 +19,7 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.0",
         "laravelcollective/html": "^6.1",
+        "laraveldaily/laravel-invoices": "^3.0",
         "livepixel/mercado-pago": "^1.0",
         "livewire/livewire": "^2.5",
         "maatwebsite/excel": "^3.1",
