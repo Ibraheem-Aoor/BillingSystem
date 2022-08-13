@@ -337,7 +337,7 @@
                             class="btn btn-xs btn-white btn-icon-only width-auto">{{ __('Resend Invoice') }}</a>
                     </div>
                     <div class="all-button-box">
-                        <a href="{{ route('invoice.pdf', Crypt::encrypt($invoice->id)) }}" target="_blank"
+                        <a href="{{ route('invoice.new.download.pdf', Crypt::encrypt($invoice->id)) }}" target="_blank"
                             class="btn btn-xs btn-white btn-icon-only width-auto">{{ __('Download') }}</a>
                         <a href="{{ route('invoice.empty.download.pdf') }}" target="_blank"
                             class="btn btn-xs btn-white btn-icon-only width-auto">

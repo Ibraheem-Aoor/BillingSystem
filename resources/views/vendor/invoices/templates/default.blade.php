@@ -294,14 +294,14 @@
                     &nbsp;
                 </td>
                 {{-- Summary --}}
-                @if ($invoice->hasItemOrInvoiceDiscount())
+                {{-- @if ($invoice->hasItemOrInvoiceDiscount())
             <tr class="pl-0">
                 <td colspan="{{ $invoice->table_columns - 2 }}" class="border-0"></td>
                 <td class="text-right pl-0">{{ __('invoices::invoice.total_amount') }}</td>
                 <td class="text-right pr-0">
                 </td>
             </tr>
-            @endif
+            @endif --}}
             @if ($invoice->taxable_amount)
                 <tr>
                     <td colspan="{{ $invoice->table_columns - 2 }}" class="border-0"></td>
@@ -320,7 +320,7 @@
                     </td>
                 </tr>
             @endif
-            @if ($invoice->hasItemOrInvoiceTax())
+            {{-- @if ($invoice->hasItemOrInvoiceTax())
                 <tr>
                     <td colspan="{{ $invoice->table_columns - 2 }}" class="border-0"></td>
                     <td class="text-right pl-0">{{ __('invoices::invoice.total_taxes') }}</td>
@@ -337,7 +337,7 @@
                         {{ $invoice->formatCurrency($invoice->shipping_amount) }}
                     </td>
                 </tr>
-            @endif
+            @endif --}}
             <tr>
                 <td colspan="{{ $invoice->table_columns - 2 }}" class="border-0"></td>
                 <td class="text-right pl-0">Grand Total:</td>
@@ -386,7 +386,7 @@
         </tbody>
     </table>
 
-    {{-- <p>
+    {{--
         {{ trans('invoices::invoice.amount_in_words') }}: {{ $invoice->getTotalAmountInWords() }}
     </p> --}}
 

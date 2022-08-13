@@ -164,6 +164,8 @@ return [
         Milon\Barcode\BarcodeServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         LaravelDaily\Invoices\InvoiceServiceProvider::class,
+        Meneses\LaravelMpdf\LaravelMpdfServiceProvider::class,
+
 
 
         /*
@@ -240,7 +242,9 @@ return [
         'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
 		'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-        'Invoice' => LaravelDaily\Invoices\Facades\Invoice::class
+        'Invoice' => LaravelDaily\Invoices\Facades\Invoice::class,
+        'PDF' => Meneses\LaravelMpdf\Facades\LaravelMpdf::class,
+
 
     ],
 

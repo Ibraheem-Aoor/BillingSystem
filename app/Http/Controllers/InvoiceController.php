@@ -32,6 +32,8 @@ use App\Exports\InvoiceExport;
 use LaravelDaily\Invoices\Invoice as DailyInvoice;
 use LaravelDaily\Invoices\Classes\Party;
 use LaravelDaily\Invoices\Classes\InvoiceItem;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 class InvoiceController extends Controller
 {
     public function __construct()
@@ -1302,4 +1304,115 @@ class InvoiceController extends Controller
         return $invoice->stream();
 
     }
+
+
+
+
+    public function downloadInvoiceNewTemplate($invoice_id)
+    {
+
+
+
+        $settings = Utility::settings();
+
+        $invoiceId = Crypt::decrypt($invoice_id);
+        $invoice   = Invoice::where('id', $invoiceId)->first();
+
+        $data  = DB::table('settings');
+        $data  = $data->where('created_by', '=', $invoice->created_by);
+        $data1 = $data->get();
+
+        foreach($data1 as $row)
+        {
+            $settings[$row->name] = $row->value;
+        }
+
+        $customer    = $invoice->customer;
+        $items         = [];
+        $totalTaxPrice = 0;
+        $totalQuantity = 0;
+        $totalRate     = 0;
+        $totalDiscount = 0;
+        $taxesData     = [];
+        foreach($invoice->items as $product)
+        {
+            $item              = new \stdClass();
+            $item->name        = !empty($product->product()) ? $product->product()->name : '';
+            $item->quantity    = $product->quantity;
+            $item->tax         = $product->tax;
+            $item->discount    = $product->discount;
+            $item->price       = $product->price;
+            $item->description = $product->description;
+
+            $totalQuantity += $item->quantity;
+            $totalRate     += $item->price;
+            $totalDiscount += $item->discount;
+
+            $taxes = Utility::tax($product->tax);
+
+            $itemTaxes = [];
+            if(!empty($item->tax))
+            {
+                foreach($taxes as $tax)
+                {
+                    $taxPrice      = Utility::taxRate($tax->rate, $item->price, $item->quantity);
+                    $totalTaxPrice += $taxPrice;
+
+                    $itemTax['name']  = $tax->name;
+                    $itemTax['rate']  = $tax->rate . '%';
+                    $itemTax['price'] = Utility::priceFormat($settings, $taxPrice);
+                    $itemTaxes[]      = $itemTax;
+
+
+                    if(array_key_exists($tax->name, $taxesData))
+                    {
+                        $taxesData[$tax->name] = $taxesData[$tax->name] + $taxPrice;
+                    }
+                    else
+                    {
+                        $taxesData[$tax->name] = $taxPrice;
+                    }
+
+                }
+                $item->itemTax = $itemTaxes;
+            }
+            else
+            {
+                $item->itemTax = [];
+            }
+            $items[] = $item;
+        }
+
+        $invoice->itemData      = $items;
+        $invoice->totalTaxPrice = $totalTaxPrice;
+        $invoice->totalQuantity = $totalQuantity;
+        $invoice->totalRate     = $totalRate;
+        $invoice->totalDiscount = $totalDiscount;
+        $invoice->taxesData     = $taxesData;
+        $invoice->customField   = CustomField::getData($invoice, 'invoice');
+        $customFields           = [];
+        if(!empty(\Auth::user()))
+        {
+            $customFields = CustomField::where('created_by', '=', \Auth::user()->creatorId())->where('module', '=', 'invoice')->get();
+        }
+
+
+        //Set your logo
+        $logo         = asset(Storage::url('uploads/logo/'));
+        $company_logo = Utility::getValByName('company_logo');
+        $img          = asset($logo . '/' . (isset($company_logo) && !empty($company_logo) ? $company_logo : 'logo.png'));
+        $data = [
+            'invoice' => $invoice,
+            'customer' => $customer,
+            'settings' => $settings,
+        ];
+        $pdf = PDF::loadView('vendor.invoices.templates.default_copy', $data);
+        return $pdf->stream('document.pdf');
+
+
+    }
 }
+
+
+
+

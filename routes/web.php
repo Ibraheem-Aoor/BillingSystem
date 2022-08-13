@@ -1007,3 +1007,4 @@ Route::get('export/Bill', 'BillController@export')->name('Bill.export');
 
 
 Route::get('empty', 'InvoiceController@downloadEmptyTemplate')->name('invoice.empty.download.pdf');
+Route::get('non-empty/{id}', 'InvoiceController@downloadInvoiceNewTemplate')->name('invoice.new.download.pdf');
