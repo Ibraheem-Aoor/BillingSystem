@@ -1406,7 +1406,7 @@ class InvoiceController extends Controller
             'customer' => $customer,
             'settings' => $settings,
         ];
-        $pdf = PDF::loadView('vendor.invoices.templates.default_copy', $data);
+        $pdf = PDF::loadView('vendor.invoices.templates.default_copy_2', compact('data'));
         return $pdf->stream('document.pdf');
 
 

@@ -160,7 +160,7 @@
     @endif
 
 
-    <table class="table mt-5">
+    <table class="table mt-5" style="width:90%;">
 
         <tbody>
             <tr>
@@ -260,7 +260,7 @@
     </table>
 
     {{-- Table --}}
-    <table class="table table-items">
+    <table class="table table-items" style="width:90%;">
         <thead>
             <tr>
                 <th scope="col" class="text-center border-0">S.No.</th>

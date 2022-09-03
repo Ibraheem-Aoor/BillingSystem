@@ -59,7 +59,7 @@ return [
 
     'paper' => [
         // A4 = 210 mm x 297 mm = 595 pt x 842 pt
-        'size'        => 'A5',
+        'size'        => 'a5',
         'orientation' => 'portrait',
     ],
 
