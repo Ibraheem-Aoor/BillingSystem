@@ -28,6 +28,7 @@
         "mercadopago/dx-php": "^2.4",
         "milon/barcode": "^8.0",
         "mollie/mollie-api-php": "^2.36",
+        "mpdf/mpdf": "^8.1",
         "obydul/laraskrill": "^1.1",
         "paypal/rest-api-sdk-php": "^1.14",
         "rachidlaasri/laravel-installer": "^4.1",

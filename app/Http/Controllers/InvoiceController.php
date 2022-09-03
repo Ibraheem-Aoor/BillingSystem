@@ -32,8 +32,8 @@ use App\Exports\InvoiceExport;
 use LaravelDaily\Invoices\Invoice as DailyInvoice;
 use LaravelDaily\Invoices\Classes\Party;
 use LaravelDaily\Invoices\Classes\InvoiceItem;
-use Barryvdh\DomPDF\Facade\Pdf;
-
+use PDF;
+// use PDF;
 class InvoiceController extends Controller
 {
     public function __construct()
@@ -1406,10 +1406,8 @@ class InvoiceController extends Controller
             'customer' => $customer,
             'settings' => $settings,
         ];
-        $pdf = PDF::loadView('vendor.invoices.templates.default_copy_2', compact('data'));
-        return $pdf->stream('document.pdf');
-
-
+        $pdf = PDF::loadView('vendor.invoices.templates.default_copy_2');
+        return $pdf->stream();
     }
 }
 

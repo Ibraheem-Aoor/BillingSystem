@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d9d2c17fe9fca58782e270c3f4ea68d1",
+    "content-hash": "cfee392a617e3f34f7b61755eec79d57",
     "packages": [
         {
             "name": "anandsiddharth/laravel-paytm-wallet",
@@ -311,16 +311,16 @@
         },
         {
             "name": "carlos-meneses/laravel-mpdf",
-            "version": "2.1.8",
+            "version": "2.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mccarlosen/laravel-mpdf.git",
-                "reference": "8cc36dc1c8275f7a08b0f59dc1395d273c922e7d"
+                "reference": "df2244cfdf533fa3206c8441d1c0b94efe1d34c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mccarlosen/laravel-mpdf/zipball/8cc36dc1c8275f7a08b0f59dc1395d273c922e7d",
-                "reference": "8cc36dc1c8275f7a08b0f59dc1395d273c922e7d",
+                "url": "https://api.github.com/repos/mccarlosen/laravel-mpdf/zipball/df2244cfdf533fa3206c8441d1c0b94efe1d34c2",
+                "reference": "df2244cfdf533fa3206c8441d1c0b94efe1d34c2",
                 "shasum": ""
             },
             "require": {
@@ -355,7 +355,7 @@
             ],
             "support": {
                 "issues": "https://github.com/mccarlosen/laravel-mpdf/issues",
-                "source": "https://github.com/mccarlosen/laravel-mpdf/tree/2.1.8"
+                "source": "https://github.com/mccarlosen/laravel-mpdf/tree/2.1.9"
             },
             "funding": [
                 {
@@ -363,7 +363,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2022-07-18T15:00:56+00:00"
+            "time": "2022-08-25T17:09:52+00:00"
         },
         {
             "name": "coingate/coingate-php",
@@ -4334,16 +4334,16 @@
         },
         {
             "name": "mpdf/mpdf",
-            "version": "v8.1.1",
+            "version": "v8.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mpdf/mpdf.git",
-                "reference": "e511e89a66bdb066e3fbf352f00f4734d5064cbf"
+                "reference": "a8a22f4874157e490d41b486053a20bec42e182c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mpdf/mpdf/zipball/e511e89a66bdb066e3fbf352f00f4734d5064cbf",
-                "reference": "e511e89a66bdb066e3fbf352f00f4734d5064cbf",
+                "url": "https://api.github.com/repos/mpdf/mpdf/zipball/a8a22f4874157e490d41b486053a20bec42e182c",
+                "reference": "a8a22f4874157e490d41b486053a20bec42e182c",
                 "shasum": ""
             },
             "require": {
@@ -4407,7 +4407,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2022-04-18T11:50:28+00:00"
+            "time": "2022-08-15T08:15:09+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -11611,5 +11611,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.3.0"
 }

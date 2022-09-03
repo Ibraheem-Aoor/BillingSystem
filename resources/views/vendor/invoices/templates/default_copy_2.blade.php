@@ -1,13 +1,6 @@
 <!doctype html>
 <meta charset="utf-8">
 <style>
-    @page {
-        /* dimensions for the whole page */
-        size: A5;
-
-        margin: 0;
-    }
-
     html {
         /* off-white, so body edge is visible in browser */
         background: #eee;
@@ -150,12 +143,14 @@
     }
 
     .table-bordered {
-        box-shadow: 0px 0px 5px 0.5px gray;
+        box-shadow: 0px 0px 5px 0.5px red;
     }
 
     .table-bordered td,
     .table-bordered th {
-        border: 1px solid #dee2e6;
+        border: 1px solid red;
+        /* width:100% !important; */
+        font-size: 12px !important;
     }
 
     .text-right {
@@ -204,37 +199,41 @@
                 </span>
             </h6>
             <h6>
-                <div style="display: inline-block !important; vertical-align:top;width:40% !important;">
-                    <ul style="text-align: left !important;">
-                        <li>
-                            INVOICE NO:
-                        </li>
-                        <li>
-                            DATE:
-                        </li>
-                        <li>
-                            CUSTOMER:
-                        </li>
-                        <li>
-                            CUSTOMER TRN:
-                        </li>
-                    </ul>
-                </div>
-                <div style="display: inline-block !important; vertical-align:top;width:40% !important;">
-                    <ul style="text-align: right !important;">
-                        <li>
-                            DRIVER NAME:
-                        </li>
-                        <li>
-                            Vechile No:
-                        </li>
-                        <li>
-                            Location:
-                        </li>
-                        <li>
-                            LPO No.:
-                        </li>
-                    </ul>
+                <div style="width:100% !important;">
+
+                    <div style="display: inline-block !important; vertical-align:top;width:30% !important;">
+                        <ul style="text-align: left !important;">
+                            <li>
+                                INVOICE NO:
+                            </li>
+                            <li>
+                                DATE:
+                            </li>
+                            <li>
+                                CUSTOMER:
+                            </li>
+                            <li>
+                                CUSTOMER TRN:
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="display: inline-block !important; vertical-align:top;width:30% !important;">
+                        <ul style="text-align: right !important;">
+                            <li>
+                                DRIVER NAME:
+                            </li>
+                            <li>
+                                Vechile No:
+                            </li>
+                            <li>
+                                Location:
+                            </li>
+                            <li>
+                                LPO No.:
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
 
             </h6>
@@ -248,7 +247,6 @@
                         <th class="w-20">الكمية <br> QTY</th>
                         <th class="w-20">السعر <br> Price</th>
                         <th class="w-20">المبلغ <br> Total</th>
-                        <th class="w-30">الضريبة <br> VAT 5%</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -257,7 +255,6 @@
                         <td>Test</td>
                         <td>10</td>
                         <td>1</td>
-                        <td>10</td>
                         <td>10</td>
                     </tr>
                     <tr>
@@ -270,12 +267,12 @@
                     </tr>
                 </tbody>
             </table>
-            <div style="display: inline-block !important; vertical-align:top !important;">
-                Reciver's Sign:_________________ توقيع المستلم
+            <div style="display: inline-block !important; vertical-align:top !important; width:40% !important;">
+                Reciver's Sign:______________ توقيع المستلم
             </div>
-            <div style="display: inline-block !important; vertical-align:top !important;">
-                Signature:_________________ توقيع المستلم
-
+            <div
+                style="display: inline-block !important; vertical-align:top !important; width:40% !important; margin-left:60px !important;">
+                Signature:_______________
             </div>
         </div>
 
