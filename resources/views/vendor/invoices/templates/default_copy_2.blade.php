@@ -202,7 +202,8 @@
                 <div style="width:100% !important;">
 
                     <div style="display: inline-block !important; vertical-align:top;width:30% !important;">
-                        <ul style="text-align: left !important;">
+                        <ul style="text-align: left !
+                        ;">
                             <li>
                                 INVOICE NO:
                             </li>

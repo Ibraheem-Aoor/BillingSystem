@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CarController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -429,6 +430,11 @@ Route::resource('productservice', 'ProductServiceController')->middleware(
         'XSS','revalidate',
     ]
 );
+
+Route::resource('car' , 'CarController')->middleware('auth');
+Route::resource('supplier' , 'SupplierController')->middleware('auth');
+Route::resource('driver' , 'DriverController')->middleware('auth');
+Route::resource('price-list' , 'PriceListController')->middleware('auth');
 
 
 Route::group(

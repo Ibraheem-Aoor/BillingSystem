@@ -13,7 +13,7 @@ class ProductServiceCategory extends Model
     ];
 
     public static $categoryType = [
-        'Product & Service',
+        'Product',
         'Income',
         'Expense',
     ];
