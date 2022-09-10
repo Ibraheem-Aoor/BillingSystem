@@ -134,14 +134,14 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
 
                 <li class="nav-item">
                     <a class="nav-link {{ Request::segment(1) == 'productservice' ? ' active' : 'collapsed' }}"
-                        href="#navbar-income" data-toggle="collapse" role="button"
+                        href="#navbar-file" data-toggle="collapse" role="button"
                         aria-expanded="{{ Request::segment(1) == 'productservice' ? 'true' : 'false' }}"
-                        aria-controls="navbar-income">
+                        aria-controls="navbar-file">
                         <i class="fas fa-money-bill-alt"></i>{{ __('File') }}
                         <i class="fas fa-sort-up"></i>
                     </a>
                     <div class="collapse {{ Request::segment(1) == 'productservice' || Request::segment(1) == 'car' || Request::segment(1) == 'driver' || Request::segment(1) == 'customer' || Request::segment(1) == 'supplier' ? 'show' : '' }}"
-                        id="navbar-income">
+                        id="navbar-file">
                         <ul class="nav flex-column submenu-ul">
                             @can('manage product & service')
                                 <li
@@ -192,6 +192,14 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
                         <a href="{{ route('price-list.index') }}"
                             class="nav-link {{ Request::segment(1) == 'price-list' ? 'active' : '' }}">
                             <i class="fas fa-receipt"></i>{{ __('Price List') }}
+                        </a>
+                    </li>
+                @endif
+                @if (Gate::check('manage proposal'))
+                    <li class="nav-item">
+                        <a href="{{ route('sale.index') }}"
+                            class="nav-link {{ Request::segment(1) == 'price-list' ? 'active' : '' }}">
+                            <i class="fas fa-receipt"></i>{{ __('Sale') }}
                         </a>
                     </li>
                 @endif

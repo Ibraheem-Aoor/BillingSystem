@@ -430,11 +430,13 @@ Route::resource('productservice', 'ProductServiceController')->middleware(
         'XSS','revalidate',
     ]
 );
-
+//new update Routes:
 Route::resource('car' , 'CarController')->middleware('auth');
 Route::resource('supplier' , 'SupplierController')->middleware('auth');
 Route::resource('driver' , 'DriverController')->middleware('auth');
 Route::resource('price-list' , 'PriceListController')->middleware('auth');
+Route::resource('sale' , 'SaleController')->middleware('auth');
+
 
 
 Route::group(
