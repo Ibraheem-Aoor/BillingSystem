@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\Report\NewReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -430,12 +431,15 @@ Route::resource('productservice', 'ProductServiceController')->middleware(
         'XSS','revalidate',
     ]
 );
+
 //new update Routes:
 Route::resource('car' , 'CarController')->middleware('auth');
 Route::resource('supplier' , 'SupplierController')->middleware('auth');
 Route::resource('driver' , 'DriverController')->middleware('auth');
 Route::resource('price-list' , 'PriceListController')->middleware('auth');
 Route::resource('sale' , 'SaleController')->middleware('auth');
+
+// Reports Section
 
 
 
@@ -733,6 +737,9 @@ Route::group(
     Route::get('report/balance-sheet', 'ReportController@balanceSheet')->name('report.balance.sheet');
     Route::get('report/ledger', 'ReportController@ledgerSummary')->name('report.ledger');
     Route::get('report/trial-balance', 'ReportController@trialBalanceSummary')->name('trial.balance');
+    Route::get('/daily-sale-repoet' , [NewReportController::class , 'dailySaleIndex'])->name('report.daily_sale');
+    Route::get('/daily-sale-repoet-filter' , [NewReportController::class , 'filterDailySale'])->name('report.daily_sale.filter');
+
 }
 );
 

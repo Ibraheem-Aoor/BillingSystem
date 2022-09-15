@@ -457,6 +457,13 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
                                             class="nav-link">{{ __('Transaction') }}</a>
                                     </li>
                                 @endcan
+                                @can('manage transaction')
+                                    <li
+                                        class="nav-item {{ Request::route()->getName() == 'report.daily_sale'  ? ' active' : '' }}">
+                                        <a href="{{ route('report.daily_sale') }}"
+                                            class="nav-link">{{ __('Daily Sale') }}</a>
+                                    </li>
+                                @endcan
                                 @can('statement report')
                                     <li
                                         class="nav-item {{ Request::route()->getName() == 'report.account.statement' ? ' active' : '' }}">
