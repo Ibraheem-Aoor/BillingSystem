@@ -2,6 +2,8 @@
     <thead>
         <tr role="row">
             <th>{{ __('S.No') }}</th>
+            <th>{{ __('Customer') }}</th>
+            <th>{{ __('Driver') }}</th>
             <th>{{ __('Product') }}</th>
             <th>{{ __('Quantity') }}</th>
             <th>{{ __('Rate') }}</th>
@@ -16,6 +18,8 @@
         @foreach ($sales as $sale)
             <tr class="font-style">
                 <td>{{ $sale->id }}</td>
+                <td>{{ $sale->customer->name }}</td>
+                <td>{{ $sale->driver->name }}</td>
                 <td>{{ $sale->product->name }}</td>
                 <td>{{ $sale->quantity }}</td>
                 <td>{{ $sale->rate }}</td>
@@ -27,3 +31,4 @@
         @endforeach
     </tbody>
 </table>
+

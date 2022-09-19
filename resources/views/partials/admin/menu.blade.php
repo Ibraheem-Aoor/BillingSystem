@@ -440,9 +440,9 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
                     Gate::check('manage transaction') ||
                     Gate::check('statement report'))
                     <li class="nav-item">
-                        <a class="nav-link {{ (Request::segment(1) == 'report' || Request::segment(1) == 'transaction') && Request::segment(2) != 'ledger' && Request::segment(2) != 'balance-sheet' && Request::segment(2) != 'trial-balance' ? ' active' : 'collapsed' }}"
+                        <a class="nav-link {{ (Request::segment(1) == 'report' || Request::segment(1) == 'daily-sale-report' || Request::segment(1) == 'product-sale-report' || Request::segment(1) == 'transaction') && Request::segment(2) != 'ledger' && Request::segment(2) != 'balance-sheet' && Request::segment(2) != 'trial-balance' ? ' active' : 'collapsed' }}"
                             href="#navbar-reports" data-toggle="collapse" role="button"
-                            aria-expanded="{{ Request::segment(1) == 'report' || Request::segment(1) == 'transaction' ? 'true' : 'false' }}"
+                            aria-expanded="{{ Request::segment(1) == 'report' || Request::segment(1) == 'daily-sale-report'|| Request::segment(1) == 'product-sale-report' ||  Request::segment(1) == 'transaction' ? 'true' : 'false' }}"
                             aria-controls="navbar-reports">
                             <i class="fas fa-chart-area"></i>{{ __('Report') }}
                             <i class="fas fa-sort-up"></i>
@@ -462,6 +462,11 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
                                         class="nav-item {{ Request::route()->getName() == 'report.daily_sale'  ? ' active' : '' }}">
                                         <a href="{{ route('report.daily_sale') }}"
                                             class="nav-link">{{ __('Daily Sale') }}</a>
+                                    </li>
+                                    <li
+                                        class="nav-item {{ Request::route()->getName() == 'report.product_sale'  ? ' active' : '' }}">
+                                        <a href="{{ route('report.product_sale') }}"
+                                            class="nav-link">{{ __('Product Wise  Sale') }}</a>
                                     </li>
                                 @endcan
                                 @can('statement report')

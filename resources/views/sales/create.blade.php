@@ -17,6 +17,34 @@
             </div>
         </div>
         <div class="col-md-6">
+            <div class="form-group">
+                {{ Form::label('customer_id', __('Customer'), ['class' => 'form-control-label']) }} <span
+                    class="text-danger">*</span>
+                <div class="form-icon-user">
+                    <select name="customer_id" class="form-control" id="customer_id" required>
+                        <option value="">{{ __('Select Customer') }}</option>
+                        @foreach ($customers as $customer)
+                            <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                {{ Form::label('driver_id', __('Driver'), ['class' => 'form-control-label']) }} <span
+                    class="text-danger">*</span>
+                <div class="form-icon-user">
+                    <select name="driver_id" class="form-control" id="driver_id" required>
+                        <option value="">{{ __('Select Driver') }}</option>
+                        @foreach ($drivers as $driver)
+                            <option value="{{ $driver->id }}">{{ $driver->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
 
             <div class="form-group">
                 {{ Form::label('quantity', __('Quantity'), ['class' => 'form-control-label']) }} <span

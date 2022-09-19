@@ -737,8 +737,12 @@ Route::group(
     Route::get('report/balance-sheet', 'ReportController@balanceSheet')->name('report.balance.sheet');
     Route::get('report/ledger', 'ReportController@ledgerSummary')->name('report.ledger');
     Route::get('report/trial-balance', 'ReportController@trialBalanceSummary')->name('trial.balance');
-    Route::get('/daily-sale-repoet' , [NewReportController::class , 'dailySaleIndex'])->name('report.daily_sale');
-    Route::get('/daily-sale-repoet-filter' , [NewReportController::class , 'filterDailySale'])->name('report.daily_sale.filter');
+    // daily sale
+    Route::get('/daily-sale-report' , [NewReportController::class , 'dailySaleIndex'])->name('report.daily_sale');
+    Route::get('/daily-sale-report-filter' , [NewReportController::class , 'filterDailySale'])->name('report.daily_sale.filter');
+    // product sale
+    Route::get('/product-sale-report' , [NewReportController::class , 'productWiseSaleReportIndex'])->name('report.product_sale');
+    Route::get('/product-sale-report-filter' , [NewReportController::class , 'productWiseSaleReportFilter'])->name('report.product_sale_filter');
 
 }
 );

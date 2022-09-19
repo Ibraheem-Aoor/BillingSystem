@@ -15,4 +15,12 @@ class Sale extends Model
     {
         return $this->belongsTo(ProductService::class , 'product_service_id');
     }
+    public function customer() : BelongsTo
+    {
+        return $this->belongsTo(Customer::class , 'customer_id');
+    }
+    public function driver() : BelongsTo
+    {
+        return $this->belongsTo(Driver::class , 'driver_id');
+    }
 }

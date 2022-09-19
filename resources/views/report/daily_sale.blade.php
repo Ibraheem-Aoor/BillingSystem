@@ -1,6 +1,10 @@
 @extends('layouts.admin')
 @section('page-title')
-    {{ __('Daily Sale Reports') }}
+    @if (Request::segment(1) == 'daily-sale-report')
+        {{ __('Daily Sale Reports') }}
+    @else
+        {{ __('Product Sale Reports') }}
+    @endif
 @endsection
 
 @push('script-page')
@@ -34,120 +38,67 @@
                 }
             };
             html2pdf().set(opt).from(element).save();
-
         }
-
-        $(document).ready(function() {
-            var filename = $('#filename').val();
-            $('#report-dataTable').DataTable({
-                dom: 'lBfrtip',
-                buttons: [{
-                        extend: 'excel',
-                        title: filename
-                    },
-                    {
-                        extend: 'pdf',
-                        title: filename
-                    }, {
-                        extend: 'csv',
-                        title: filename
-                    }
-                ]
-            });
-        });
     </script>
-
-    <script>
-        $('input[name="date"]').on('change', function() {
-            $.ajax({
-                headers: {
-                    'X-CSRF-TOKEN': "{{ csrf_token() }}",
-                },
-                url: "{{ route('report.daily_sale.filter') }}",
-                type: 'GET',
-                data: {
-                    date: $(this).val()
-                },
-                success: function(response) {
-                    console.log(response);
-                    if (response.status) {
-                        $('#body').html(response.view);
-                    }
-                },
-                error: function(response) {
-                    console.log(response);
-                },
-            });
-        });
-    </script>
+    <script src="{{ asset('js/reports.js') }}"></script>
 @endpush
-{{-- @section('action-button')
-    <div class="row d-flex justify-content-end">
-        <div class="col">
-            {{ Form::open(['route' => ['transaction.index'], 'method' => 'get', 'id' => 'transaction_report']) }}
-            <div class="all-select-box">
-                <div class="btn-box">
-                    {{ Form::label('start_month', __('Start Month'), ['class' => 'text-type']) }}
-                    {{ Form::month('start_month', isset($_GET['start_month']) ? $_GET['start_month'] : date('Y-m'), ['class' => 'month-btn form-control']) }}
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="all-select-box">
-                <div class="btn-box">
-                    {{ Form::label('end_month', __('End Month'), ['class' => 'text-type']) }}
-                    {{ Form::month('end_month', isset($_GET['end_month']) ? $_GET['end_month'] : date('Y-m', strtotime('-5 month')), ['class' => 'month-btn form-control']) }}
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="all-select-box">
-                <div class="btn-box">
-                    {{ Form::label('account', __('Account'), ['class' => 'text-type']) }}
-                    {{ Form::select('account', $account, isset($_GET['account']) ? $_GET['account'] : '', ['class' => 'form-control select2']) }}
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="all-select-box">
-                <div class="btn-box">
-                    {{ Form::label('category', __('Category'), ['class' => 'text-type']) }}
-                    {{ Form::select('category', $category, isset($_GET['category']) ? $_GET['category'] : '', ['class' => 'form-control select2']) }}
-                </div>
-            </div>
-        </div>
-        <div class="col-auto my-auto">
-            <a href="#" class="apply-btn"
-                onclick="document.getElementById('transaction_report').submit(); return false;" data-toggle="tooltip"
-                data-original-title="{{ __('apply') }}">
-                <span class="btn-inner--icon"><i class="fas fa-search"></i></span>
-            </a>
-            <a href="{{ route('transaction.index') }}" class="reset-btn" data-toggle="tooltip"
-                data-original-title="{{ __('Reset') }}">
-                <span class="btn-inner--icon"><i class="fas fa-trash-restore-alt"></i></span>
-            </a>
-            <a href="#" class="action-btn" onclick="saveAsPDF()" data-toggle="tooltip"
-                data-original-title="{{ __('Download') }}">
-                <span class="btn-inner--icon"><i class="fas fa-download"></i></span>
-            </a>
-        </div>
-    </div>
-
-    {{ Form::close() }}
-@endsection --}}
-
 @section('content')
 
 @section('action-button')
     <div class="row d-flex justify-content-end">
-        <div class="col-sm-4">
-            <div class="all-select-box">
-                <div class="btn-box">
-                    <label for="" class="text-type">Date</label>
-                    <input type="date" class="month-btn form-control" name="date">
+        @if (Request::segment(1) == 'daily-sale-report')
+            <div class="col-sm-4">
+                <div class="all-select-box">
+                    <div class="btn-box">
+                        <label for="" class="text-type">Date</label>
+                        <input data-route="{{ route('report.daily_sale.filter') }}" type="date"
+                            class="month-btn form-control" name="date">
+                    </div>
                 </div>
             </div>
-        </div>
+        @else
+            <div class="col-sm-3">
+                <form action="{{route('report.product_sale_filter')}}" id="produt_sale_filter_form">
+                    <div class="all-select-box">
+                        <div class="btn-box">
+                            <label for="" class="text-type">Product</label>
+                            <select name="product_id" class="month-btn form-control">
+                                <option value="">--select product</option>
+                                @foreach ($products as $product)
+                                    <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="all-select-box">
+                    <div class="btn-box">
+                        <label for="" class="text-type">From Date</label>
+                        <input type="date" class="month-btn form-control" name="from_date">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="all-select-box">
+                    <div class="btn-box">
+                        <label for="" class="text-type">To Date</label>
+                        <input type="date" class="month-btn form-control" name="to_date">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="all-select-box">
+                    <div class="btn-box">
+                        <label for="" class="text-type">To Date</label>
+                        <button type="button" id="product_sale_filter" class="btn-md btn btn-outline-info form-control" id="filter_products"><i
+                                class="fa fa-search"></i> Filter Products
+                        </button>
+                    </div>
+                </div>
+            </div>
+            </form>
+        @endif
     </div>
 @endsection
 
@@ -159,6 +110,8 @@
                     <thead>
                         <tr role="row">
                             <th>{{ __('S.No') }}</th>
+                            <th>{{ __('Customer') }}</th>
+                            <th>{{ __('Driver') }}</th>
                             <th>{{ __('Product') }}</th>
                             <th>{{ __('Quantity') }}</th>
                             <th>{{ __('Rate') }}</th>
@@ -173,6 +126,8 @@
                         @foreach ($sales as $sale)
                             <tr class="font-style">
                                 <td>{{ $sale->id }}</td>
+                                <td>{{ $sale->customer->name }}</td>
+                                <td>{{ $sale->driver->name }}</td>
                                 <td>{{ $sale->product->name }}</td>
                                 <td>{{ $sale->quantity }}</td>
                                 <td>{{ $sale->rate }}</td>

@@ -16,13 +16,43 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                {{ Form::label('customer_id', __('Customer'), ['class' => 'form-control-label']) }} <span
+                    class="text-danger">*</span>
+                <div class="form-icon-user">
+                    <select name="customer_id" class="form-control" id="customer_id" required>
+                        <option value="">{{ __('Select Customer') }}</option>
+                        @foreach ($customers as $customer)
+                            <option value="{{ $customer->id }}" @if ($sale->customer_id == $customer->id) selected @endif>{{ $customer->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                {{ Form::label('driver_id', __('Driver'), ['class' => 'form-control-label']) }} <span
+                    class="text-danger">*</span>
+                <div class="form-icon-user">
+                    <select name="driver_id" class="form-control" id="driver_id" required>
+                        <option value="">{{ __('Select Driver') }}</option>
+                        @foreach ($drivers as $driver)
+                            <option value="{{ $driver->id }}"  @if ($sale->driver_id == $driver->id) selected @endif>{{ $driver->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
         <div class="col-md-6">
 
             <div class="form-group">
                 {{ Form::label('quantity', __('Quantity'), ['class' => 'form-control-label']) }} <span
                     class="text-danger">*</span>
                 <div class="form-icon-user">
-                    <input type="number" name="quantity" id="quantity" class="form-control" value="{{$sale->quantity}}" required>
+                    <input type="number" name="quantity" id="quantity" class="form-control"
+                        value="{{ $sale->quantity }}" required>
                 </div>
             </div>
 
@@ -31,7 +61,8 @@
             <div class="form-group">
                 {{ Form::label('rate', __('Rate'), ['class' => 'form-control-label']) }}
                 <div class="form-icon-user">
-                    <input type="text" name="rate" id="rate" class="form-control" value="{{$sale->rate}}">
+                    <input type="text" name="rate" id="rate" class="form-control"
+                        value="{{ $sale->rate }}">
                 </div>
             </div>
         </div>
@@ -39,7 +70,8 @@
             <div class="form-group">
                 {{ Form::label('vat', __('Vat'), ['class' => 'form-control-label']) }}
                 <div class="form-icon-user">
-                    <input type="text" name="vat" id="vat" class="form-control" value="{{$sale->vat}}">
+                    <input type="text" name="vat" id="vat" class="form-control"
+                        value="{{ $sale->vat }}">
                 </div>
             </div>
         </div>
@@ -47,7 +79,8 @@
             <div class="form-group">
                 {{ Form::label('location', __('Location'), ['class' => 'form-control-label']) }}
                 <div class="form-icon-user">
-                    <input type="text" name="location" id="location" class="form-control" value="{{$sale->location}}">
+                    <input type="text" name="location" id="location" class="form-control"
+                        value="{{ $sale->location }}">
                 </div>
             </div>
         </div>
@@ -55,7 +88,8 @@
             <div class="form-group">
                 {{ Form::label('lpo', __('LPO'), ['class' => 'form-control-label']) }}
                 <div class="form-icon-user">
-                    <input type="text" name="lpo" id="lpo" class="form-control" value="{{$sale->lpo}}">
+                    <input type="text" name="lpo" id="lpo" class="form-control"
+                        value="{{ $sale->lpo }}">
                 </div>
             </div>
         </div>

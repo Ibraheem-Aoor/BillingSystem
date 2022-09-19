@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SaleRequest;
+use App\Models\Customer;
+use App\Models\Driver;
 use App\Models\ProductService;
 use App\Models\Sale;
 use Illuminate\Http\Request;
@@ -16,10 +18,12 @@ class SaleController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public $products;
+     public $products , $customers , $drivers;
      public function __construct()
      {
         $this->products = ProductService::all();
+        $this->customers  = Customer::all();
+        $this->drivers = Driver::all();
      }
     public function index()
     {
@@ -35,6 +39,8 @@ class SaleController extends Controller
     public function create()
     {
         $data['products'] = $this->products;
+        $data['customers'] = $this->customers;
+        $data['drivers'] = $this->drivers;
         return view('sales.create' , $data);
     }
 
@@ -72,6 +78,8 @@ class SaleController extends Controller
     {
         $data['sale'] = Sale::findOrFail($id);
         $data['products'] = $this->products;
+        $data['customers'] = $this->customers;
+        $data['drivers'] = $this->drivers;  
         return view('sales.edit' , $data);
     }
 

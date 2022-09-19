@@ -16,8 +16,11 @@ class CreateSalesTable extends Migration
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_service_id')->references('id')->on('product_services')->onDelete('cascade');
+            $table->foreignId('customer_id')->references('id')->on('customers')->onDelete('cascade');
+            $table->foreignId('driver_id')->references('id')->on('drivers')->onDelete('cascade');
             $table->double('quantity');
-            $table->string('rate')->nullable;
+            $table->string('barcode')->nullable();
+            $table->string('rate')->nullable();
             $table->string('vat')->nullable();
             $table->string('total');
             $table->string('location')->nullable();
