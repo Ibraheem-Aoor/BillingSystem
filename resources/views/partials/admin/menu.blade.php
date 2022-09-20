@@ -140,13 +140,20 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
                         <i class="fas fa-money-bill-alt"></i>{{ __('File') }}
                         <i class="fas fa-sort-up"></i>
                     </a>
-                    <div class="collapse {{ Request::segment(1) == 'productservice' || Request::segment(1) == 'car' || Request::segment(1) == 'driver' || Request::segment(1) == 'customer' || Request::segment(1) == 'supplier' ? 'show' : '' }}"
+                    <div class="collapse {{ Request::segment(1) == 'productservice' || Request::segment(1) == 'product-category' || Request::segment(1) == 'car' || Request::segment(1) == 'driver' || Request::segment(1) == 'customer' || Request::segment(1) == 'supplier' ? 'show' : '' }}"
                         id="navbar-file">
                         <ul class="nav flex-column submenu-ul">
                             @can('manage product & service')
                                 <li
                                     class="nav-item {{ Request::route()->getName() == 'productservice.index' || Request::route()->getName() == 'productservice.create' || Request::route()->getName() == 'productservice.edit' || Request::route()->getName() == 'productservice.show' ? ' active' : '' }}">
                                     <a href="{{ route('productservice.index') }}" class="nav-link">{{ __('Product') }}</a>
+                                </li>
+                            @endcan
+                            @can('manage constant category')
+                                <li
+                                    class="nav-item {{ Request::route()->getName() == 'product-category.index' ? 'active' : '' }}">
+                                    <a href="{{ route('product-category.index') }}"
+                                        class="nav-link">{{ __('Category') }}</a>
                                 </li>
                             @endcan
                             <li
@@ -442,7 +449,7 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
                     <li class="nav-item">
                         <a class="nav-link {{ (Request::segment(1) == 'report' || Request::segment(1) == 'daily-sale-report' || Request::segment(1) == 'product-sale-report' || Request::segment(1) == 'transaction') && Request::segment(2) != 'ledger' && Request::segment(2) != 'balance-sheet' && Request::segment(2) != 'trial-balance' ? ' active' : 'collapsed' }}"
                             href="#navbar-reports" data-toggle="collapse" role="button"
-                            aria-expanded="{{ Request::segment(1) == 'report' || Request::segment(1) == 'daily-sale-report'|| Request::segment(1) == 'product-sale-report' ||  Request::segment(1) == 'transaction' ? 'true' : 'false' }}"
+                            aria-expanded="{{ Request::segment(1) == 'report' || Request::segment(1) == 'daily-sale-report' || Request::segment(1) == 'product-sale-report' || Request::segment(1) == 'transaction' ? 'true' : 'false' }}"
                             aria-controls="navbar-reports">
                             <i class="fas fa-chart-area"></i>{{ __('Report') }}
                             <i class="fas fa-sort-up"></i>
@@ -459,14 +466,19 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
                                 @endcan
                                 @can('manage transaction')
                                     <li
-                                        class="nav-item {{ Request::route()->getName() == 'report.daily_sale'  ? ' active' : '' }}">
+                                        class="nav-item {{ Request::route()->getName() == 'report.daily_sale' ? ' active' : '' }}">
                                         <a href="{{ route('report.daily_sale') }}"
                                             class="nav-link">{{ __('Daily Sale') }}</a>
                                     </li>
                                     <li
-                                        class="nav-item {{ Request::route()->getName() == 'report.product_sale'  ? ' active' : '' }}">
+                                        class="nav-item {{ Request::route()->getName() == 'report.product_sale' ? ' active' : '' }}">
                                         <a href="{{ route('report.product_sale') }}"
                                             class="nav-link">{{ __('Product Wise  Sale') }}</a>
+                                    </li>
+                                    <li
+                                        class="nav-item {{ Request::route()->getName() == 'report.customer_sale' ? ' active' : '' }}">
+                                        <a href="{{ route('report.customer_sale') }}"
+                                            class="nav-link">{{ __('Customer Wise  Sale') }}</a>
                                     </li>
                                 @endcan
                                 @can('statement report')
@@ -558,13 +570,6 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
                                     <li
                                         class="nav-item {{ Request::route()->getName() == 'taxes.index' ? ' active' : '' }}">
                                         <a href="{{ route('taxes.index') }}" class="nav-link">{{ __('Taxes') }}</a>
-                                    </li>
-                                @endcan
-                                @can('manage constant category')
-                                    <li
-                                        class="nav-item {{ Request::route()->getName() == 'product-category.index' ? 'active' : '' }}">
-                                        <a href="{{ route('product-category.index') }}"
-                                            class="nav-link">{{ __('Category') }}</a>
                                     </li>
                                 @endcan
                                 @can('manage constant unit')

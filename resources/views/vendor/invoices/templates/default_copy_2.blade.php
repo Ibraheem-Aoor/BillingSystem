@@ -144,6 +144,8 @@
 
     .table-bordered {
         box-shadow: 0px 0px 5px 0.5px red;
+        margin-bottom: 5% !important;
+
     }
 
     .table-bordered td,
@@ -167,6 +169,29 @@
 
     ul li {
         list-style-type: none !important;
+    }
+
+    .float-parent-element {
+        width: 100% !important;
+    }
+
+    .float-child-element {
+        float: left;
+        width: 50%;
+    }
+
+    .red {
+        margin-right: 50% !important;
+        height: 100px;
+    }
+
+    .yellow {
+        margin-left: 30% !important;
+        height: 100px;
+    }
+
+    li span {
+        font-size: 9px !important;
     }
 </style>
 
@@ -199,40 +224,46 @@
                 </span>
             </h6>
             <h6>
-                <div style="width:100% !important;">
+                <div class="float-parent-element">
 
-                    <div style="display: inline-block !important; vertical-align:top;width:30% !important;">
-                        <ul style="text-align: left !
-                        ;">
-                            <li>
-                                INVOICE NO:
-                            </li>
-                            <li>
-                                DATE:
-                            </li>
-                            <li>
-                                CUSTOMER:
-                            </li>
-                            <li>
-                                CUSTOMER TRN:
-                            </li>
-                        </ul>
+                    <div class="float-child-element">
+                        <div class="red">
+
+                            <ul>
+                                <li>
+                                    <span> INVOICE NO: {!! AUth::user()->invoiceNumberFormat($invoice->invoice_id) !!}</span>
+                                </li>
+                                <li>
+                                    <span>DATE: {!! $invoice->issue_date !!}</span>
+                                </li>
+                                <li>
+                                    <span> CUSTOMER: {!! $invoice->customer->name !!}</span>
+                                </li>
+                                <li>
+                                    <span> CUSTOMER TRN: {!! $invoice->customer->trn !!}</span>
+                                </li>
+                            </ul>
+                        </div>
+
                     </div>
-                    <div style="display: inline-block !important; vertical-align:top;width:30% !important;">
-                        <ul style="text-align: right !important;">
-                            <li>
-                                DRIVER NAME:
-                            </li>
-                            <li>
-                                Vechile No:
-                            </li>
-                            <li>
-                                Location:
-                            </li>
-                            <li>
-                                LPO No.:
-                            </li>
-                        </ul>
+                    <div class="float-child-element">
+                        <div class="yellow">
+                            <ul>
+                                <li>
+                                    <span>DRIVER NAME:</span>
+                                </li>
+                                <li>
+                                    <span> Vechile No:</span>
+                                </li>
+                                <li>
+                                    <span>Location:</span>
+                                </li>
+                                <li>
+                                    <span> LPO No.:</span>
+                                </li>
+                            </ul>
+                        </div>
+
                     </div>
 
                 </div>
@@ -244,44 +275,56 @@
                 <thead>
                     <tr>
                         <th class="w-20"> رقم <br>S.No </th>
+                        <th class="w-20">المنتج <br> Product</th>
                         <th class="w-20">التفاصيل <br> Description</th>
                         <th class="w-20">الكمية <br> QTY</th>
                         <th class="w-20">السعر <br> Price</th>
+                        <th class="w-20">الخصم <br> Discount</th>
                         <th class="w-20">المبلغ <br> Total</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @php
+                        $i = 1;
+                    @endphp
+                    @foreach ($invoice->items as $item)
+                        <tr>
+                            <td>{{ $i++ }}</td>
+                            <td>{{ $item->product()->name }}</td>
+                            <td>{{ $item->description }}</td>
+                            <td>{{ $item->quantity }}</td>
+                            <td>{{ $item->price }}</td>
+                            <td>{{ $item->discount }}</td>
+                            <td>{{ $item->price * $item->quantity - $item->discount }}</td>
+                        </tr>
+                    @endforeach
                     <tr>
-                        <td>1</td>
-                        <td>Test</td>
-                        <td>10</td>
-                        <td>1</td>
-                        <td>10</td>
-                    </tr>
-                    <tr>
-                        <td colspan="4" style="text-align: left;">Total</td>
-                        <td> 10.XX</td>
-                    </tr>
-                    <tr>
-                        <td colspan="4" style="text-align: left;">Grand Total</td>
-                        <td> 2</td>
+                        <td colspan="6" style="text-align: left;">Total</td>
+                        <td>{{ $invoice->items()->sum('price') * $invoice->items()->sum('quantity') - $invoice->items()->sum('discount') }}
+                        </td>
                     </tr>
                 </tbody>
             </table>
-            <div style="display: inline-block !important; vertical-align:top !important; width:40% !important;">
-                Reciver's Sign:______________ توقيع المستلم
-            </div>
-            <div
-                style="display: inline-block !important; vertical-align:top !important; width:40% !important; margin-left:60px !important;">
-                Signature:_______________
-            </div>
-        </div>
+            <div class="float-parent-element">
+                <div class="float-child-element">
+                    <div class="red" style="margin-right:30% !important;">
+                        Reciver's Sign:______________ توقيع المستلم
+                    </div>
+                </div>
 
-        <br>
-        {{-- <h3 class="heading">Payment Status: Paid</h3>
+                <div class="float-child-element">
+                    <div class="yellow">
+                        Signature:_______________
+                    </div>
+                </div>
+
+            </div>
+
+            <br>
+            {{-- <h3 class="heading">Payment Status: Paid</h3>
             <h3 class="heading">Payment Mode: Cash on Delivery</h3> --}}
-    </div>
-    {{-- @include('vendor.invoices.templates.default_copy', $data) --}}
+        </div>
+        {{-- @include('vendor.invoices.templates.default_copy', $data) --}}
     </div>
     {{-- <div class="face face-front"><img src="front.png">TEST CONTENT</div> --}}
 </body>

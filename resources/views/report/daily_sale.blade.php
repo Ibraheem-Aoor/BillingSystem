@@ -46,7 +46,7 @@
 
 @section('action-button')
     <div class="row d-flex justify-content-end">
-        @if (Request::segment(1) == 'daily-sale-report')
+        @if ($request_segment == 'daily-sale-report')
             <div class="col-sm-4">
                 <div class="all-select-box">
                     <div class="btn-box">
@@ -56,14 +56,29 @@
                     </div>
                 </div>
             </div>
+        @elseif($request_segment == 'customer-sale-report')
+            <div class="col-sm-3">
+                <form action="{{ route('report.customer_sale_filter') }}" id="produt_sale_filter_form">
+                    <div class="all-select-box">
+                        <div class="btn-box">
+                            <label for="" class="text-type">Customer</label>
+                            <select name="customer_id" class="month-btn form-control">
+                                <option value="">--select customer--</option>
+                                @foreach ($customers as $customer)
+                                    <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+            </div>
         @else
             <div class="col-sm-3">
-                <form action="{{route('report.product_sale_filter')}}" id="produt_sale_filter_form">
+                <form action="{{ route('report.product_sale_filter') }}" id="produt_sale_filter_form">
                     <div class="all-select-box">
                         <div class="btn-box">
                             <label for="" class="text-type">Product</label>
                             <select name="product_id" class="month-btn form-control">
-                                <option value="">--select product</option>
+                                <option value="">--select product--</option>
                                 @foreach ($products as $product)
                                     <option value="{{ $product->id }}">{{ $product->name }}</option>
                                 @endforeach
@@ -71,6 +86,8 @@
                         </div>
                     </div>
             </div>
+        @endif
+        @if ($request_segment != 'daily-sale-report')
             <div class="col-sm-3">
                 <div class="all-select-box">
                     <div class="btn-box">
@@ -91,8 +108,8 @@
                 <div class="all-select-box">
                     <div class="btn-box">
                         <label for="" class="text-type">To Date</label>
-                        <button type="button" id="product_sale_filter" class="btn-md btn btn-outline-info form-control" id="filter_products"><i
-                                class="fa fa-search"></i> Filter Products
+                        <button type="button" id="product_sale_filter" class="btn-sm btn btn-outline-info form-control"
+                            id="filter_products"><i class="fa fa-search"></i> Filter Products
                         </button>
                     </div>
                 </div>

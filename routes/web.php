@@ -743,6 +743,9 @@ Route::group(
     // product sale
     Route::get('/product-sale-report' , [NewReportController::class , 'productWiseSaleReportIndex'])->name('report.product_sale');
     Route::get('/product-sale-report-filter' , [NewReportController::class , 'productWiseSaleReportFilter'])->name('report.product_sale_filter');
+    //Customer sale
+    Route::get('/customer-sale-report' , [NewReportController::class , 'customerWiseSaleReportIndex'])->name('report.customer_sale');
+    Route::get('/customer-sale-report-filter' , [NewReportController::class , 'customerWiseSaleReportFilter'])->name('report.customer_sale_filter');
 
 }
 );

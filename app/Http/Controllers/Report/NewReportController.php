@@ -3,16 +3,18 @@
 namespace App\Http\Controllers\Report;
 
 use App\Http\Controllers\Controller;
+use App\Models\Customer;
 use App\Models\ProductService;
 use App\Models\Sale;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request as FacadesRequest;
 use Stripe\Product;
 
 class NewReportController extends Controller
 {
 
-    public $sales;
+    private  $sales;
     public function __construct()
     {
         $this->sales = Sale::orderByDesc('created_at')->paginate(15);
@@ -23,7 +25,7 @@ class NewReportController extends Controller
     public function dailySaleIndex()
     {
         $data['sales'] = $this->sales;
-        return view('report.daily_sale' , $data);
+        return $this->getSalesTable($data);
     }//End index
 
     public function filterDailySale(Request $request)
@@ -41,7 +43,7 @@ class NewReportController extends Controller
     {
         $data['sales'] = $this->sales;
         $data['products'] = ProductService::all();
-        return view('report.daily_sale' ,  $data);
+        return $this->getSalesTable($data);
     }
 
     public function productWiseSaleReportFilter(Request $request)
@@ -49,6 +51,39 @@ class NewReportController extends Controller
         $data['sales'] = Sale::query()->whereProductServiceId($request->get('product_id'))->whereBetween('created_at' , [$request->from_date , $request->to_date])->orderByDesc('created_at')->paginate(15);
         $view = view('partials.daily_sales' , $data)->render();
         return response()->json(['status' => true , 'view' => $view] , 200);
+    }
+
+
+
+    /**
+     * Customer Sales Reports
+     */
+
+    public function customerWiseSaleReportIndex()
+    {
+        $data['sales'] = $this->sales;
+        $data['customers'] = Customer::all();
+        return $this->getSalesTable($data);
+    }
+
+
+    public function customerWiseSaleReportFilter(Request $request)
+    {
+        $data['sales'] = Sale::query()->whereCustomerId($request->get('customer_id'))->whereBetween('created_at' , [$request->from_date , $request->to_date])->orderByDesc('created_at')->paginate(15);
+        $view = view('partials.daily_sales' , $data)->render();
+        return response()->json(['status' => true , 'view' => $view] , 200);
+    }
+
+
+
+    /**
+     * Return Sales Table
+     */
+
+    public function getSalesTable($data)
+    {
+        $data['request_segment'] = FacadesRequest::segment(1);
+        return view('report.daily_sale' ,  $data);
     }
 
 }
