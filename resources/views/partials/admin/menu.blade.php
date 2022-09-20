@@ -205,7 +205,7 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
                 @if (Gate::check('manage proposal'))
                     <li class="nav-item">
                         <a href="{{ route('sale.index') }}"
-                            class="nav-link {{ Request::segment(1) == 'price-list' ? 'active' : '' }}">
+                            class="nav-link {{ Request::segment(1) == 'sale' ? 'active' : '' }}">
                             <i class="fas fa-receipt"></i>{{ __('Sale') }}
                         </a>
                     </li>
