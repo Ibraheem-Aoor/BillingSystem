@@ -14,7 +14,7 @@ class CreatePriceListsTable extends Migration
     public function up()
     {
         Schema::create('price_lists', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('product_service_id');
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
