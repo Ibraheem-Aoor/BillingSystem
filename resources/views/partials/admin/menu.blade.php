@@ -43,14 +43,14 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
                         </a>
                     @endif
                 </li>
-                @can('manage customer proposal')
+                {{-- @can('manage customer proposal')
                     <li class="nav-item">
                         <a href="{{ route('customer.proposal') }}"
                             class="nav-link {{ Request::route()->getName() == 'customer.proposal' || Request::route()->getName() == 'customer.proposal.show' ? ' active' : '' }}">
                             <i class="fas fa-file"></i>{{ __('Proposal') }}
                         </a>
                     </li>
-                @endcan
+                @endcan --}}
                 @can('manage customer invoice')
                     <li class="nav-item">
                         <a href="{{ route('customer.invoice') }}"
@@ -59,7 +59,7 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
                         </a>
                     </li>
                 @endcan
-                @can('manage customer payment')
+                {{-- @can('manage customer payment')
                     <li class="nav-item">
                         <a href="{{ route('customer.payment') }}"
                             class="nav-link {{ Request::route()->getName() == 'customer.payment' ? ' active' : '' }} ">
@@ -90,7 +90,7 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
                             <i class="fas fa-money-bill-alt"></i>{{ __('Payment') }}
                         </a>
                     </li>
-                @endcan
+                @endcan --}}
                 @can('manage vender transaction')
                     <li class="nav-item">
                         <a href="{{ route('vender.transaction') }}"
@@ -179,6 +179,34 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
                     </div>
                 </li>
 
+
+
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::segment(1) == 'price-list' || Request::segment(1) == 'sale' ? ' active' : 'collapsed' }}"
+                        href="#navbar-transaction" data-toggle="collapse" role="button"
+                        aria-expanded="{{ Request::segment(1) == 'productservice' ? 'true' : 'false' }}"
+                        aria-controls="navbar-transaction">
+                        <i class="fas fa-money-bill-alt"></i>{{ __('Transaction') }}
+                        <i class="fas fa-sort-up"></i>
+                    </a>
+                    <div class="collapse {{ Request::segment(1) == 'price-list'  ||  Request::segment(1) == 'sale' ? 'show' : '' }}"  id="navbar-transaction">
+                        <ul class="nav flex-column submenu-ul">
+                            <li class="nav-item">
+                                <a href="{{ route('price-list.index') }}"
+                                    class="nav-link {{ Request::segment(1) == 'price-list' ? 'active' : '' }}">
+                                    <i class="fas fa-receipt"></i>{{ __('Price List') }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('sale.index') }}"
+                                    class="nav-link {{ Request::segment(1) == 'sale' ? 'active' : '' }}">
+                                    <i class="fas fa-receipt"></i>{{ __('Sale') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
                 {{-- @if (Gate::check('manage product & service'))
                     <li class="nav-item">
                         <a href="{{ route('productservice.index') }}"
@@ -194,31 +222,15 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
 
                     </li>
                 @endif
-                @if (Gate::check('manage proposal'))
-                    <li class="nav-item">
-                        <a href="{{ route('price-list.index') }}"
-                            class="nav-link {{ Request::segment(1) == 'price-list' ? 'active' : '' }}">
-                            <i class="fas fa-receipt"></i>{{ __('Price List') }}
-                        </a>
-                    </li>
-                @endif
-                @if (Gate::check('manage proposal'))
-                    <li class="nav-item">
-                        <a href="{{ route('sale.index') }}"
-                            class="nav-link {{ Request::segment(1) == 'sale' ? 'active' : '' }}">
-                            <i class="fas fa-receipt"></i>{{ __('Sale') }}
-                        </a>
-                    </li>
-                @endif
-                @if (Gate::check('manage proposal'))
+                {{-- @if (Gate::check('manage proposal'))
                     <li class="nav-item">
                         <a href="{{ route('proposal.index') }}"
                             class="nav-link {{ Request::segment(1) == 'proposal' ? 'active' : '' }}">
                             <i class="fas fa-receipt"></i>{{ __('Proposal') }}
                         </a>
                     </li>
-                @endif
-                @if (Gate::check('manage bank account') || Gate::check('manage transfer'))
+                @endif --}}
+                {{-- @if (Gate::check('manage bank account') || Gate::check('manage transfer'))
                     <li class="nav-item">
                         <a class="nav-link {{ Request::segment(1) == 'bank-account' || Request::segment(1) == 'transfer' ? ' active' : 'collapsed' }}"
                             href="#navbar-banking" data-toggle="collapse" role="button"
@@ -247,7 +259,7 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
                             </ul>
                         </div>
                     </li>
-                @endif
+                @endif --}}
 
                 @if (Gate::check('manage invoice') || Gate::check('manage revenue') || Gate::check('manage credit note'))
                     <li class="nav-item">
@@ -285,7 +297,7 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
                     </li>
                 @endif
 
-                @if (Gate::check('manage bill') || Gate::check('manage payment') || Gate::check('manage debit note'))
+                {{-- @if (Gate::check('manage bill') || Gate::check('manage payment') || Gate::check('manage debit note'))
                     <li class="nav-item">
                         <a class="nav-link {{ Request::segment(1) == 'bill' || Request::segment(1) == 'payment' || Request::segment(1) == 'debit-note' ? ' active' : 'collapsed' }}"
                             href="#navbar-expense" data-toggle="collapse" role="button"
@@ -318,12 +330,8 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
                             </ul>
                         </div>
                     </li>
-                @endif
-                @if (Gate::check('manage chart of account') ||
-                    Gate::check('manage journal entry') ||
-                    Gate::check('balance sheet report') ||
-                    Gate::check('ledger report') ||
-                    Gate::check('trial balance report'))
+                @endif --}}
+                {{-- @if (Gate::check('manage chart of account') || Gate::check('manage journal entry') || Gate::check('balance sheet report') || Gate::check('ledger report') || Gate::check('trial balance report'))
                     <li class="nav-item">
                         <a class="nav-link {{ Request::segment(1) == 'chart-of-account' || Request::segment(1) == 'journal-entry' || Request::segment(2) == 'ledger' || Request::segment(2) == 'balance-sheet' || Request::segment(2) == 'trial-balance' ? ' active' : 'collapsed' }}"
                             href="#navbar-double-entry" data-toggle="collapse" role="button"
@@ -374,20 +382,20 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
                             </ul>
                         </div>
                     </li>
-                @endif
+                @endif --}}
 
 
                 <!------Budget Planner ------>
-                <li class="nav-item  {{ Request::segment(1) == 'budget' ? 'active' : '' }}">
+                {{-- <li class="nav-item  {{ Request::segment(1) == 'budget' ? 'active' : '' }}">
                     <a href="{{ route('budget.index') }}" class="nav-link">
                         <i class="fas fa-file-invoice-dollar"></i>{{ __('Budget Planner') }}
                     </a>
-                </li>
+                </li> --}}
                 <!---- End Budget Planner ---->
 
 
 
-                @if (Gate::check('manage goal'))
+                {{-- @if (Gate::check('manage goal'))
                     <li class="nav-item">
                         <a href="{{ route('goal.index') }}"
                             class="nav-link {{ Request::segment(1) == 'goal' ? 'active' : '' }}">
@@ -434,7 +442,7 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
                             <i class="fas fa-cart-plus"></i>{{ __('Order') }}
                         </a>
                     </li>
-                @endif
+                @endif --}}
 
                 @if (Gate::check('income report') ||
                     Gate::check('expense report') ||
