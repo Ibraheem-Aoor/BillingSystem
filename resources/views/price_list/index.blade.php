@@ -52,7 +52,7 @@
                                         <th>{{ __('Customer') }}</th>
                                         <th>{{ __('Product') }}</th>
                                         <th>{{ __('Selling Price') }}</th>
-                                        <th>{{ __('Vat Valiue') }}</th>
+                                        <th>{{ __('Vat Value') }}</th>
                                     </tr>
                                 </thead>
 

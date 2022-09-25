@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SaleRequest;
 use App\Models\Customer;
 use App\Models\Driver;
+use App\Models\PriceList;
 use App\Models\ProductService;
 use App\Models\Sale;
 use Illuminate\Http\Request;
 use Stripe\Product;
+use Throwable;
+use PDF;
 
 class SaleController extends Controller
 {
@@ -112,9 +115,23 @@ class SaleController extends Controller
     }
 
 
-    public function getProductPrice($id)
+    public function getProductPrice(Request $request)
     {
-        $price = ProductService::findOrFail($id)->sale_price;
-        return response()->json(['status' => true , 'rate' => $price] , 200);
+        try{
+            $price_list = PriceList::where([ ['product_service_id' , $request->product_id] , ['customer_id'  , $request->customer_id]])->first();
+            $rate = $price_list->selling_price;
+            return response()->json(['status' => true , 'rate' => $rate] , 200);
+        }catch(Throwable $e){
+            return response()->json(['status' => false ] , 419);
+        }
+    }
+
+
+    public function printSale($id)
+    {
+        $data['invoice'] = Sale::findOrFail($id);
+        $data['invoice_number'] = \Auth::user()->invoiceNumberFormat($data['invoice']->id);
+        $pdf = PDF::loadView('vendor.invoices.templates.default_copy_2' , $data);
+        return $pdf->stream($data['invoice_number']);
     }
 }

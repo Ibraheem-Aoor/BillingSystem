@@ -126,6 +126,7 @@
                                 <th>{{ __('Total') }}</th>
                             @elseif($request_segment == 'customer-ledger-report')
                                 <th>{{ __('S.No') }}</th>
+                                <th>{{ __('Invoice') }}</th>
                                 <th>{{ __('Product') }}</th>
                                 <th>{{ __('Date') }}</th>
                                 <th>{{ __('Qty') }}</th>

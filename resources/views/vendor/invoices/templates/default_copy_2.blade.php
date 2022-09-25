@@ -231,10 +231,10 @@
 
                             <ul>
                                 <li>
-                                    <span> INVOICE NO: {!! AUth::user()->invoiceNumberFormat($invoice->invoice_id) !!}</span>
+                                    <span> INVOICE NO: {!! $invoice_number !!}</span>
                                 </li>
                                 <li>
-                                    <span>DATE: {!! $invoice->issue_date !!}</span>
+                                    <span>DATE: {!! $invoice->created_at !!}</span>
                                 </li>
                                 <li>
                                     <span> CUSTOMER: {!! $invoice->customer->name !!}</span>
@@ -250,10 +250,10 @@
                         <div class="yellow">
                             <ul>
                                 <li>
-                                    <span>DRIVER NAME:</span>
+                                    <span>DRIVER NAME: {{$invoice->driver->name}}</span>
                                 </li>
                                 <li>
-                                    <span> Vechile No:</span>
+                                    <span> Vechile No: </span>
                                 </li>
                                 <li>
                                     <span>Location:</span>
@@ -279,7 +279,8 @@
                         <th class="w-20">التفاصيل <br> Description</th>
                         <th class="w-20">الكمية <br> QTY</th>
                         <th class="w-20">السعر <br> Price</th>
-                        <th class="w-20">الخصم <br> Discount</th>
+                        <th class="w-20">الضريبة <br> VAT</th>
+                        {{-- <th class="w-20">الخصم <br> Discount</th> --}}
                         <th class="w-20">المبلغ <br> Total</th>
                     </tr>
                 </thead>
@@ -287,20 +288,21 @@
                     @php
                         $i = 1;
                     @endphp
-                    @foreach ($invoice->items as $item)
+                    {{-- @foreach ($invoice as $item) --}}
                         <tr>
                             <td>{{ $i++ }}</td>
-                            <td>{{ $item->product()->name }}</td>
-                            <td>{{ $item->description }}</td>
-                            <td>{{ $item->quantity }}</td>
-                            <td>{{ $item->price }}</td>
-                            <td>{{ $item->discount }}</td>
-                            <td>{{ $item->price * $item->quantity - $item->discount }}</td>
+                            <td>{{ $invoice->product->name }}</td>
+                            <td>{{ $invoice->description }}</td>
+                            <td>{{ $invoice->quantity }}</td>
+                            <td>{{ $invoice->selling_price }}</td>
+                            <td>{{ $invoice->vat ?? 0 }}</td>
+                            {{-- <td>{{ $invoice->discount ?? 0 }}</td> --}}
+                            <td>{{ $invoice->getTotal() + $invoice->vat}}</td>
                         </tr>
-                    @endforeach
+                    {{-- @endforeach --}}
                     <tr>
                         <td colspan="6" style="text-align: left;">Total</td>
-                        <td>{{ $invoice->items()->sum('price') * $invoice->items()->sum('quantity') - $invoice->items()->sum('discount') }}
+                        <td>{{ $invoice->getTotal() + $invoice->vat }}
                         </td>
                     </tr>
                 </tbody>

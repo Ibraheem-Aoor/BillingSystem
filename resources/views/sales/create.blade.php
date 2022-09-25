@@ -100,23 +100,29 @@
 
 
 <script>
-    $(document).on('change' , 'select[name="product_service_id"]' , function()
+    $(document).on('change' , 'select[name="customer_id"]' , function()
     {
-        var product_id = $(this).val();
-        var route = "get-product-price/" + product_id;
-        console.log(product_id);
+        var customer_id = $(this).val();
+        var product_id = $('select[name="product_service_id"]').val();
+        var route = "get-product-price";
         $.ajax({
             headers:{
                 'X-CSRF-TOKEN' : "{{csrf_token()}}"
             },
             url:route,
             type: 'GET',
+            data:{
+                product_id:product_id ,
+                customer_id:customer_id ,
+            },
             success: function(response){
-                console.log('aaa');
                 if(response.status)
                     $('#rate').val(response.rate);
             },error:function(response){
-                console.log('bb');
+                if(response.status == 419)
+                {
+                    alert('There Is No Price For Selected Customer');
+                }
             }
         });
     });

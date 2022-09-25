@@ -439,7 +439,8 @@ Route::resource('supplier' , 'SupplierController')->middleware('auth');
 Route::resource('driver' , 'DriverController')->middleware('auth');
 Route::resource('price-list' , 'PriceListController')->middleware('auth');
 Route::resource('sale' , 'SaleController')->middleware('auth');
-Route::get('get-product-price/{id}' , [SaleController::class , 'getProductPrice']);
+Route::get('get-product-price' , [SaleController::class , 'getProductPrice']);
+Route::get('print-sale/{id}' , [SaleController::class , 'printSale'])->name('sale.print');
 // Reports Section
 
 

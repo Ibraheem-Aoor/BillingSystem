@@ -84,7 +84,7 @@ class NewReportController extends Controller
 
     public function customerStatementReportIndex()
     {
-        $data['invoices'] = Invoice::orderByDesc('created_at')->paginate(15);
+        $data['invoices'] = Sale::orderByDesc('created_at')->paginate(15);
         $data['request_segment'] = FacadesRequest::segment(1);
         $data['customers'] = $this->customers;
         $data['form_action'] = route('report.customer_statement_filter');
@@ -93,7 +93,7 @@ class NewReportController extends Controller
 
     public function customerStatmentReportFilter(Request $request)
     {
-        $data['invoices'] = Invoice::whereCustomerId($request->customer_id)->whereBetween('created_at' , [$request->from_date , $request->to_date])->orderByDesc('created_at')->paginate(15);
+        $data['invoices'] = Sale::whereCustomerId($request->customer_id)->whereBetween('created_at' , [$request->from_date , $request->to_date])->orderByDesc('created_at')->paginate(15);
         $view = view('partials.customer-statement' , $data)->render();
         return Self::getJsonResponse(true , $view);
     }

@@ -5,6 +5,7 @@
             <th>{{ __('Invoice') }}</th>
             <th>{{ __('Date') }}</th>
             <th>{{ __('Cash') }}</th>
+            <th>{{ __('VAT') }}</th>
             <th>{{ __('Residual') }}</th>
             <th>{{ __('Total') }}</th>
         </tr>
@@ -17,11 +18,12 @@
         @foreach ($invoices as $invoice)
             <tr class="font-style">
                 <td>{{ $i++ }}</td>
-                <td>{{ AUth::user()->invoiceNumberFormat($invoice->invoice_id) }}</td>
+                <td>{{ AUth::user()->invoiceNumberFormat($invoice->id) }}</td>
                 <td>{{ $invoice->issue_date }}</td>
                 <td>0</td>
+                <td>{{$invoice->vat}}</td>
                 <td>{{$invoice->getTotal()}}</td>
-                <td>{{$invoice->getTotal()}}</td>
+                <td>{{$invoice->getTotal() + $invoice->vat}}</td>
             </tr>
         @endforeach
     </tbody>

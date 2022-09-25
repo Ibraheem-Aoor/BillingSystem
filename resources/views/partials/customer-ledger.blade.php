@@ -2,6 +2,7 @@
     <thead>
         <tr role="row">
             <th>{{ __('S.No') }}</th>
+            <th>{{ __('Invoice') }}</th>
             <th>{{ __('Product') }}</th>
             <th>{{ __('Date') }}</th>
             <th>{{ __('Qty') }}</th>
@@ -20,6 +21,7 @@
         @foreach ($sales as $sale)
             <tr class="font-style">
                 <td>{{ $i++ }}</td>
+                <td>{{ AUth::user()->invoiceNumberFormat($sale->id) }}</td>
                 <td>{{ $sale->product->name }}</td>
                 <td>{{ $sale->created_at }}</td>
                 <td>{{$sale->quantity}}</td>
@@ -28,7 +30,7 @@
                     $sub_total += $sale->getTotal();
                     $sub_total_vat += $sale->vat;
                 @endphp
-                <td>{{$sale->getTotal()}}</td>
+                <td>{{$sale->getTotal() + $sale->vat}}</td>
                 <td>{{$sale->vat}}</td>
             </tr>
         @endforeach

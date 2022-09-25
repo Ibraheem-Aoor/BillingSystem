@@ -71,13 +71,17 @@
                                             <td>{{ $sale->quantity }}</td>
                                             <td>{{ $sale->rate }}</td>
                                             <td>{{ $sale->vat }}</td>
-                                            <td>{{ $sale->getTotal() }}</td>
+                                            <td>{{ $sale->getTotal()  + $sale->vat}}</td>
                                             <td>{{ $sale->location }}</td>
                                             <td>{{ $sale->lpo }}</td>
 
                                             @if (Gate::check('edit product & service') || Gate::check('delete product & service'))
                                                 <td class="Action">
                                                     @can('edit product & service')
+                                                        <a href="{{ route('sale.print', $sale->id) }}" class="edit-icon"
+                                                            data-original-title="{{ __('Print') }}">
+                                                            <i class="fas fa-print"></i>
+                                                        </a>
                                                         <a href="#" class="edit-icon"
                                                             data-url="{{ route('sale.edit', $sale->id) }}"
                                                             data-ajax-popup="true" data-title="{{ __('Edit Price sale') }}"
