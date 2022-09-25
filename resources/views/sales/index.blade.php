@@ -71,7 +71,7 @@
                                             <td>{{ $sale->quantity }}</td>
                                             <td>{{ $sale->rate }}</td>
                                             <td>{{ $sale->vat }}</td>
-                                            <td>{{ $sale->getTotal()  + $sale->vat}}</td>
+                                            <td>{{ $sale->getTotal() + (($sale->vat/100) * $sale->rate) }}</td>
                                             <td>{{ $sale->location }}</td>
                                             <td>{{ $sale->lpo }}</td>
 

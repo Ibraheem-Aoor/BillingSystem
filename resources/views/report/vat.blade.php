@@ -136,7 +136,8 @@
                                 <td>{{ $sale->getTotal() }}</td>
                                 <td>{{ $sale->getTotal() }}</td>
                                 <td>{{ $sale->vat }}</td>
-                                <td>{{ $sale->getTotal() + $sale->vat }}</td>
+                                <td>{{ $sale->getTotal() + ($sale->vat / 100) * $sale->rate }}</td>
+
                             </tr>
                         @endforeach
                     </tbody>

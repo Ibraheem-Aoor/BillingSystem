@@ -23,7 +23,7 @@
                 <td>0</td>
                 <td>{{$invoice->vat}}</td>
                 <td>{{$invoice->getTotal()}}</td>
-                <td>{{$invoice->getTotal() + $invoice->vat}}</td>
+                <td>{{ $invoice->getTotal() + (($invoice->vat/100) * $invoice->rate) }}</td>
             </tr>
         @endforeach
     </tbody>
