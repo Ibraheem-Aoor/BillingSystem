@@ -294,7 +294,7 @@
                             <td>{{ $invoice->product->name }}</td>
                             <td>{{ $invoice->description }}</td>
                             <td>{{ $invoice->quantity }}</td>
-                            <td>{{ $invoice->selling_price }}</td>
+                            <td>{{ $invoice->rate }}</td>
                             <td>{{ $invoice->vat ?? 0 }}</td>
                             {{-- <td>{{ $invoice->discount ?? 0 }}</td> --}}
                             <td>{{ $invoice->getTotal() + $invoice->vat}}</td>
