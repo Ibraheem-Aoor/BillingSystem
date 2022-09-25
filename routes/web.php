@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\Report\NewReportController;
+use App\Http\Controllers\SaleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -438,7 +439,7 @@ Route::resource('supplier' , 'SupplierController')->middleware('auth');
 Route::resource('driver' , 'DriverController')->middleware('auth');
 Route::resource('price-list' , 'PriceListController')->middleware('auth');
 Route::resource('sale' , 'SaleController')->middleware('auth');
-
+Route::get('get-product-price/{id}' , [SaleController::class , 'getProductPrice']);
 // Reports Section
 
 
@@ -755,6 +756,7 @@ Route::group(
     // Vat Report
     Route::get('/vat-report' , [NewReportController::class , 'vatReportIndex'])->name('report.vat');
     Route::get('/vat-filter' , [NewReportController::class , 'vatReportFilter'])->name('report.vat_filter');
+
 
 
 

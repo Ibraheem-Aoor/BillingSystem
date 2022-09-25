@@ -97,3 +97,27 @@
 </div>
 {{ Form::close() }}
 </div>
+
+
+<script>
+    $(document).on('change' , 'select[name="product_service_id"]' , function()
+    {
+        var product_id = $(this).val();
+        var route = "get-product-price/" + product_id;
+        console.log(product_id);
+        $.ajax({
+            headers:{
+                'X-CSRF-TOKEN' : "{{csrf_token()}}"
+            },
+            url:route,
+            type: 'GET',
+            success: function(response){
+                console.log('aaa');
+                if(response.status)
+                    $('#rate').val(response.rate);
+            },error:function(response){
+                console.log('bb');
+            }
+        });
+    });
+</script>

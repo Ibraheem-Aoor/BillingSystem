@@ -110,4 +110,11 @@ class SaleController extends Controller
         Sale::where('id' , $id)->delete();
         return redirect(route('sale.index'))->with('success' , __('Sale Deleted Successfully'));
     }
+
+
+    public function getProductPrice($id)
+    {
+        $price = ProductService::findOrFail($id)->sale_price;
+        return response()->json(['status' => true , 'rate' => $price] , 200);
+    }
 }
