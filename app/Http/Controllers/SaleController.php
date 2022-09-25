@@ -79,7 +79,7 @@ class SaleController extends Controller
         $data['sale'] = Sale::findOrFail($id);
         $data['products'] = $this->products;
         $data['customers'] = $this->customers;
-        $data['drivers'] = $this->drivers;  
+        $data['drivers'] = $this->drivers;
         return view('sales.edit' , $data);
     }
 

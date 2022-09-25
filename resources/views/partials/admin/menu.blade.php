@@ -455,7 +455,7 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
                     Gate::check('manage transaction') ||
                     Gate::check('statement report'))
                     <li class="nav-item">
-                        <a class="nav-link {{ (Request::segment(1) == 'report' || Request::segment(1) == 'daily-sale-report' || Request::segment(1) == 'product-sale-report' || Request::segment(1) == 'transaction') && Request::segment(2) != 'ledger' && Request::segment(2) != 'balance-sheet' && Request::segment(2) != 'trial-balance' ? ' active' : 'collapsed' }}"
+                        <a class="nav-link {{ (Request::segment(1) == 'report' || Request::segment(1) == 'daily-sale-report' || Request::segment(1) == 'vat-report' || Request::segment(1) == 'product-sale-report' || Request::segment(1) == 'customer-statement-report'|| Request::segment(1) == 'customer-ledger-report'|| Request::segment(1) == 'transaction') && Request::segment(2) != 'ledger' && Request::segment(2) != 'balance-sheet' && Request::segment(2) != 'trial-balance' ? ' active' : 'collapsed' }}"
                             href="#navbar-reports" data-toggle="collapse" role="button"
                             aria-expanded="{{ Request::segment(1) == 'report' || Request::segment(1) == 'daily-sale-report' || Request::segment(1) == 'product-sale-report' || Request::segment(1) == 'transaction' ? 'true' : 'false' }}"
                             aria-controls="navbar-reports">
@@ -466,11 +466,11 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
                             id="navbar-reports">
                             <ul class="nav flex-column submenu-ul">
                                 @can('manage transaction')
-                                    <li
+                                    {{-- <li
                                         class="nav-item {{ Request::route()->getName() == 'transaction.index' || Request::route()->getName() == 'transfer.create' || Request::route()->getName() == 'transaction.edit' ? ' active' : '' }}">
                                         <a href="{{ route('transaction.index') }}"
                                             class="nav-link">{{ __('Transaction') }}</a>
-                                    </li>
+                                    </li> --}}
                                 @endcan
                                 @can('manage transaction')
                                     <li
@@ -488,8 +488,23 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
                                         <a href="{{ route('report.customer_sale') }}"
                                             class="nav-link">{{ __('Customer Wise  Sale') }}</a>
                                     </li>
+                                    <li
+                                        class="nav-item {{ Request::route()->getName() == 'report.vat' ? ' active' : '' }}">
+                                        <a href="{{ route('report.vat') }}"
+                                            class="nav-link">{{ __('VAT Report') }}</a>
+                                    </li>
+                                    <li
+                                        class="nav-item {{ Request::route()->getName() == 'report.report.customer_ledger' ? ' active' : '' }}">
+                                        <a href="{{ route('report.customer_ledger') }}"
+                                            class="nav-link" style="font-size: 80%;">{{ __('Customer Ledger') }}</a>
+                                    </li>
+                                    <li
+                                        class="nav-item {{ Request::route()->getName() == 'report.customer_statement' ? ' active' : '' }}">
+                                        <a href="{{ route('report.customer_statement') }}"
+                                            class="nav-link" style="font-size: 80%;">{{ __('Customer Statement') }}</a>
+                                    </li>
                                 @endcan
-                                @can('statement report')
+                                {{-- @can('statement report')
                                     <li
                                         class="nav-item {{ Request::route()->getName() == 'report.account.statement' ? ' active' : '' }}">
                                         <a href="{{ route('report.account.statement') }}"
@@ -544,13 +559,13 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
                                         <a href="{{ route('report.bill.summary') }}"
                                             class="nav-link">{{ __('Bill Summary') }}</a>
                                     </li>
-                                @endcan
+                                @endcan --}}
                             </ul>
                         </div>
                     </li>
                 @endif
 
-                @if (Gate::check('manage constant tax') ||
+                {{-- @if (Gate::check('manage constant tax') ||
                     Gate::check('manage constant category') ||
                     Gate::check('manage constant unit') ||
                     Gate::check('manage constant payment method') ||
@@ -597,7 +612,7 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
                             </ul>
                         </div>
                     </li>
-                @endif
+                @endif --}}
                 @if (Auth::user()->type == 'super admin')
                     <li class="nav-item">
                         <a href="{{ route('custom_landing_page.index') }}" class="nav-link">

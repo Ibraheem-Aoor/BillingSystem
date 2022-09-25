@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Report;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
+use App\Models\Invoice;
 use App\Models\ProductService;
 use App\Models\Sale;
 use Carbon\Carbon;
@@ -14,10 +15,11 @@ use Stripe\Product;
 class NewReportController extends Controller
 {
 
-    private  $sales;
+    private  $sales , $customers;
     public function __construct()
     {
         $this->sales = Sale::orderByDesc('created_at')->paginate(15);
+        $this->customers = Customer::all();
     }
     /**
      * Daily Sales Reports
@@ -62,7 +64,7 @@ class NewReportController extends Controller
     public function customerWiseSaleReportIndex()
     {
         $data['sales'] = $this->sales;
-        $data['customers'] = Customer::all();
+        $data['customers'] = $this->customers;
         return $this->getSalesTable($data);
     }
 
@@ -71,8 +73,72 @@ class NewReportController extends Controller
     {
         $data['sales'] = Sale::query()->whereCustomerId($request->get('customer_id'))->whereBetween('created_at' , [$request->from_date , $request->to_date])->orderByDesc('created_at')->paginate(15);
         $view = view('partials.daily_sales' , $data)->render();
-        return response()->json(['status' => true , 'view' => $view] , 200);
+        return Self::getJsonResponse(true , $view);
     }
+
+
+
+    /**
+     * Customer Statement
+     */
+
+    public function customerStatementReportIndex()
+    {
+        $data['invoices'] = Invoice::orderByDesc('created_at')->paginate(15);
+        $data['request_segment'] = FacadesRequest::segment(1);
+        $data['customers'] = $this->customers;
+        $data['form_action'] = route('report.customer_statement_filter');
+        return view('report.customer-statement' , $data);
+    }
+
+    public function customerStatmentReportFilter(Request $request)
+    {
+        $data['invoices'] = Invoice::whereCustomerId($request->customer_id)->whereBetween('created_at' , [$request->from_date , $request->to_date])->orderByDesc('created_at')->paginate(15);
+        $view = view('partials.customer-statement' , $data)->render();
+        return Self::getJsonResponse(true , $view);
+    }
+
+    /**
+     * Customer Ledger
+     */
+
+    public function customerLedgerReportIndex()
+    {
+        $data['request_segment'] = FacadesRequest::segment(1);
+        $data['customers'] = $this->customers;
+        $data['form_action'] = route('report.customer_ledger_filter');
+        return view('report.customer-statement' , $data);
+    }
+
+
+    public function customerLedgerReportFilter(Request $request)
+    {
+        $data['sales'] = Sale::query()->whereCustomerId($request->get('customer_id'))->whereBetween('created_at' , [$request->from_date , $request->to_date])->orderByDesc('created_at')->paginate(15);
+        $view = view('partials.customer-ledger' , $data)->render();
+        return Self::getJsonResponse(true , $view);
+
+    }
+
+
+    /**
+     * Vat Report
+     */
+
+    public function vatReportIndex()
+    {
+        $data['sales'] = Sale::orderByDesc('created_at')->paginate(15);
+        $data['request_segment'] = FacadesRequest::segment(1);
+        return view('report.vat' , $data);
+    }
+
+
+    public function vatReportFilter(Request $request)
+    {
+        $data['sales'] = Sale::query()->whereBetween('created_at' , [$request->from_date , $request->to_date])->orderByDesc('created_at')->paginate(15);
+        $view = view('partials.vat' , $data)->render();
+        return Self::getJsonResponse(true , $view);
+    }
+
 
 
 
@@ -84,6 +150,12 @@ class NewReportController extends Controller
     {
         $data['request_segment'] = FacadesRequest::segment(1);
         return view('report.daily_sale' ,  $data);
+    }
+
+    public static function getJsonResponse($status , $view)
+    {
+        $code = $status ? 200 : 419;
+        return response()->json(['status' => $status , 'view' => $view] , $code);
     }
 
 }

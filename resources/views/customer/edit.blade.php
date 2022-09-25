@@ -2,7 +2,7 @@
     {{Form::model($customer,array('route' => array('customer.update', $customer->id), 'method' => 'PUT')) }}
     <h5 class="sub-title">{{__('Basic Info')}}</h5>
     <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="form-group">
                 {{Form::label('name',__('Name'),array('class'=>'form-control-label')) }}
                 <div class="form-icon-user">
@@ -11,12 +11,21 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="form-group">
                 {{Form::label('contact',__('Contact'),['class'=>'form-control-label'])}}
                 <div class="form-icon-user">
                     <span><i class="fas fa-mobile-alt"></i></span>
                     {{Form::text('contact',null,array('class'=>'form-control','required'=>'required'))}}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="form-group">
+                {{Form::label('trn',__('TRN'),['class'=>'form-control-label'])}}
+                <div class="form-icon-user">
+                    <span><i class="fas fa-mobile-alt"></i></span>
+                    {{Form::text('trn',null,array('class'=>'form-control','required'=>'required'))}}
                 </div>
             </div>
         </div>

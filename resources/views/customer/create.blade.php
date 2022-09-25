@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-6">
+        {{-- <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="form-group">
                 {{Form::label('email',__('Email'),['class'=>'form-control-label'])}}
                 <div class="form-icon-user">
@@ -28,7 +28,7 @@
                     {{Form::text('email',null,array('class'=>'form-control'))}}
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="col-lg-4 col-md-4 col-sm-6">
             <div class="form-group">
                 {{Form::label('trn',__('TRN'),['class'=>'form-control-label'])}}

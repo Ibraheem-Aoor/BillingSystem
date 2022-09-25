@@ -188,6 +188,7 @@ class CustomerController extends Controller
             }
 
             $customer->name             = $request->name;
+            $customer->trn             = $request->trn;
             $customer->contact          = $request->contact;
             $customer->created_by       = \Auth::user()->creatorId();
             $customer->billing_name     = $request->billing_name;

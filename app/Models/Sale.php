@@ -23,4 +23,9 @@ class Sale extends Model
     {
         return $this->belongsTo(Driver::class , 'driver_id');
     }
+
+    public function getTotal()
+    {
+        return $this->quantity * $this->rate;
+    }
 }

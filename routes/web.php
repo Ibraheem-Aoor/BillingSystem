@@ -746,6 +746,17 @@ Route::group(
     //Customer sale
     Route::get('/customer-sale-report' , [NewReportController::class , 'customerWiseSaleReportIndex'])->name('report.customer_sale');
     Route::get('/customer-sale-report-filter' , [NewReportController::class , 'customerWiseSaleReportFilter'])->name('report.customer_sale_filter');
+    // Customer Statement
+    Route::get('/customer-statement-report' , [NewReportController::class , 'customerStatementReportIndex'])->name('report.customer_statement');
+    Route::get('/customer-statement-report-filter' , [NewReportController::class , 'customerStatmentReportFilter'])->name('report.customer_statement_filter');
+    // Custoemr Ledger
+    Route::get('/customer-ledger-report' , [NewReportController::class , 'customerLedgerReportIndex'])->name('report.customer_ledger');
+    Route::get('/customer-ledger-report-filter' , [NewReportController::class , 'customerLedgerReportFilter'])->name('report.customer_ledger_filter');
+    // Vat Report
+    Route::get('/vat-report' , [NewReportController::class , 'vatReportIndex'])->name('report.vat');
+    Route::get('/vat-filter' , [NewReportController::class , 'vatReportFilter'])->name('report.vat_filter');
+
+
 
 }
 );
