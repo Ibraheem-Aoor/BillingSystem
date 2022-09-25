@@ -6,11 +6,11 @@
 @section('action-button')
     <div class="all-button-box row d-flex justify-content-end">
         @can('create constant tax')
-            <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6">
+            {{-- <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6 col-6">
                 <a href="#" data-url="{{ route('taxes.create') }}" data-ajax-popup="true" data-title="{{__('Create Tax Rate')}}" class="btn btn-xs btn-white btn-icon-only width-auto">
                     <i class="fas fa-plus"></i> {{__('Create')}}
                 </a>
-            </div>
+            </div> --}}
         @endcan
     </div>
 @endsection
@@ -24,8 +24,8 @@
                         <table class="table table-striped mb-0 dataTable">
                             <thead>
                             <tr>
-                                <th> {{__('Tax Name')}}</th>
-                                <th> {{__('Rate %')}}</th>
+                                <th> {{__('Vat')}}</th>
+                                <th> {{__('Value')}}</th>
                                 <th> {{__('Action')}}</th>
                             </tr>
                             </thead>
@@ -42,13 +42,13 @@
                                                 <i class="fas fa-pencil-alt"></i>
                                             </a>
                                             @endcan
-                                            @can('delete constant tax')
+                                            {{-- @can('delete constant tax')
                                                 <a href="#" class="delete-icon " data-toggle="tooltip" data-original-title="{{__('Delete')}}" data-confirm="{{__('Are You Sure?').'|'.__('This action can not be undone. Do you want to continue?')}}" data-confirm-yes="document.getElementById('delete-form-{{$taxe->id}}').submit();">
                                                 <i class="fas fa-trash"></i>
                                             </a>
                                                 {!! Form::open(['method' => 'DELETE', 'route' => ['taxes.destroy', $taxe->id],'id'=>'delete-form-'.$taxe->id]) !!}
                                                 {!! Form::close() !!}
-                                            @endcan
+                                            @endcan --}}
                                         </span>
                                     </td>
                                 </tr>

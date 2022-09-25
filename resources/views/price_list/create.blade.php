@@ -44,7 +44,7 @@
             <div class="form-group">
                 {{ Form::label('vat', __('Vat Value'), ['class' => 'form-control-label']) }}
                 <div class="form-icon-user">
-                    <input type="text" name="vat" id="vat" class="form-control">
+                    <input type="text" name="vat" id="vat" class="form-control" value="{{$vat}}">
                 </div>
             </div>
         </div>

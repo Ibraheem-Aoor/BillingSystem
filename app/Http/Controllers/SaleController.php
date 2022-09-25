@@ -8,6 +8,7 @@ use App\Models\Driver;
 use App\Models\PriceList;
 use App\Models\ProductService;
 use App\Models\Sale;
+use App\Models\Tax;
 use Illuminate\Http\Request;
 use Stripe\Product;
 use Throwable;
@@ -21,12 +22,13 @@ class SaleController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public $products , $customers , $drivers;
+     public $products , $customers , $drivers , $vat;
      public function __construct()
      {
         $this->products = ProductService::all();
         $this->customers  = Customer::all();
         $this->drivers = Driver::all();
+        $this->vat =  Tax::first()->rate;
      }
     public function index()
     {
@@ -44,6 +46,7 @@ class SaleController extends Controller
         $data['products'] = $this->products;
         $data['customers'] = $this->customers;
         $data['drivers'] = $this->drivers;
+        $data['vat'] = $this->vat;
         return view('sales.create' , $data);
     }
 

@@ -7,6 +7,8 @@ use App\Models\Customer;
 use App\Models\PriceList;
 use App\Models\ProductService;
 use App\Models\Supplier;
+use App\Models\Tax;
+use Facade\Ignition\Tabs\Tab;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Stripe\Product;
@@ -33,6 +35,7 @@ class PriceListController extends Controller
     {
         $data['customers'] = Customer::all();
         $data['products'] = ProductService::all();
+        $data['vat'] = Tax::first()->rate;
         return view('price_list.create' , $data);
     }
 
