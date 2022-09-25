@@ -2,8 +2,10 @@
 @section('page-title')
     @if (Request::segment(1) == 'daily-sale-report')
         {{ __('Daily Sale Reports') }}
-    @else
+    @elseif(Request::segment(1)  == 'product-sale-report')
         {{ __('Product Sale Reports') }}
+    @elseif(Request::segment(1)  == 'customer-sale-report')
+        {{ __('Customer Sale Reports') }}
     @endif
 @endsection
 

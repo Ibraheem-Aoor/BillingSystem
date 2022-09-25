@@ -37,7 +37,7 @@
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="5">Subtotal: </td>
+            <td colspan="6">Subtotal: </td>
             <td>{{$sub_total}}</td>
             <td>{{$sub_total_vat}}</td>
         </tr>
