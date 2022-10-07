@@ -38,8 +38,32 @@
     </div>
 @endsection
 
-@section('content')
+@push('script-page')
+    <script>
+        // DataTable
+        function setDataTable() {
 
+            var filename = $('#filename').val();
+            $('#report-dataTable').DataTable({
+                dom: 'lBfrtip',
+                buttons: [{
+                        extend: 'excel',
+                        title: filename
+                    },
+                    {
+                        extend: 'pdf',
+                        title: filename
+                    }, {
+                        extend: 'csv',
+                        title: filename
+                    }
+                ]
+            });
+        }
+    </script>
+@endpush
+
+@section('content')
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -77,7 +101,6 @@
                                     <th>{{ __('Sale Price') }}</th>
                                     <th>{{ __('Purchase Price') }}</th>
                                     <th>{{ __('Tax') }}</th>
-                                    <th>{{ __('Category') }}</th>
                                     <th>{{ __('Unit') }}</th>
                                     <th>{{ __('Type') }}</th>
                                     <th>{{ __('Description') }}</th>
@@ -86,6 +109,7 @@
                             </thead>
 
                             <tbody>
+
                                 @foreach ($productServices as $productService)
                                     <tr class="font-style">
                                         <td>{{ $productService->name }}</td>
@@ -100,13 +124,10 @@
 
                                                 @foreach ($taxes as $tax)
                                                     {{ !empty($tax) ? $tax->name : '' }}<br>
-
                                                 @endforeach
                                             @else
                                                 -
                                             @endif
-                                        </td>
-                                        <td>{{ !empty($productService->category) ? $productService->category->name : '' }}
                                         </td>
                                         <td>{{ !empty($productService->unit()) ? $productService->unit()->name : '' }}</td>
                                         <td>{{ $productService->type }}</td>
@@ -129,7 +150,11 @@
                                                         data-confirm-yes="document.getElementById('delete-form-{{ $productService->id }}').submit();">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
-                                                    {!! Form::open(['method' => 'DELETE', 'route' => ['productservice.destroy', $productService->id], 'id' => 'delete-form-' . $productService->id]) !!}
+                                                    {!! Form::open([
+                                                        'method' => 'DELETE',
+                                                        'route' => ['productservice.destroy', $productService->id],
+                                                        'id' => 'delete-form-' . $productService->id,
+                                                    ]) !!}
                                                     {!! Form::close() !!}
                                                 @endcan
                                             </td>

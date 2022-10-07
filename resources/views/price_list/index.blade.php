@@ -53,13 +53,17 @@
                                         <th>{{ __('Product') }}</th>
                                         <th>{{ __('Selling Price') }}</th>
                                         <th>{{ __('Vat Value') }}</th>
+                                        <th>{{ __('Actions') }}</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
+                                    @php
+                                        $i = 1;
+                                    @endphp
                                     @foreach ($lists as $list)
                                         <tr class="font-style">
-                                            <td>{{ $list->id }}</td>
+                                            <td>{{ $i++ }}</td>
                                             <td>{{ $list->customer->name }}</td>
                                             <td>{{ $list->product->name }}</td>
                                             <td>{{ $list->selling_price }}</td>
@@ -95,6 +99,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+
                         </div>
                     </div>
                 </div>

@@ -70,11 +70,11 @@
                                     <td class="Id">
                                         @can('show customer')
                                             <a href="{{ route('customer.show',\Crypt::encrypt($customer['id'])) }}">
-                                                {{ AUth::user()->customerNumberFormat($customer['customer_id']) }}
+                                                {{ AUth::user()->customerNumberFormat($customer['id']) }}
                                             </a>
                                         @else
                                             <a href="#" class="btn btn-outline-primary">
-                                                {{ AUth::user()->customerNumberFormat($customer['customer_id']) }}
+                                                {{ AUth::user()->customerNumberFormat($customer['id']) }}
                                             </a>
                                         @endcan
                                     </td>

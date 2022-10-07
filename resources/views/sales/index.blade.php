@@ -62,16 +62,19 @@
                                 </thead>
 
                                 <tbody>
+                                    @php
+                                        $i = 1;
+                                    @endphp
                                     @foreach ($sales as $sale)
                                         <tr class="font-style">
-                                            <td>{{ $sale->id }}</td>
+                                            <td>{{ $i++ }}</td>
                                             <td>{{ $sale->customer->name }}</td>
                                             <td>{{ $sale->driver->name }}</td>
                                             <td>{{ $sale->product->name }}</td>
                                             <td>{{ $sale->quantity }}</td>
                                             <td>{{ $sale->rate }}</td>
                                             <td>{{ $sale->vat }}</td>
-                                            <td>{{ $sale->getTotal() + (($sale->vat/100) * $sale->rate) }}</td>
+                                            <td>{{ $sale->getTotal() + ($sale->vat / 100) * $sale->rate }}</td>
                                             <td>{{ $sale->location }}</td>
                                             <td>{{ $sale->lpo }}</td>
 

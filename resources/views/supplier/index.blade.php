@@ -56,9 +56,12 @@
                                 </thead>
 
                                 <tbody>
+                                    @php
+                                        $i = 1;
+                                    @endphp
                                     @foreach ($suppliers as $supplier)
                                         <tr class="font-style">
-                                            <td>{{ $supplier->id }}</td>
+                                            <td>{{ $i++}}</td>
                                             <td>{{ $supplier->name }}</td>
                                             <td>{{ $supplier->mobile }}</td>
                                             <td>{{ $supplier->trn }}</td>

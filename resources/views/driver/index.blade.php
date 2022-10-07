@@ -55,9 +55,12 @@
                                 </thead>
 
                                 <tbody>
+                                    @php
+                                        $i = 1;
+                                    @endphp
                                     @foreach ($drivers as $driver)
                                         <tr class="font-style">
-                                            <td>{{ $driver->id }}</td>
+                                            <td>{{ $i++ }}</td>
                                             <td>{{ $driver->name }}</td>
                                             <td>{{ $driver->mobile }}</td>
 

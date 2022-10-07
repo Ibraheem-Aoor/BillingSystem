@@ -149,13 +149,6 @@ $company_small_logo = App\Models\Utility::getValByName('company_small_logo');
                                     <a href="{{ route('productservice.index') }}" class="nav-link">{{ __('Product') }}</a>
                                 </li>
                             @endcan
-                            @can('manage constant category')
-                                <li
-                                    class="nav-item {{ Request::route()->getName() == 'product-category.index' ? 'active' : '' }}">
-                                    <a href="{{ route('product-category.index') }}"
-                                        class="nav-link">{{ __('Category') }}</a>
-                                </li>
-                            @endcan
                             <li
                                 class="nav-item {{ Request::route()->getName() == 'car.index' || Request::route()->getName() == 'car.create' || Request::route()->getName() == 'car.edit' || Request::route()->getName() == 'car.show' ? ' active' : '' }}">
                                 <a href="{{ route('car.index') }}" class="nav-link">{{ __('Car') }}</a>

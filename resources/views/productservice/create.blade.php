@@ -49,10 +49,6 @@
             {{ Form::select('tax_id[]', $tax, null, ['class' => 'form-control select2', 'multiple']) }}
         </div>
         <div class="form-group col-md-6">
-            {{ Form::label('category_id', __('Category'), ['class' => 'form-control-label']) }}
-            {{ Form::select('category_id', $category, null, ['class' => 'form-control select2']) }}
-        </div>
-        <div class="form-group col-md-6">
             {{ Form::label('unit_id', __('Unit'), ['class' => 'form-control-label']) }}
             {{ Form::select('unit_id', $unit, null, ['class' => 'form-control select2']) }}
         </div>
