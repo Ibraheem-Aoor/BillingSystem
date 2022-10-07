@@ -38,6 +38,32 @@
         </div>
     @endsection
 
+
+    @push('script-page')
+    <script>
+        // DataTable
+        function setDataTable() {
+
+            var filename = $('#filename').val();
+            $('.dataTable').DataTable({
+                dom: 'lBfrtip',
+                buttons: [{
+                        extend: 'excel',
+                        title: filename
+                    },
+                    {
+                        extend: 'pdf',
+                        title: filename
+                    }, {
+                        extend: 'csv',
+                        title: filename
+                    }
+                ]
+            });
+        }
+    </script>
+@endpush
+
     @section('content')
         <div class="row">
             <div class="col-12">
@@ -52,6 +78,7 @@
                                         <th>{{ __('Supplier Name') }}</th>
                                         <th>{{ __('Mobile') }}</th>
                                         <th>{{ __('TRN') }}</th>
+                                        <th>{{ __('Actions') }}</th>
                                     </tr>
                                 </thead>
 

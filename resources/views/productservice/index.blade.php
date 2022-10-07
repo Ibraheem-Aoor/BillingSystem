@@ -40,11 +40,10 @@
 
 @push('script-page')
     <script>
-        // DataTable
         function setDataTable() {
 
             var filename = $('#filename').val();
-            $('#report-dataTable').DataTable({
+            $('.dataTable').DataTable({
                 dom: 'lBfrtip',
                 buttons: [{
                         extend: 'excel',

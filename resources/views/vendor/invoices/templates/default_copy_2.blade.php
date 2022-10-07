@@ -301,6 +301,12 @@
                         </tr>
                     {{-- @endforeach --}}
                     <tr>
+                        <td colspan="5" style="text-align: left;">Subtotal</td>
+                        <td>{{$invoice->vat}}</td>
+                        <td>{{ $invoice->getTotal() }}
+                        </td>
+                    </tr>
+                    <tr>
                         <td colspan="6" style="text-align: left;">Total</td>
                         <td>{{ $invoice->getTotal() + $invoice->vat }}
                         </td>

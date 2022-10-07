@@ -67,7 +67,8 @@
             <div class="form-group">
                 {{ Form::label('vat', __('Vat'), ['class' => 'form-control-label']) }}
                 <div class="form-icon-user">
-                    <input type="text" name="vat" id="vat" class="form-control" value="{{$vat}}">
+                    <input type="text" name="vat" id="vat" class="form-control"
+                        value="{{ $vat }}">
                 </div>
             </div>
         </div>
@@ -87,6 +88,11 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-6">
+            {{ Form::label('date', __('date'), ['class' => 'form-control-label']) }}
+            <input type="date" name="date" id="date"
+                style="padding:5px !important; line-height:1.5rem !important;">
+        </div>
 
     </div>
     <div class="col-md-6">
@@ -100,27 +106,26 @@
 
 
 <script>
-    $(document).on('change' , 'select[name="customer_id"]' , function()
-    {
+    $(document).on('change', 'select[name="customer_id"]', function() {
         var customer_id = $(this).val();
         var product_id = $('select[name="product_service_id"]').val();
         var route = "get-product-price";
         $.ajax({
-            headers:{
-                'X-CSRF-TOKEN' : "{{csrf_token()}}"
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
             },
-            url:route,
+            url: route,
             type: 'GET',
-            data:{
-                product_id:product_id ,
-                customer_id:customer_id ,
+            data: {
+                product_id: product_id,
+                customer_id: customer_id,
             },
-            success: function(response){
-                if(response.status)
+            success: function(response) {
+                if (response.status)
                     $('#rate').val(response.rate);
-            },error:function(response){
-                if(response.status == 419)
-                {
+            },
+            error: function(response) {
+                if (response.status == 419) {
                     alert('There Is No Price For Selected Customer');
                 }
             }

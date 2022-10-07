@@ -26,6 +26,6 @@ class Sale extends Model
 
     public function getTotal()
     {
-        return $this->quantity * $this->rate;
+        return  (double)$this->quantity * (double)$this->rate;
     }
 }
