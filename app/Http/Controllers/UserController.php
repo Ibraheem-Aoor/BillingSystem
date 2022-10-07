@@ -115,7 +115,6 @@ class UserController extends Controller
                 if($validator->fails())
                 {
                     $messages = $validator->getMessageBag();
-
                     return redirect()->back()->with('error', $messages->first());
                 }
 
@@ -123,8 +122,6 @@ class UserController extends Controller
                 $objUser    = \Auth::user();
                 $total_user = $objUser->countUsers();
                 $plan       = Plan::find($objUser->plan);
-                if($total_user < $plan->max_users || $plan->max_users == -1)
-                {
                     $role_r                = Role::findById($request->role);
                     $psw                   = $request->password;
                     $request['password']   = Hash::make($request->password);
@@ -136,11 +133,6 @@ class UserController extends Controller
                     CustomField::saveData($user, $request->customField);
 
                     $user->assignRole($role_r);
-                }
-                else
-                {
-                    return redirect()->back()->with('error', __('Your user limit is over, Please upgrade plan.'));
-                }
             }
 
             $user->password = $psw;

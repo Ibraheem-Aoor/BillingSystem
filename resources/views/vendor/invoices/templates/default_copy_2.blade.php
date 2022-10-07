@@ -297,7 +297,7 @@
                             <td>{{ $invoice->rate }}</td>
                             <td>{{ $invoice->vat ?? 0 }}</td>
                             {{-- <td>{{ $invoice->discount ?? 0 }}</td> --}}
-                            <td>{{ $invoice->getTotal() + $invoice->vat}}</td>
+                            <td>{{ $invoice->getTotal() + (($invoice->vat/100) * $invoice->rate)}}</td>
                         </tr>
                     {{-- @endforeach --}}
                     <tr>

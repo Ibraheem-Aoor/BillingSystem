@@ -82,7 +82,6 @@ class CustomerController extends Controller
 
 
             $default_language = DB::table('settings')->select('value')->where('name', 'default_language')->first();
-            if ($total_customer < $plan->max_customers || $plan->max_customers == -1) {
                 $customer                  = new Customer();
                 $customer->customer_id     = $this->customerNumber();
                 $customer->name            = $request->name;
@@ -113,21 +112,6 @@ class CustomerController extends Controller
 
                 $customer->save();
                 CustomField::saveData($customer, $request->customField);
-            } else {
-                return redirect()->back()->with('error', __('Your user limit is over, Please upgrade plan.'));
-            }
-
-
-            // $role_r = Role::where('name', '=', 'customer')->firstOrFail();
-            // $customer->assignRole($role_r);
-
-            // $customer->password = $request->password;
-            // $customer->type     = 'Customer';
-            // try {
-            //     Mail::to($customer->email)->send(new UserCreate($customer));
-            // } catch (\Exception $e) {
-            //     $smtp_error = __('E-Mail has been not sent due to SMTP configuration');
-            // }
 
 
             //Twilio Notification

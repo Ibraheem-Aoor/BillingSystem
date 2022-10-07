@@ -79,7 +79,7 @@ class VenderController extends Controller
             $plan         = Plan::find($creator->plan);
 
             $default_language = DB::table('settings')->select('value')->where('name', 'default_language')->first();
-            if ($total_vendor < $plan->max_venders || $plan->max_venders == -1) {
+       
                 $vender                   = new Vender();
                 $vender->vender_id        = $this->venderNumber();
                 $vender->name             = $request->name;
@@ -104,9 +104,7 @@ class VenderController extends Controller
                 $vender->lang             = !empty($default_language) ? $default_language->value : '';
                 $vender->save();
                 CustomField::saveData($vender, $request->customField);
-            } else {
-                return redirect()->back()->with('error', __('Your user limit is over, Please upgrade plan.'));
-            }
+
 
 
             $role_r = Role::where('name', '=', 'vender')->firstOrFail();
