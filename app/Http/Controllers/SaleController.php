@@ -140,13 +140,14 @@ class SaleController extends Controller
 
     public function bulk_print(Request $request)
     {
-        $data['invoices'] = Sale::whereIn('id' , $request->id);
+        if($request->id)
+        {
+        $data['invoices'] = Sale::query()->whereIn('id' , $request->id)->get();
         $data['subtotal_vat'] = $data['invoices']->sum('vat');
-        $total_without_vat = $data['invoices']->sum('rate') * $data['invoices']->sum('quantity');
-        $data['total'] = $total_without_vat + (($data['invoices']->sum('vat') / 100) *  $total_without_vat);
-        $data['invoice_number'] = \Auth::user()->invoiceNumberFormat($data['invoices']->first()->id);
-        $data['invoices'] = $data['invoices']->get();
+        $data['invoice_number'] = \Auth::user()->invoiceNumberFormat(@$data['invoices'][0]->id);
         $pdf = PDF::loadView('vendor.invoices.templates.default_copy_3' , $data);
         return $pdf->stream($data['invoice_number']);
+        }
+        return back();
     }
 }

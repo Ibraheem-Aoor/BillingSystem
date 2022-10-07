@@ -105,7 +105,6 @@
                                         @php
                                             $i = 1;
                                         @endphp
-                                        <input type="text" name="teset">
                                         @foreach ($sales as $sale)
                                             <tr class="font-style">
                                                 <td>{{ $i }} &nbsp; <input type="checkbox" name="id[{{$i++}}]"
@@ -116,7 +115,7 @@
                                                 <td>{{ $sale->quantity }}</td>
                                                 <td>{{ $sale->rate }}</td>
                                                 <td>{{ $sale->vat }}</td>
-                                                <td>{{ $sale->getTotal() + ((float) $sale->vat / 100) * (float) $sale->rate }}
+                                                <td>{{ $sale->getTotal() + ((float) $sale->vat / 100) * (float) $sale->getTotal() }}
                                                 </td>
                                                 <td>{{ $sale->location }}</td>
                                                 <td>{{ $sale->lpo }}</td>
