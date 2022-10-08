@@ -113,10 +113,14 @@ class NewReportController extends Controller
 
     public function customerLedgerReportFilter(Request $request)
     {
-        $data['sales'] = Sale::query()->whereCustomerId($request->get('customer_id'))->whereBetween('created_at' , [$request->from_date , $request->to_date])->orderByDesc('created_at')->paginate(15);
+        if($request->from_date == $request->to_date)
+        {
+            $data['sales'] = Sale::query()->whereCustomerId($request->get('customer_id'))->where('created_at' , $request->from_date)->orderByDesc('created_at')->paginate(15);
+        }else{
+            $data['sales'] = Sale::query()->whereCustomerId($request->get('customer_id'))->whereBetween('created_at' , [$request->from_date , $request->to_date])->orderByDesc('created_at')->paginate(15);
+        }
         $view = view('partials.customer-ledger' , $data)->render();
         return Self::getJsonResponse(true , $view);
-
     }
 
 
@@ -134,7 +138,11 @@ class NewReportController extends Controller
 
     public function vatReportFilter(Request $request)
     {
-        $data['sales'] = Sale::query()->whereBetween('created_at' , [$request->from_date , $request->to_date])->orderByDesc('created_at')->paginate(15);
+        if($request->from_date == $request->to_date){
+            $data['sales'] = Sale::query()->whereBetween('created_at' , $request->from_date)->orderByDesc('created_at')->paginate(15);
+        }else{
+            $data['sales'] = Sale::query()->whereBetween('created_at' , [$request->from_date , $request->to_date])->orderByDesc('created_at')->paginate(15);
+        }
         $view = view('partials.vat' , $data)->render();
         return Self::getJsonResponse(true , $view);
     }

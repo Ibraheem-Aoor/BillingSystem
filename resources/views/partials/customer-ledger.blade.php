@@ -30,7 +30,7 @@
                     $sub_total += $sale->getTotal();
                     $sub_total_vat += $sale->vat;
                 @endphp
-                <td>{{ $sale->getTotal() + ((float) $sale->vat / 100) * (float) $sale->rate }}</td>
+                <td>{{ $sale->getTotal()}}</td>
                 <td>{{$sale->vat}}</td>
             </tr>
         @endforeach
@@ -43,7 +43,7 @@
         </tr>
         <tr>
             <td colspan="6">{{__('Grand Total')}}</td>
-            <td>{{$sub_total + $sub_total_vat}}</td>
+            <td>{{$sub_total + (($sub_total_vat/100) * $sub_total)}}</td>
         </tr>
     </tfoot>
 </table>
