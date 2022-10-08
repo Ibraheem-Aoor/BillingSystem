@@ -298,7 +298,10 @@
                         <td>{{ $invoice->rate }}</td>
                         <td>{{ $invoice->vat ?? 0 }}</td>
                         {{-- <td>{{ $invoice->discount ?? 0 }}</td> --}}
-                        <td>{{$sub_total += ((float)$invoice->getTotal() + ((float)$invoice->vat / 100) * (float)$invoice->getTotal()) }}</td>
+                        @php
+                            $sub_total += (float)$invoice->getTotal();
+                        @endphp
+                        <td>{{(float)$invoice->getTotal() }}</td>
                     </tr>
                     @endforeach
                     <tr>
