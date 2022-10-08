@@ -86,6 +86,7 @@
                                     <thead>
                                         <tr role="row">
                                             <th>{{ __('S.No') }}</th>
+                                            <th>{{ __('Inovice No') }}</th>
                                             <th>{{ __('Customer') }}</th>
                                             <th>{{ __('Driver') }}</th>
                                             <th>{{ __('Product') }}</th>
@@ -109,6 +110,7 @@
                                             <tr class="font-style">
                                                 <td>{{ $i }} &nbsp; <input type="checkbox" name="id[{{$i++}}]"
                                                         value="{{ $sale->id }}"></td>
+                                                <td>{{ Auth::user()->invoiceNumberFormat($sale->id) }}</td>
                                                 <td>{{ $sale->customer->name }}</td>
                                                 <td>{{ $sale->driver->name }}</td>
                                                 <td>{{ $sale->product->name }}</td>
