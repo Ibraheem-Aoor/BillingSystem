@@ -297,18 +297,18 @@
                             <td>{{ $invoice->rate }}</td>
                             <td>{{ $invoice->vat ?? 0 }}</td>
                             {{-- <td>{{ $invoice->discount ?? 0 }}</td> --}}
-                            <td>{{ $invoice->getTotal() + (($invoice->vat/100) * $invoice->rate)}}</td>
+                            <td>{{ $invoice->getTotal() + (($invoice->vat/100) * $invoice->getTotal())}}</td>
                         </tr>
                     {{-- @endforeach --}}
                     <tr>
                         <td colspan="5" style="text-align: left;">Subtotal</td>
                         <td>{{$invoice->vat}}</td>
-                        <td>{{ $invoice->getTotal() }}
+                        <td>{{ $invoice->getTotal() + (($invoice->vat/100) * $invoice->getTotal())}}
                         </td>
                     </tr>
                     <tr>
                         <td colspan="6" style="text-align: left;">Total</td>
-                        <td>{{ $invoice->getTotal() + $invoice->vat }}
+                        <td>{{$invoice->getTotal() + (($invoice->vat/100) * $invoice->getTotal())}}
                         </td>
                     </tr>
                 </tbody>
