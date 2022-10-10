@@ -250,16 +250,16 @@
                         <div class="yellow">
                             <ul>
                                 <li>
-                                    <span>DRIVER NAME: </span>
+                                    <span>DRIVER NAME: {{$invoices[0]->driver->name}}</span>
                                 </li>
                                 <li>
-                                    <span> Vechile No: </span>
+                                    <span> Vechile No: {{$invoices[0]->car->no}}</span>
                                 </li>
                                 <li>
-                                    <span>Location:</span>
+                                    <span>Location: {{$invoices[0]->location}}</span>
                                 </li>
                                 <li>
-                                    <span> LPO No.:</span>
+                                    <span> LPO No.: {{$invoices[0]->lop}}</span>
                                 </li>
                             </ul>
                         </div>
@@ -296,7 +296,7 @@
                         <td>{{ $invoice->description }}</td>
                         <td>{{ $invoice->quantity }}</td>
                         <td>{{ $invoice->rate }}</td>
-                        <td>{{ $invoice->vat ?? 0 }}</td>
+                        <td>{{ $invoice->vat * $invoice->getTotal()  }}</td>
                         {{-- <td>{{ $invoice->discount ?? 0 }}</td> --}}
                         @php
                             $sub_total += (float)$invoice->getTotal();
