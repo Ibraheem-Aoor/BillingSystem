@@ -41,7 +41,7 @@
             // DataTable
             function setDataTable() {
 
-                var filename = $('#filename').val();
+                var filename = 'شركة الهداية لنقل مواد البناء ذ.م.م<br> AL-HIDAYAH BLDG. MAT. TR. CO. LLC. '
                 $('.dataTable').DataTable({
                     dom: 'lBfrtip',
                     buttons: [{

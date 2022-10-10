@@ -6,7 +6,7 @@
     <script type="text/javascript" src="{{ asset('js/html2pdf.bundle.min.js') }}"></script>
     <script>
         var year = '{{$currentYear}}';
-        var filename = $('#filename').val();
+        var filename = 'شركة الهداية لنقل مواد البناء ذ.م.م<br> AL-HIDAYAH BLDG. MAT. TR. CO. LLC. '
 
         function saveAsPDF() {
             var element = document.getElementById('printableArea');

@@ -15,7 +15,7 @@ class CarController extends Controller
      */
     public function index()
     {
-        $data['cars'] = Car::paginate(15);
+        $data['cars'] = Car::all();
         return view('car.index' , $data);
     }
 

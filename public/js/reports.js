@@ -11,7 +11,7 @@ $(document).ready(function () {
     // DataTable
     function setDataTable() {
 
-        var filename = $('#filename').val();
+        var filename = 'AL-HIDAYAH BLDG. MAT. TR. CO. LLC. '
         $('#report-dataTable').DataTable({
             dom: 'lBfrtip',
             buttons: [{

@@ -32,7 +32,7 @@ class SaleController extends Controller
      }
     public function index()
     {
-        $data['sales'] = Sale::paginate(15);
+        $data['sales'] = Sale::all();
         return view('sales.index' , $data);
     }
 

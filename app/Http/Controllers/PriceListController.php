@@ -22,7 +22,7 @@ class PriceListController extends Controller
      */
     public function index()
     {
-        $data['lists'] = PriceList::paginate(15);
+        $data['lists'] = PriceList::all();
         return view('price_list.index' , $data);
     }
 

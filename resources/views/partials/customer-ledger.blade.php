@@ -24,27 +24,31 @@
                 <td>{{ AUth::user()->invoiceNumberFormat($sale->id) }}</td>
                 <td>{{ $sale->product->name }}</td>
                 <td>{{ $sale->created_at }}</td>
-                <td>{{$sale->quantity}}</td>
-                <td>{{$sale->rate}}</td>
+                <td>{{ $sale->quantity }}</td>
+                <td>{{ $sale->rate }}</td>
                 @php
                     $sub_total += $sale->getTotal();
                     $sub_total_vat += $sale->vat;
                 @endphp
-                <td>{{ $sale->getTotal()}}</td>
-                <td>{{$sale->vat}}</td>
+                <td>{{ $sale->getTotal() }}</td>
+                <td>{{ $sale->vat }}</td>
             </tr>
         @endforeach
     </tbody>
     <tfoot>
         <tr>
             <td colspan="6">Subtotal: </td>
-            <td>{{$sub_total}}</td>
-            <td>{{$sub_total_vat}}</td>
+            <td>{{ $sub_total }}</td>
+            <td>{{ $sub_total_vat }}</td>
         </tr>
         <tr>
-            <td colspan="6">{{__('Grand Total')}}</td>
-            <td>{{$sub_total + (($sub_total_vat/100) * $sub_total)}}</td>
+            <td colspan="6">{{ __('Grand Total') }}</td>
+            <td>{{ $sub_total + ($sub_total_vat / 100) * $sub_total }}</td>
         </tr>
     </tfoot>
 </table>
 
+
+<script>
+    setDataTable();
+</script>
