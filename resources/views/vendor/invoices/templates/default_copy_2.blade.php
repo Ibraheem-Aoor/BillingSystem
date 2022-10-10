@@ -307,8 +307,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="6" style="text-align: left;">Total</td>
-                        <td>{{$invoice->getTotal() + (($invoice->vat/100) * $invoice->getTotal())}}
+                        <td colspan="6" style="text-align: left;">Total: {{$number_formatter->format($invoice->getTotal() + (($invoice->vat/100) * $invoice->getTotal() ))}}</td>
+                        <td>{{$invoice->getTotal() + (($invoice->vat/100) * $invoice->getTotal() ) }}
                         </td>
                     </tr>
                 </tbody>

@@ -34,6 +34,7 @@ use LaravelDaily\Invoices\Classes\Party;
 use LaravelDaily\Invoices\Classes\InvoiceItem;
 use PDF;
 // use PDF;
+use NumberFormatter;
 class InvoiceController extends Controller
 {
     public function __construct()
@@ -1312,7 +1313,6 @@ class InvoiceController extends Controller
     {
 
 
-
         $settings = Utility::settings();
 
         $invoiceId = Crypt::decrypt($invoice_id);
@@ -1406,6 +1406,7 @@ class InvoiceController extends Controller
             'customer' => $customer,
             'settings' => $settings,
         ];
+        $data['number_formatter'] = new NumberFormatter('en' , NumberFormatter::SPELLOUT);
         $pdf = PDF::loadView('vendor.invoices.templates.default_copy_2' , $data);
         return $pdf->stream(AUth::user()->invoiceNumberFormat($invoice->invoice_id) );
     }
