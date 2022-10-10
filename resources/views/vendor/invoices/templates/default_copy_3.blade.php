@@ -279,7 +279,7 @@
                         <th class="w-20">التفاصيل <br> Description</th>
                         <th class="w-20">الكمية <br> QTY</th>
                         <th class="w-20">السعر <br> Price</th>
-                        <th class="w-20">الضريبة <br> VAT</th>
+                        <th class="w-20">الضريبة <br> VAT %</th>
                         {{-- <th class="w-20">الخصم <br> Discount</th> --}}
                         <th class="w-20">المبلغ <br> Total</th>
                     </tr>
