@@ -96,7 +96,7 @@
         <div class="col-md-6">
             {{ Form::label('car', __('car'), ['class' => 'form-control-label']) }}
             <select name="car_id" class="form-control" id="car" required>
-                <option value="">{{ __('Select Driver') }}</option>
+                <option value="">{{ __('Select Vechile') }}</option>
                 @foreach ($cars as $car)
                     <option value="{{ $car->id }}">{{ $car->no }}</option>
                 @endforeach
