@@ -93,6 +93,15 @@
             <input type="date" name="date" id="date"
                 style="padding:5px !important; line-height:1.5rem !important;">
         </div>
+        <div class="col-md-6">
+            {{ Form::label('car', __('car'), ['class' => 'form-control-label']) }}
+            <select name="car_id" class="form-control" id="car" required>
+                <option value="">{{ __('Select Driver') }}</option>
+                @foreach ($cars as $car)
+                    <option value="{{ $car->id }}">{{ $car->no }}</option>
+                @endforeach
+            </select>
+        </div>
 
     </div>
     <div class="col-md-6">

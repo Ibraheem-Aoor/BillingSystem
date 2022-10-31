@@ -28,4 +28,9 @@ class Sale extends Model
     {
         return  (double)$this->quantity * (double)$this->rate;
     }
+
+    public function car() : BelongsTo
+    {
+        return $this->belongsTo(Car::class , 'car_id');
+    }
 }

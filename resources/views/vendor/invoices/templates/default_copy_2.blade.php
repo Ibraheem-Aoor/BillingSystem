@@ -253,13 +253,13 @@
                                     <span>DRIVER NAME: {{$invoice->driver->name}}</span>
                                 </li>
                                 <li>
-                                    <span> Vechile No: </span>
+                                    <span> Vechile No: {{$invoice->car->no}}</span>
                                 </li>
                                 <li>
-                                    <span>Location:</span>
+                                    <span>Location: {{$invoice->location}}</span>
                                 </li>
                                 <li>
-                                    <span> LPO No.:</span>
+                                    <span> LPO No.: {{$invoice->lpo}}</span>
                                 </li>
                             </ul>
                         </div>

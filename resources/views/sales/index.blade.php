@@ -90,6 +90,7 @@
                                             <th>{{ __('Inovice No') }}</th>
                                             <th>{{ __('Customer') }}</th>
                                             <th>{{ __('Driver') }}</th>
+                                            <th>{{ __('Vechile No') }}</th>
                                             <th>{{ __('Product') }}</th>
                                             <th>{{ __('Quantity') }}</th>
                                             <th>{{ __('Rate') }}</th>
@@ -114,6 +115,7 @@
                                                 <td>{{ Auth::user()->invoiceNumberFormat($sale->id) }}</td>
                                                 <td>{{ $sale->customer->name }}</td>
                                                 <td>{{ $sale->driver->name }}</td>
+                                                <td>{{ $sale->car?->no }}</td>
                                                 <td>{{ $sale->product->name }}</td>
                                                 <td>{{ $sale->quantity }}</td>
                                                 <td>{{ $sale->rate }}</td>
