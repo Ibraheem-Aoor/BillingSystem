@@ -301,7 +301,7 @@
                         @php
                             $sub_total += (float)$invoice->getTotal();
                         @endphp
-                        <td>{{(float)$invoice->getTotal() +  ($invoice->getTota() * ($invoice->vat / 100))}}</td>
+                        <td>{{(float)$invoice->getTotal() +  ($invoice->getTotal() * ($invoice->vat / 100))}}</td>
                     </tr>
                     @endforeach
                     <tr>
