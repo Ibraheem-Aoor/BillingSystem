@@ -40,7 +40,7 @@
             html2pdf().set(opt).from(element).save();
         }
     </script>
-    <script src="{{ asset('js/reports.js') }}"></script>
+    <script src="{{ asset('js/reports.js?v=0.01') }}"></script>
 @endpush
 @section('content')
 
