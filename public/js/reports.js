@@ -71,4 +71,13 @@ $(document).ready(function () {
 
 
 
+    /**
+     * Toggle Checkbox checked
+     */
+    $(document).on('click' , '.check_all' , function()
+    {
+        $('input[type="checkbox"]').prop('checked', this.checked);
+    });
+
+
 });

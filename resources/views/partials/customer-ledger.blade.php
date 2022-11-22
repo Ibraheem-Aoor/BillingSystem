@@ -1,6 +1,7 @@
 <table class="table table-striped mb-0" id="report-dataTable">
     <thead>
         <tr role="row">
+            <th><input type="checkbox" class="check_all"></th>
             <th>{{ __('S.No') }}</th>
             <th>{{ __('Invoice') }}</th>
             <th>{{ __('Product') }}</th>
@@ -20,6 +21,7 @@
         @endphp
         @foreach ($sales as $sale)
             <tr class="font-style">
+                <td><input type="checkbox" name="ids[]" value="{{$sale->id}}"></td>
                 <td>{{ $i++ }}</td>
                 <td>{{ AUth::user()->invoiceNumberFormat($sale->id) }}</td>
                 <td>{{ $sale->product->name }}</td>

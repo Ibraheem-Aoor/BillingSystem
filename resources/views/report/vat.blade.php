@@ -113,7 +113,6 @@
                         <tr role="row">
                             <th>{{ __('S.No') }}</th>
                             <th>{{ __('Invoice') }}</th>
-
                             <th>{{ __('Customer') }}</th>
                             <th>{{ __('Cash') }}</th>
                             <th>{{ __('Residual') }}</th>

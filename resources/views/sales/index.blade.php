@@ -150,7 +150,7 @@
                                                         {!! Form::open([
                                                             'method' => 'DELETE',
                                                             'route' => ['sale.destroy', $sale->id],
-                                                            'id' => 'delete-form-' . $sale->id,
+                                                            'id' => 'delete-form-'.$sale->id,
                                                         ]) !!}
                                                         {!! Form::close() !!}
                                                     </td>

@@ -112,36 +112,42 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-body" id="body">
-                <table class="table table-striped mb-0" id="report-dataTable">
-                    <thead>
-                        <tr role="row">
-                        <tr role="row">
-                            @if ($request_segment == 'customer-statement-report')
-                                <th>{{ __('S.No') }}</th>
-                                <th>{{ __('Invoice') }}</th>
-                                <th>{{ __('Date') }}</th>
-                                <th>{{ __('Cash') }}</th>
-                                <th>{{ __('Residual') }}</th>
-                                <th>{{ __('Total') }}</th>
-                            @elseif($request_segment == 'customer-ledger-report')
-                                <th>{{ __('S.No') }}</th>
-                                <th>{{ __('Invoice') }}</th>
-                                <th>{{ __('Product') }}</th>
-                                <th>{{ __('Date') }}</th>
-                                <th>{{ __('Qty') }}</th>
-                                <th>{{ __('Rate') }}</th>
-                                <th>{{ __('Total') }}</th>
-                                <th>{{ __('Vat') }}</th>
-                            @endif
-                        </tr>
-                        </tr>
-                    </thead>
+            <form action="{{route('report.customer_ledger.print')}}" method="GET">
+                @csrf
+                <button type="submit" class="btn btn-primary"><i class="fa fa-print"></i></button>
+                <div class="card-body" id="body">
+                    <table class="table table-striped mb-0" id="report-dataTable">
+                        <thead>
+                            <tr role="row">
+                            <tr role="row">
+                                @if ($request_segment == 'customer-statement-report')
+                                    <th>{{ __('S.No') }}</th>
+                                    <th>{{ __('Invoice') }}</th>
+                                    <th>{{ __('Date') }}</th>
+                                    <th>{{ __('Cash') }}</th>
+                                    <th>{{ __('Residual') }}</th>
+                                    <th>{{ __('Total') }}</th>
+                                @elseif($request_segment == 'customer-ledger-report')
+                                    <th><input type="checkbox" class="check_all"></th>
+                                    <th>{{ __('S.No') }}</th>
+                                    <th>{{ __('Invoice') }}</th>
+                                    <th>{{ __('Product') }}</th>
+                                    <th>{{ __('Date') }}</th>
+                                    <th>{{ __('Qty') }}</th>
+                                    <th>{{ __('Rate') }}</th>
+                                    <th>{{ __('Total') }}</th>
+                                    <th>{{ __('Vat') }}</th>
+                                @endif
+                            </tr>
+                            </tr>
+                        </thead>
 
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
+
         </div>
     </div>
 </div>

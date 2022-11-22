@@ -10,7 +10,9 @@ use App\Models\Sale;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Request as FacadesRequest;
+use NumberFormatter;
 use Stripe\Product;
+use PDF;
 
 class NewReportController extends Controller
 {
@@ -164,6 +166,27 @@ class NewReportController extends Controller
     {
         $code = $status ? 200 : 419;
         return response()->json(['status' => $status , 'view' => $view] , $code);
+    }
+
+
+
+
+    /**
+     * Customer Ledger report print
+     */
+    public function printCustomerLedgerReport(Request $request)
+    {
+        if($sales_ids =  $request->ids)
+        {
+            $data['invoices'] = Sale::query()->whereIn('id' , $sales_ids)
+                                ->with('customer')
+                                ->orderByDesc('createD_at')->get();
+            $data['number_formatter'] = new NumberFormatter('en' , NumberFormatter::SPELLOUT);
+            $pdf = PDF::loadView('vendor.invoices.templates.customer-ledeger' , $data);
+            return $pdf->stream(\Auth::user()->invoiceNumberFormat($data['invoices'][0]->invoice_id) );
+        }else{
+            return back();
+        }
     }
 
 }
