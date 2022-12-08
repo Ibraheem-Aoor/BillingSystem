@@ -288,6 +288,7 @@
                     @php
                         $i = 1;
                         $sub_total = 0;
+                        $subtotal_vat = 0;
                     @endphp
                     @foreach ($invoices as $invoice)
                         <tr>
