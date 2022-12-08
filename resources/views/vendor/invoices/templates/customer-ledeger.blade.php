@@ -287,7 +287,7 @@
                             {{-- <td>{{ $invoice->discount ?? 0 }}</td> --}}
                             @php
                                 $sub_total += (float) $invoice->getTotal();
-                                $subtotal_vat += (($invoice->vat/100) * $invoice->getTotal() );
+                                $subtotal_vat += (($invoice->vat/100) * $invoice->getTotal() ); //value
                             @endphp
                             <td>{{ (float) $invoice->getTotal() + ( $invoice->getTotal() * ($invoice->vat / 100) ) }}</td>
                         </tr>
@@ -296,7 +296,7 @@
                         <td colspan="5" style="text-align: left;">Subtotal</td>
                         <td>&nbsp;</td>
                         <td>{{ $subtotal_vat }}
-                        </td>
+                        </td> 
                         <td>
                             {{ $sub_total }}
                         </td>

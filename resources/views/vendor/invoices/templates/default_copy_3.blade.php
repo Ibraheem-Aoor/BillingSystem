@@ -317,8 +317,8 @@
                     </tr>
                     <tr>
                         <td colspan="6" style="text-align: left;">Total:
-                            {{ $number_formatter->format($sub_total + ($subtotal_vat / 100) * $sub_total) }}</td>
-                        <td>{{ $sub_total + ($subtotal_vat / 100) * $sub_total }}
+                            {{ $number_formatter->format($sub_total + $subtotal_vat) }}</td>
+                        <td>{{ $sub_total + $subtotal_vat }}
                         </td>
                     </tr>
                 </tbody>
