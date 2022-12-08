@@ -250,16 +250,16 @@
                         <div class="yellow">
                             <ul>
                                 <li>
-                                    <span>DRIVER NAME: {{$invoices[0]->driver->name}}</span>
+                                    <span>DRIVER NAME: {{ $invoices[0]->driver->name }}</span>
                                 </li>
                                 <li>
-                                    <span> Vechile No: {{$invoices[0]->car?->no}}</span>
+                                    <span> Vechile No: {{ $invoices[0]->car?->no }}</span>
                                 </li>
                                 <li>
-                                    <span>Location: {{$invoices[0]->location}}</span>
+                                    <span>Location: {{ $invoices[0]->location }}</span>
                                 </li>
                                 <li>
-                                    <span> LPO No.: {{$invoices[0]->lop}}</span>
+                                    <span> LPO No.: {{ $invoices[0]->lop }}</span>
                                 </li>
                             </ul>
                         </div>
@@ -290,31 +290,34 @@
                         $sub_total = 0;
                     @endphp
                     @foreach ($invoices as $invoice)
-                    <tr>
-                        <td>{{ $i++ }}</td>
-                        <td>{{ $invoice->product->name }}</td>
-                        <td>{{ $invoice->description }}</td>
-                        <td>{{ $invoice->quantity }}</td>
-                        <td>{{ $invoice->rate }}</td>
-                        <td>{{ $invoice->vat * $invoice->getTotal()  }}</td>
-                        {{-- <td>{{ $invoice->discount ?? 0 }}</td> --}}
-                        @php
-                            $sub_total += (float)$invoice->getTotal();
-                        @endphp
-                        <td>{{(float)$invoice->getTotal() +  ($invoice->getTotal() * ($invoice->vat / 100))}}</td>
-                    </tr>
+                        <tr>
+                            <td>{{ $i++ }}</td>
+                            <td>{{ $invoice->product->name }}</td>
+                            <td>{{ $invoice->description }}</td>
+                            <td>{{ $invoice->quantity }}</td>
+                            <td>{{ $invoice->rate }}</td>
+                            <td>{{ $invoice->vat }}</td>
+                            {{-- <td>{{ $invoice->discount ?? 0 }}</td> --}}
+                            @php
+                                $sub_total += (float) $invoice->getTotal();
+                                $subtotal_vat += ($invoice->vat / 100) * $invoice->getTotal();
+                            @endphp
+                            <td>{{ (float) $invoice->getTotal() + $invoice->getTotal() * ($invoice->vat / 100) }}
+                            </td>
+                        </tr>
                     @endforeach
                     <tr>
                         <td colspan="5" style="text-align: left;">Subtotal</td>
-                        <td>{{$subtotal_vat}}
+                        <td>{{ $subtotal_vat }}
                         </td>
                         <td>
-                            {{$sub_total}}
+                            {{ $sub_total }}
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="6" style="text-align: left;">Total: {{$number_formatter->format($sub_total + (($subtotal_vat / 100) * $sub_total))}}</td>
-                        <td>{{$sub_total + (($subtotal_vat / 100) * $sub_total)}}
+                        <td colspan="6" style="text-align: left;">Total:
+                            {{ $number_formatter->format($sub_total + ($subtotal_vat / 100) * $sub_total) }}</td>
+                        <td>{{ $sub_total + ($subtotal_vat / 100) * $sub_total }}
                         </td>
                     </tr>
                 </tbody>
