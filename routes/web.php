@@ -1050,3 +1050,4 @@ Route::get('review' , function()
 {
     return view('vendor.invoices.templates.default_copy_2');
 });
+

@@ -183,7 +183,7 @@ class NewReportController extends Controller
                                 ->orderByDesc('createD_at')->get();
             $data['number_formatter'] = new NumberFormatter('en' , NumberFormatter::SPELLOUT);
             $pdf = PDF::loadView('vendor.invoices.templates.customer-ledeger' , $data);
-            return $pdf->stream(\Auth::user()->invoiceNumberFormat($data['invoices'][0]->invoice_id) );
+            return $pdf->stream(\Auth::user()->invoiceNumberFormat($data['invoices'][0]->invoice_id.'.pdf') );
         }else{
             return back();
         }
