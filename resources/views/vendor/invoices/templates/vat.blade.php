@@ -243,9 +243,9 @@
                     <div class="float-child-element">
                         <div class="yellow">
                             <ul>
-                                <li>
+                                {{-- <li>
                                     <span>Our Company TRN : {{ \Auth::user()->trn }}</span>
-                                </li>
+                                </li> --}}
                             </ul>
                         </div>
 
