@@ -115,6 +115,7 @@
             <form action="{{route('report.customer_ledger.print')}}" method="GET">
                 @csrf
                 <button type="submit" class="btn btn-primary"><i class="fa fa-print"></i></button>
+                <input type="hidden" name="report_type" value="customer_ledger">
                 <div class="card-body" id="body">
                     <table class="table table-striped mb-0" id="report-dataTable">
                         <thead>

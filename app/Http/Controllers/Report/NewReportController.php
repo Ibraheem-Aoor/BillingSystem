@@ -174,7 +174,7 @@ class NewReportController extends Controller
     /**
      * Customer Ledger report print
      */
-    public function printCustomerLedgerReport(Request $request)
+    public function printReport(Request $request)
     {
         if($sales_ids =  $request->ids)
         {
@@ -182,11 +182,22 @@ class NewReportController extends Controller
                                 ->with('customer')
                                 ->orderByDesc('createD_at')->get();
             $data['number_formatter'] = new NumberFormatter('en' , NumberFormatter::SPELLOUT);
-            $pdf = PDF::loadView('vendor.invoices.templates.customer-ledeger' , $data);
+            $pdf = $this->getReportPdfBasedOnType($request->report_type , $data);
             return $pdf->stream(\Auth::user()->invoiceNumberFormat($data['invoices'][0]->invoice_id).'.pdf');
         }else{
             return back();
         }
     }
+
+
+    /**
+     * @return PDF
+     */
+    public function getReportPdfBasedOnType($report_type , $data)
+    {
+        $view = $report_type == 'vat' ? 'vendor.invoices.templates.vat' : 'vendor.invoices.templates.customer-ledeger';
+        return PDF::loadView($view , $data);
+    }
+
 
 }

@@ -1,6 +1,9 @@
 <table class="table table-striped mb-0" id="report-dataTable">
     <thead>
         <tr role="row">
+            @if ($request_segment == 'vat-report')
+                <th><input type="checkbox" class="check_all"></th>
+            @endif
             <th>{{ __('S.No') }}</th>
             <th>{{ __('Invoice') }}</th>
             <th>{{ __('Customer') }}</th>
@@ -18,16 +21,18 @@
         @endphp
         @foreach ($sales as $sale)
             <tr class="font-style">
+                @if ($request_segment == 'vat-report')
+                    <th><input type="checkbox" name="ids[]" value="{{ $sale->id }}"></th>
+                @endif
                 <td>{{ $i++ }}</td>
                 <td>{{ AUth::user()->invoiceNumberFormat($sale->id) }}</td>
-
                 <td>{{ $sale->customer->name }}</td>
                 <td>0</td>
-                <td>{{$sale->getTotal()}}</td>
+                <td>{{ $sale->getTotal() }}</td>
                 <td>{{ $sale->getTotal() }}</td>
                 <td>{{ $sale->vat }}</td>
-                <td>{{ $sale->getTotal() + (($sale->vat/100) * $sale->getTotal())}}</td>
-
+                <td>{{ $sale->getTotal() + ($sale->vat / 100) * $sale->getTotal() }}</td>
+            </tr>
             </tr>
         @endforeach
     </tbody>

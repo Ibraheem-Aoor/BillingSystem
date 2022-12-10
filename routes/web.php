@@ -755,7 +755,7 @@ Route::group(
     // Custoemr Ledger
     Route::get('/customer-ledger-report' , [NewReportController::class , 'customerLedgerReportIndex'])->name('report.customer_ledger');
     Route::get('/customer-ledger-report-filter' , [NewReportController::class , 'customerLedgerReportFilter'])->name('report.customer_ledger_filter');
-    Route::get('customer-ledger-print' , [NewReportController::class , 'printCustomerLedgerReport'])->name('report.customer_ledger.print');
+    Route::get('customer-ledger-print' , [NewReportController::class , 'printReport'])->name('report.customer_ledger.print');
     // Vat Report
     Route::get('/vat-report' , [NewReportController::class , 'vatReportIndex'])->name('report.vat');
     Route::get('/vat-filter' , [NewReportController::class , 'vatReportFilter'])->name('report.vat_filter');
