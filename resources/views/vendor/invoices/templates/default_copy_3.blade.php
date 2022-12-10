@@ -237,10 +237,10 @@
                                     <span>DATE: {{ \Carbon\Carbon::today()->format('Y-M-d') }}</span>
                                 </li>
                                 <li>
-                                    <span> CUSTOMER: </span>
+                                    <span> CUSTOMER: {{$invoices->first()->customer->name}} </span>
                                 </li>
                                 <li>
-                                    <span> CUSTOMER TRN:</span>
+                                    <span> CUSTOMER TRN:  {{$invoices->first()->customer-trn}} </span>
                                 </li>
                             </ul>
                         </div>

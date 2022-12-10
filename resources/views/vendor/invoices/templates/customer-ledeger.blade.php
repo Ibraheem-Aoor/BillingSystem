@@ -234,6 +234,9 @@
                                     <span> CUSTOMER: {{ $invoices->first()->customer->name }}</span>
                                 </li>
                                 <li>
+                                    <span> CUSTOMER Mobile: {{ $invoices->first()->customer->contact }}</span>
+                                </li>
+                                <li>
                                     <span> CUSTOMER TRN: {{ $invoices->first()->customer->trn }}</span>
                                 </li>
                             </ul>
@@ -242,11 +245,11 @@
                     </div>
                     <div class="float-child-element">
                         <div class="yellow">
-                            <ul>
+                            {{-- <ul>
                                 <li>
                                     <span>Our Company TRN : {{ \Auth::user()->trn }}</span>
                                 </li>
-                            </ul>
+                            </ul> --}}
                         </div>
 
                     </div>
@@ -296,7 +299,7 @@
                         <td colspan="5" style="text-align: left;">Subtotal</td>
                         <td>&nbsp;</td>
                         <td>{{ $subtotal_vat }}
-                        </td> 
+                        </td>
                         <td>
                             {{ $sub_total }}
                         </td>
