@@ -259,6 +259,7 @@
             <table class="table-bordered">
                 <thead>
                     <tr>
+                        <th>{{ __('S.No') }}</th>
                         <th>{{ __('Invoice') }}</th>
                         <th>{{ __('Customer') }}</th>
                         <th>{{ __('Cash') }}</th>
@@ -269,11 +270,11 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php
+                        $i = 1;
+                    @endphp
                     @foreach ($invoices as $invoice)
                         <tr class="font-style">
-                            @if ($request_segment == 'vat-report')
-                                <th><input type="checkbox" name="ids[]" value="{{ $invoice->id }}"></th>
-                            @endif
                             <td>{{ $i++ }}</td>
                             <td>{{ AUth::user()->invoiceNumberFormat($invoice->id) }}</td>
                             <td>{{ $invoice->customer->name }}</td>
