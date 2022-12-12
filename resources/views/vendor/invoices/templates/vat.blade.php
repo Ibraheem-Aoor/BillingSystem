@@ -220,7 +220,7 @@
             </h6>
             <h6 class="sub-heading">
                 <span class="badge">
-                    TAX INVOICE | فاتورة ضريبة
+                    VAT REPORT
                 </span>
             </h6>
             <h6>
@@ -229,14 +229,6 @@
                     <div class="float-child-element">
                         <div class="red">
 
-                            <ul>
-                                <li>
-                                    <span> CUSTOMER: {{ $invoices->first()->customer->name }}</span>
-                                </li>
-                                <li>
-                                    <span> CUSTOMER TRN: {{ $invoices->first()->customer->trn }}</span>
-                                </li>
-                            </ul>
                         </div>
 
                     </div>

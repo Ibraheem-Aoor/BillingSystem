@@ -240,7 +240,7 @@
                                     <span> CUSTOMER: {{$invoices->first()->customer->name}} </span>
                                 </li>
                                 <li>
-                                    <span> CUSTOMER TRN:  {{$invoices->first()->customer-trn}} </span>
+                                    <span> CUSTOMER TRN:  {{$invoices->first()->customer->trn}} </span>
                                 </li>
                             </ul>
                         </div>
