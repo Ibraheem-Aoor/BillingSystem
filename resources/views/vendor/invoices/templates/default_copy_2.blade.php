@@ -295,7 +295,7 @@
                             <td>{{ $invoice->description }}</td>
                             <td>{{ $invoice->quantity }}</td>
                             <td>{{ $invoice->rate }}</td>
-                            <td>{{ $invoice->vat * $invoice->getTotal()  }}</td>
+                            <td>{{ $invoice->vat }}</td>
                             {{-- <td>{{ $invoice->discount ?? 0 }}</td> --}}
                             <td>{{ $invoice->getTotal() + (($invoice->vat/100) * $invoice->getTotal())}}</td>
                         </tr>
