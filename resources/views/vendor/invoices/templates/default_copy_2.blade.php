@@ -6,14 +6,6 @@
         background: #eee;
     }
 
-    body {
-        /* A5 dimensions */
-        height: 210mm;
-        width: 148.5mm;
-
-        margin: 0;
-    }
-
     /* fill half the height with each face */
     .face {
         height: 50%;
