@@ -90,7 +90,7 @@
         </div>
         <div class="col-md-6">
             {{ Form::label('date', __('date'), ['class' => 'form-control-label']) }}
-            <input type="date" name="date" id="date"
+            <input required type="date" name="date" id="date"
                 style="padding:5px !important; line-height:1.5rem !important;">
         </div>
         <div class="col-md-6">

@@ -108,6 +108,7 @@
                                         @php
                                             $i = 1;
                                         @endphp
+                                        <tr class="font-style"></tr>
                                         @foreach ($sales as $sale)
                                             <tr class="font-style">
                                                 <td>{{ $i }} &nbsp; <input type="checkbox"
@@ -126,35 +127,24 @@
                                                 <td>{{ $sale->lpo }}</td>
                                                 <td>{{ $sale->date }}</td>
 
-                                                @if (Gate::check('edit product & service') || Gate::check('delete product & service'))
-                                                    <td class="Action">
-                                                        @can('edit product & service')
-                                                            <a href="{{ route('sale.print', $sale->id) }}" class="edit-icon"
-                                                                data-original-title="{{ __('Print') }}">
-                                                                <i class="fas fa-print"></i>
-                                                            </a>
-                                                            <a href="#" class="edit-icon"
-                                                                data-url="{{ route('sale.edit', $sale->id) }}"
-                                                                data-ajax-popup="true" data-title="{{ __('Edit Price sale') }}"
-                                                                data-toggle="tooltip"
-                                                                data-original-title="{{ __('Edit') }}">
-                                                                <i class="fas fa-pencil-alt"></i>
-                                                            </a>
-                                                        @endcan
-                                                        <a href="#" class="delete-icon " data-toggle="tooltip"
-                                                            data-original-title="{{ __('Delete') }}"
-                                                            data-confirm="{{ __('Are You Sure?') . '|' . __('This action can not be undone. Do you want to continue?') }}"
-                                                            data-confirm-yes="document.getElementById('delete-form-{{ $sale->id }}').submit();">
-                                                            <i class="fas fa-trash"></i>
-                                                        </a>
-                                                        {!! Form::open([
-                                                            'method' => 'DELETE',
-                                                            'route' => ['sale.destroy', $sale->id],
-                                                            'id' => 'delete-form-'.$sale->id,
-                                                        ]) !!}
-                                                        {!! Form::close() !!}
-                                                    </td>
-                                                @endif
+                                                <td class="Action">
+                                                    <a href="{{ route('sale.print', $sale->id) }}" class="edit-icon"
+                                                        data-original-title="{{ __('Print') }}">
+                                                        <i class="fas fa-print"></i>
+                                                    </a>
+                                                    <a href="#" class="edit-icon"
+                                                        data-url="{{ route('sale.edit', $sale->id) }}"
+                                                        data-ajax-popup="true" data-title="{{ __('Edit Price sale') }}"
+                                                        data-toggle="tooltip" data-original-title="{{ __('Edit') }}">
+                                                        <i class="fas fa-pencil-alt"></i>
+                                                    </a>
+                                                    <a href="#" class="delete-icon " data-toggle="tooltip"
+                                                        data-original-title="{{ __('Delete') }}"
+                                                        data-confirm="{{ __('Are You Sure?') . '|' . __('This action can not be undone. Do you want to continue?') }}"
+                                                        data-confirm-yes="deleteSale('{{ route('delete_sale_custom', $sale->id) }}');">
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
                                         @endforeach
 
@@ -165,6 +155,21 @@
                     </div>
                 </form>
 
+
+                <form name="delete-sale-form" action="" method="POST">
+                    @csrf
+                    @method('DELETE')
+                </form>
             </div>
         </div>
     @endsection
+
+    @push('script-page')
+        <script>
+            function deleteSale(action) {
+                var deleteForm = $('form[name="delete-sale-form"]');
+                deleteForm.attr('action', action);
+                deleteForm.submit();
+            }
+        </script>
+    @endpush
