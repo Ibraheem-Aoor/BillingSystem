@@ -1,24 +1,9 @@
 <!doctype html>
 <meta charset="utf-8">
 <style>
-    @page {
-        /* dimensions for the whole page */
-        size: A5;
-
-        margin: 0;
-    }
-
     html {
         /* off-white, so body edge is visible in browser */
         background: #eee;
-    }
-
-    body {
-        /* A5 dimensions */
-        height: 210mm;
-        width: 148.5mm;
-
-        margin: 0;
     }
 
     /* fill half the height with each face */
@@ -150,12 +135,16 @@
     }
 
     .table-bordered {
-        box-shadow: 0px 0px 5px 0.5px gray;
+        box-shadow: 0px 0px 5px 0.5px red;
+        margin-bottom: 5% !important;
+
     }
 
     .table-bordered td,
     .table-bordered th {
-        border: 1px solid #dee2e6;
+        border: 1px solid red;
+        /* width:100% !important; */
+        font-size: 12px !important;
     }
 
     .text-right {
@@ -173,68 +162,77 @@
     ul li {
         list-style-type: none !important;
     }
+
+    .float-parent-element {
+        width: 100% !important;
+    }
+
+    .float-child-element {
+        float: left;
+        width: 50%;
+    }
+
+    .red {
+        margin-right: 50% !important;
+        height: 100px;
+    }
+
+    .yellow {
+        margin-left: 30% !important;
+        height: 100px;
+    }
+
+    li span {
+        font-size: 9px !important;
+    }
 </style>
 
 <body>
     <div class="face face-back">
         <div class="body-section">
-            <h3 class="heading">شركة الهداية لتجارة مواد البناء ذ.م.م</h3>
-            <h3 class="heading">AL HIDAYAH BLDG. MAT. TR. CO. L.L.C</h3>
-            <h6 class="sub-heading">
-                <span>
-                    P.O BOX: 28929 , Sajah , Sahrjah - U.A.E | ص.ب: ٢٨٩٢٩ , الصجعة, الشارقة - أ.ع.م
-                </span>
-            </h6>
-            <h6 class="sub-heading">
-                <span>
-                    MOb: 050 - 5294562 , 056 - 5655842 | متحرك: ۰٥۰ - ٥۲۹٤٥٦۲ , ۰٥٦ - ٥٦٥٥۸٤۲
-                </span>
-            </h6>
-            <h6 class="sub-heading">
-                E-Mail: al.hidayah.building6720@gmail.com <br>
-                TRN: 100469647000003
-            </h6>
-
-            <h6 class="sub-heading" style="margin-top: 5px !important;color:red;margin-bottom:7px !important;">
-                BULIDING MATERIALS | نقل مواد البناء
-            </h6>
-            <h6 class="sub-heading">
-                <span class="badge">
-                    TAX INVOICE | فاتورة ضريبة
-                </span>
-            </h6>
             <h6>
-                <div style="display: inline-block !important; vertical-align:top;width:40% !important;">
-                    <ul style="text-align: left !important;">
-                        <li>
-                            INVOICE NO:
-                        </li>
-                        <li>
-                            DATE:
-                        </li>
-                        <li>
-                            CUSTOMER:
-                        </li>
-                        <li>
-                            CUSTOMER TRN:
-                        </li>
-                    </ul>
-                </div>
-                <div style="display: inline-block !important; vertical-align:top;width:40% !important;">
-                    <ul style="text-align: right !important;">
-                        <li>
-                            DRIVER NAME:
-                        </li>
-                        <li>
-                            Vechile No:
-                        </li>
-                        <li>
-                            Location:
-                        </li>
-                        <li>
-                            LPO No.:
-                        </li>
-                    </ul>
+                <div class="float-parent-element">
+
+                    <div class="float-child-element">
+                        <div class="red">
+
+                            <ul>
+                                <li>
+                                    <span> INVOICE NO: {!! $invoice_number !!}</span>
+                                </li>
+                                <li>
+                                    <span>DATE: {!! $invoice->created_at !!}</span>
+                                </li>
+                                <li>
+                                    <span> CUSTOMER: {!! $invoice->customer->name !!}</span>
+                                </li>
+                                <li>
+                                    <span> CUSTOMER TRN: {!! $invoice->customer->trn !!}</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="float-child-element">
+                        <div class="yellow">
+                            <ul>
+                                <li>
+                                    <span>DRIVER NAME: {{$invoice->driver->name}}</span>
+                                </li>
+                                <li>
+                                    <span> Vechile No: {{$invoice->car?->no}}</span>
+                                </li>
+                                <li>
+                                    <span>Location: {{$invoice->location}}</span>
+                                </li>
+                                <li>
+                                    <span> LPO No.: {{$invoice->lpo}}</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
                 </div>
 
             </h6>
@@ -244,46 +242,64 @@
                 <thead>
                     <tr>
                         <th class="w-20"> رقم <br>S.No </th>
+                        <th class="w-20">المنتج <br> Product</th>
                         <th class="w-20">التفاصيل <br> Description</th>
                         <th class="w-20">الكمية <br> QTY</th>
                         <th class="w-20">السعر <br> Price</th>
+                        <th class="w-20">الضريبة <br> VAT %</th>
+                        {{-- <th class="w-20">الخصم <br> Discount</th> --}}
                         <th class="w-20">المبلغ <br> Total</th>
-                        <th class="w-30">الضريبة <br> VAT 5%</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @php
+                        $i = 1;
+                    @endphp
+                    {{-- @foreach ($invoice as $item) --}}
+                        <tr>
+                            <td>{{ $i++ }}</td>
+                            <td>{{ $invoice->product->name }}</td>
+                            <td>{{ $invoice->description }}</td>
+                            <td>{{ $invoice->quantity }}</td>
+                            <td>{{ $invoice->rate }}</td>
+                            <td>{{ $invoice->vat }}</td>
+                            {{-- <td>{{ $invoice->discount ?? 0 }}</td> --}}
+                            <td>{{ $invoice->getTotal() + (($invoice->vat/100) * $invoice->getTotal())}}</td>
+                        </tr>
+                    {{-- @endforeach --}}
                     <tr>
-                        <td>1</td>
-                        <td>Test</td>
-                        <td>10</td>
-                        <td>1</td>
-                        <td>10</td>
-                        <td>10</td>
+                        <td colspan="5" style="text-align: left;">Subtotal</td>
+                        <td>{{$invoice->vat}}</td>
+                        <td>{{ $invoice->getTotal() + (($invoice->vat/100) * $invoice->getTotal())}}
+                        </td>
                     </tr>
                     <tr>
-                        <td colspan="4" style="text-align: left;">Total</td>
-                        <td> 10.XX</td>
-                    </tr>
-                    <tr>
-                        <td colspan="4" style="text-align: left;">Grand Total</td>
-                        <td> 2</td>
+                        <td colspan="6" style="text-align: left;">Total: {{$number_formatter->format($invoice->getTotal() + (($invoice->vat/100) * $invoice->getTotal() ))}}</td>
+                        <td>{{$invoice->getTotal() + (($invoice->vat/100) * $invoice->getTotal() ) }}
+                        </td>
                     </tr>
                 </tbody>
             </table>
-            <div style="display: inline-block !important; vertical-align:top !important;">
-                Reciver's Sign:_________________ توقيع المستلم
-            </div>
-            <div style="display: inline-block !important; vertical-align:top !important;">
-                Signature:_________________ توقيع المستلم
+            <div class="float-parent-element">
+                <div class="float-child-element">
+                    <div class="red" style="margin-right:30% !important;">
+                        Reciver's Sign:______________ توقيع المستلم
+                    </div>
+                </div>
+
+                <div class="float-child-element">
+                    <div class="yellow">
+                        Signature:_______________
+                    </div>
+                </div>
 
             </div>
-        </div>
 
-        <br>
-        {{-- <h3 class="heading">Payment Status: Paid</h3>
+            <br>
+            {{-- <h3 class="heading">Payment Status: Paid</h3>
             <h3 class="heading">Payment Mode: Cash on Delivery</h3> --}}
-    </div>
-    {{-- @include('vendor.invoices.templates.default_copy', $data) --}}
+        </div>
+        {{-- @include('vendor.invoices.templates.default_copy', $data) --}}
     </div>
     {{-- <div class="face face-front"><img src="front.png">TEST CONTENT</div> --}}
 </body>
