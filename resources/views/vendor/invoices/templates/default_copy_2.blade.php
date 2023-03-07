@@ -6,6 +6,7 @@
         background: #eee;
     }
 
+
     /* fill half the height with each face */
     .face {
         height: 50%;
@@ -135,6 +136,7 @@
     }
 
     .table-bordered {
+        width: 100% !important;
         box-shadow: 0px 0px 5px 0.5px red;
         margin-bottom: 5% !important;
 
@@ -183,7 +185,9 @@
     }
 
     li span {
-        font-size: 9px !important;
+        font-size: 13px !important;
+        font-weight: bold !important;
+        color: #111;
     }
 </style>
 
