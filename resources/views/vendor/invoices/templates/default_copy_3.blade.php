@@ -136,6 +136,7 @@
     }
 
     .table-bordered {
+        width: 100% !important;
         box-shadow: 0px 0px 5px 0.5px red;
         margin-bottom: 5% !important;
 
@@ -184,44 +185,21 @@
     }
 
     li span {
-        font-size: 9px !important;
+        font-size: 13px !important;
+        font-weight: bold !important;
+        color: #111;
     }
 </style>
 
 <body>
     <div class="face face-back">
         <div class="body-section">
-            <h3 class="heading">شركة الهداية لتجارة مواد البناء ذ.م.م</h3>
-            <h3 class="heading">AL HIDAYAH BLDG. MAT. TR. CO. L.L.C</h3>
-            <h6 class="sub-heading">
-                <span>
-                    P.O BOX: 28929 , Sajah , Sahrjah - U.A.E | ص.ب: ٢٨٩٢٩ , الصجعة, الشارقة - أ.ع.م
-                </span>
-            </h6>
-            <h6 class="sub-heading">
-                <span>
-                    MOb: 050 - 5294562 , 056 - 5655842 | متحرك: ۰٥۰ - ٥۲۹٤٥٦۲ , ۰٥٦ - ٥٦٥٥۸٤۲
-                </span>
-            </h6>
-            <h6 class="sub-heading">
-                E-Mail: al.hidayah.building6720@gmail.com <br>
-                TRN: 100469647000003
-            </h6>
 
-            <h6 class="sub-heading" style="margin-top: 5px !important;color:red;margin-bottom:7px !important;">
-                BULIDING MATERIALS | نقل مواد البناء
-            </h6>
-            <h6 class="sub-heading">
-                <span class="badge">
-                    TAX INVOICE | فاتورة ضريبة
-                </span>
-            </h6>
             <h6>
-                <div class="float-parent-element">
+                <div class="float-parent-element" style="padding-left: 2% !important;">
 
                     <div class="float-child-element">
                         <div class="red">
-
                             <ul>
                                 <li>
                                     <span> INVOICE NO: {!! $invoice_number !!}</span>
@@ -230,10 +208,10 @@
                                     <span>DATE: {{ \Carbon\Carbon::today()->format('Y-M-d') }}</span>
                                 </li>
                                 <li>
-                                    <span> CUSTOMER: {{$invoices->first()->customer->name}} </span>
+                                    <span> CUSTOMER: {{ $invoices->first()->customer->name }} </span>
                                 </li>
                                 <li>
-                                    <span> CUSTOMER TRN:  {{$invoices->first()->customer->trn}} </span>
+                                    <span> CUSTOMER TRN: {{ $invoices->first()->customer->trn }} </span>
                                 </li>
                             </ul>
                         </div>
@@ -265,18 +243,6 @@
 
             <br>
             <table class="table-bordered">
-                <thead>
-                    <tr>
-                        <th class="w-20"> رقم <br>S.No </th>
-                        <th class="w-20">المنتج <br> Product</th>
-                        <th class="w-20">التفاصيل <br> Description</th>
-                        <th class="w-20">الكمية <br> QTY</th>
-                        <th class="w-20">السعر <br> Price</th>
-                        <th class="w-20">الضريبة <br> VAT %</th>
-                        {{-- <th class="w-20">الخصم <br> Discount</th> --}}
-                        <th class="w-20">المبلغ <br> Total</th>
-                    </tr>
-                </thead>
                 <tbody>
                     @php
                         $i = 1;
@@ -286,11 +252,9 @@
                     @foreach ($invoices as $invoice)
                         <tr>
                             <td>{{ $i++ }}</td>
-                            <td>{{ $invoice->product->name }}</td>
                             <td>{{ $invoice->description }}</td>
                             <td>{{ $invoice->quantity }}</td>
                             <td>{{ $invoice->rate }}</td>
-                            <td>{{ $invoice->vat }}</td>
                             {{-- <td>{{ $invoice->discount ?? 0 }}</td> --}}
                             @php
                                 $sub_total += (float) $invoice->getTotal();
@@ -298,10 +262,11 @@
                             @endphp
                             <td>{{ (float) $invoice->getTotal() + $invoice->getTotal() * ($invoice->vat / 100) }}
                             </td>
+                            <td>{{ $invoice->vat }}</td>
                         </tr>
                     @endforeach
                     <tr>
-                        <td colspan="5" style="text-align: left;">Subtotal</td>
+                        <td colspan="4" style="text-align: left;">Subtotal</td>
                         <td>{{ $subtotal_vat }}
                         </td>
                         <td>
@@ -309,33 +274,20 @@
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="6" style="text-align: left;">Total:
+                        <td colspan="5" style="text-align: left;">Total:
                             {{ $number_formatter->format($sub_total + $subtotal_vat) }}</td>
                         <td>{{ $sub_total + $subtotal_vat }}
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <div class="float-parent-element">
-                <div class="float-child-element">
-                    <div class="red" style="margin-right:30% !important;">
-                        Reciver's Sign:______________ توقيع المستلم
-                    </div>
-                </div>
-
-                <div class="float-child-element">
-                    <div class="yellow">
-                        Signature:_______________
-                    </div>
-                </div>
-
-            </div>
-
-            <br>
-            {{-- <h3 class="heading">Payment Status: Paid</h3>
-            <h3 class="heading">Payment Mode: Cash on Delivery</h3> --}}
         </div>
-        {{-- @include('vendor.invoices.templates.default_copy', $data) --}}
+
+        <br>
+        {{-- <h3 class="heading">Payment Status: Paid</h3>
+            <h3 class="heading">Payment Mode: Cash on Delivery</h3> --}}
+    </div>
+    {{-- @include('vendor.invoices.templates.default_copy', $data) --}}
     </div>
     {{-- <div class="face face-front"><img src="front.png">TEST CONTENT</div> --}}
 </body>

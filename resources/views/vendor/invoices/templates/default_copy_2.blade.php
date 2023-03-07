@@ -190,31 +190,6 @@
 <body>
     <div class="face face-back">
         <div class="body-section">
-            <h3 class="heading">شركة الهداية لتجارة مواد البناء ذ.م.م</h3>
-            <h3 class="heading">AL HIDAYAH BLDG. MAT. TR. CO. L.L.C</h3>
-            <h6 class="sub-heading">
-                <span>
-                    P.O BOX: 28929 , Sajah , Sahrjah - U.A.E | ص.ب: ٢٨٩٢٩ , الصجعة, الشارقة - أ.ع.م
-                </span>
-            </h6>
-            <h6 class="sub-heading">
-                <span>
-                    MOb: 050 - 5294562 , 056 - 5655842 | متحرك: ۰٥۰ - ٥۲۹٤٥٦۲ , ۰٥٦ - ٥٦٥٥۸٤۲
-                </span>
-            </h6>
-            <h6 class="sub-heading">
-                E-Mail: al.hidayah.building6720@gmail.com <br>
-                TRN: 100469647000003
-            </h6>
-
-            <h6 class="sub-heading" style="margin-top: 5px !important;color:red;margin-bottom:7px !important;">
-                BULIDING MATERIALS | نقل مواد البناء
-            </h6>
-            <h6 class="sub-heading">
-                <span class="badge">
-                    TAX INVOICE | فاتورة ضريبة
-                </span>
-            </h6>
             <h6>
                 <div class="float-parent-element">
 
