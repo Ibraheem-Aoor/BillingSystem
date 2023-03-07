@@ -140,7 +140,7 @@ class SaleController extends Controller
         $data['invoice'] = Sale::findOrFail($id);
         $data['invoice_number'] = \Auth::user()->invoiceNumberFormat($data['invoice']->id);
         $data['number_formatter'] = new NumberFormatter('en' , NumberFormatter::SPELLOUT);
-        $pdf = PDF::loadView('vendor.invoices.templates.default_copy_2' , $data);
+        return view('vendor.invoices.templates.default_copy_2' , $data);
         return $pdf->stream($data['invoice_number']);
     }
 
@@ -152,7 +152,7 @@ class SaleController extends Controller
         $data['subtotal_vat'] = $data['invoices']->sum('vat');
         $data['invoice_number'] = \Auth::user()->invoiceNumberFormat(@$data['invoices'][0]->id);
         $data['number_formatter'] = new NumberFormatter('en' , NumberFormatter::SPELLOUT);
-        $pdf = PDF::loadView('vendor.invoices.templates.default_copy_3' , $data);
+        return view('vendor.invoices.templates.default_copy_3' , $data);
         return $pdf->stream($data['invoice_number']);
         }
         return back();

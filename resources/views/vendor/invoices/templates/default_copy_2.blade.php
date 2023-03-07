@@ -88,6 +88,7 @@
     }
 
     .heading {
+        font-size: 20px;
         margin-bottom: 08px;
         text-align: center
     }
@@ -143,6 +144,7 @@
     .table-bordered th {
         border: 1px solid red;
         /* width:100% !important; */
+        font-size: 12px !important;
     }
 
     .text-right {
@@ -181,6 +183,7 @@
     }
 
     li span {
+        font-size: 9px !important;
     }
 </style>
 
